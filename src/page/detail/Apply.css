@@ -1,0 +1,275 @@
+/*공통css*/
+.flex{
+    display: flex;
+}
+.min-input{
+    width: 120px !important;
+}
+.width100{
+    width: 100%;
+}
+.width10{
+    width: 10%;
+}
+.width90{
+    width: 90%
+}
+form{
+    padding: 5% 14%;
+}
+input[type="number"]::-webkit-outer-spin-button,
+form .visitor-info-group .upBtns button[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input{
+    margin: 5px 0 5px 10px;
+        &:focus{
+            outline: none;
+        }
+}
+form h2{
+    text-align: center;
+    color: #7f7f7f;
+}
+form h5{
+    margin: 10px 0px 0px 0px;
+    line-height: 0px;
+}
+form section li{
+    list-style: none;
+    display: flex;
+    height: 33px;
+    padding-right: 12px;
+    
+}
+ul li label {
+    display: inline-block;
+    min-width: 155px; /* 최소 너비 */
+    max-width: 200px; /* 최대 너비 */
+    height: 40px;
+    text-align: center;
+    background: #d9d9d9;
+    color: #7f7f7f;
+    line-height: 40px;
+    font-size: 14px;
+  }
+  form ul{
+    padding: 0;
+    border-left: none;
+    border-right: none;
+}
+form section ul li input{
+    border: 1px solid #d0cece;
+}
+
+/*임직원정보*/
+form .staff-info{
+    height: 175px;
+}
+form .staff-info ul{
+    border: 1px solid gray;
+    border-left: none;
+    border-right: none;
+}
+form .staff-info ul li{
+    border: 0.5px solid #5f5f5f;
+    border-right: none;
+    border-left: none;
+    height: 40px;
+}
+
+form .staff-info ul li label{
+    border-right: 1.5px solid #7f7f7f;
+    font-size: 14px;
+}
+form .staff-info button{
+    width: 90px;
+    background: transparent;
+    border: 1px solid #afabab;
+    border-radius: 5px;
+    height: 25px;
+    font-size: 13px;
+    color: #7f7f7f;
+    float: right;
+}
+form .staff-info input[type=number]::-webkit-inner-spin-button,
+form .staff-info input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*방문객정보*/
+form .visitor-info{
+    min-height: 330px;
+}
+form .visitor-info input{
+    width: 205px;
+}
+form .visitor-info .nationality p{
+    background-color: transparent;
+    width: 56px;
+    font-size: 12px;
+    margin: 8px 0;
+
+}
+form .visitor-info input[type="checkbox"]{
+    width: 10px;
+    margin-right: 4px
+}
+
+form .visitor-info h5{
+    margin: 10px 0px 16px 0px;
+}
+form .visitor-info ul {
+    padding: 0;
+    border-left: none;
+    border-right: none;
+    display: flex;
+    margin: 0;
+}
+form .visitor-info ul li{
+    height: 40px;
+    list-style: none;
+    display: flex;
+    padding-right: 12px;
+    border-right: none;
+    border-left: none;
+}
+form .visitor-info li span {
+    font-size: 13px;
+    white-space: nowrap;
+    line-height: 40px;
+    color: #7f7f7f;
+}
+form .visitor-info li span input{
+    margin: 5px;
+}
+
+form .visitor-info input[type="date"] {
+    width: 100px;
+    text-align: center;
+    font-weight: 600;
+    color: #7f7f7f;
+}
+form .visitor-info input[type="time"]{
+    width: 120px;
+    text-align: center;
+    font-weight: 600;
+    color: #7f7f7f;
+}
+.v-info-1 {
+    border-top: 1px solid #5f5f5f;
+}
+.v-info-2, .v-info-3, .v-info-4, .v-info-5, .v-info-6{
+    border-top: 1px solid #5f5f5f;
+}
+.v-info-7{
+    border-top: 1px solid #5f5f5f;
+    border-bottom: 1px solid #5f5f5f;
+    height: 50px;
+}
+form .visitor-info .v-info-7 li{
+    display: flex;
+    height: 50px;
+}
+form .visitor-info .v-info-7 label{
+    height: 50px;
+    flex: 1; /* 라벨이 textarea 옆에 위치할 수 있도록 설정 */
+    text-align: center; /* 가운데 정렬 */
+}
+form .visitor-info .v-info-7 textarea{
+    resize: none;
+    border: 1px solid #d0cece;
+    margin: 5px 0 5px 10px;
+    &:focus{
+        outline: none;
+    }
+}
+
+/*그룹리스트*/
+.layout{
+border: 1px solid;
+border-right: none;
+border-left: none;
+}
+.visitor-info-group-list{
+    display: flex;
+    flex-direction: column;
+}
+.group-list:nth-child(2){
+border-right: 1px solid;
+}
+.group-list:nth-child(1){
+    border-bottom: 1px solid;
+}
+.group-list:nth-child(1) label,
+.del-part label{
+    border-bottom: 1px solid;
+}
+.group-list{
+    display: flex;
+    justify-content: space-between;
+}
+.group-list:nth-child(1){
+    flex-grow: 1;
+}
+.group-list div{
+    width: calc(100%/6);
+    border-right: 1px solid;
+}
+.visitor-info-group div p{
+    margin: 0;
+    height: 40px;
+}
+.visitor-info-group label {
+    width: 100%;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    background: #d9d9d9;
+    color: #7f7f7f;
+    line-height: 40px;
+    font-size: 13px;
+  }
+  form .visitor-info-group .upBtns{
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    margin-top: 5px;
+
+  }
+form .visitor-info-group .upBtns button{
+    width: 100px;
+    background: transparent;
+    border: 1px solid #afabab;
+    border-radius: 5px;
+    height: 25px;
+    font-size: 13px;
+    color: #7f7f7f;
+    white-space: nowrap;
+}
+.visitor-info-group-list .group-list:nth-child(7) div:nth-child(2) {
+    width: calc(100% - (100% / 7) * 5); /* 두 번째 행에 있는 일곱 번째 열의 너비 설정 */
+}
+.visitor-info .del-part{
+    height: 105px;
+}
+.visitor-info .del-part p{
+height: 90px;
+}
+.submit-part{
+    display: flex;
+    justify-content: center;
+}
+#submitBtn{
+    width: 80px;
+    background: transparent;
+    border: 1px solid #afabab;
+    border-radius: 5px;
+    height: 25px;
+    font-size: 13px;
+    color: #7f7f7f;
+    white-space: nowrap;
+}

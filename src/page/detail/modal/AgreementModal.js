@@ -1,0 +1,29 @@
+import './AgreementModal.css'
+
+function AgreementModal(){
+    return(
+        <div>
+            <header><span>개인정보처리방침</span></header>
+            <main>
+                <h3>개인정보처리방침</h3>
+                <p>대한항공 방문 예약 시스템은 개인정보보호법률을 준수하고 있습니다.</p>
+                <select>
+                    <option>개인정보처리방침 2023.10.31</option>
+                </select>
+                <section className='post'>
+                    대충 어쩌고 저쩌고 내용 들어감
+                </section>
+            </main>
+                <footer>
+                    <section>
+                        <input type='checkbox' id='agree' name='agree' value='agree' />
+                        <p>방문자에게 개인정보 처리방침 및 수집/취득/활용 동의를 득 하였음</p>
+                    </section>
+                    <button type='submit'>확인</button>
+                </footer>
+        </div>
+    )
+
+}
+
+export default AgreementModal;
