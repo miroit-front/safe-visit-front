@@ -1,14 +1,27 @@
+import { useState } from 'react';
 import './Apply.css';
+import AgreementModal from './modal/AgreementModal';
 
-function Apply(){
-    const  checkboxs = document.querySelectorAll('input[type="checkbox"]');
-    checkboxs.forEach((e) => {
-        if (checkboxs !== e.target) {
-            checkboxs.checked = false;
+function Apply(){      
+    const [checked , setChecked] = useState(true);
+    const [isOpen, setIsOpen] = useState(true);
+
+    const handleConfirmModal = () => {
+        setIsOpen(false);
+    };
+    function checkOnlyOne(){
+        if(checked){
+            setChecked(false);
+        }else{
+            setChecked(true);
         }
-    });
+    }
     return(
+        <div>
+        {isOpen && <AgreementModal onClose={handleConfirmModal}  isOpen={isOpen} setIsOpen={setIsOpen}/>}
+        {!isOpen && (
             <form action="#">
+                {isOpen && <AgreementModal onClose={handleConfirmModal} isOpen={isOpen} setIsOpen={setIsOpen}/>}
                 <h2>방문신청</h2>
                 <section className='staff-info'>
                     <h5>임직원 정보</h5>
@@ -25,8 +38,7 @@ function Apply(){
                             <li className='flex'><label>성명</label>
                             <input className='min-input' type='text'/>
                                 <div className='nationality flex'>
-                                    <input type="checkbox" id="domestic" name="nationality" value="domestic" 
-                                    onChange={(e)=>{checkboxs()}} checked /><span>내국인</span>
+                                    <input type="checkbox" id="domestic" name="nationality" value="domestic" defaultChecked={checked} /><span>내국인</span>
                                     <input type="checkbox" id="foreigner" name="nationality" value="foreigner" /><span>외국인</span>
                                 </div>
                             </li>
@@ -42,7 +54,7 @@ function Apply(){
                                 <span>~</span>
                                 <input type='date'/><input type='time'/>
                                 <div className='day flex'>
-                                    <input type="checkbox" id="domestic" name="day" value="1day" checked /><span>1일</span>
+                                    <input type="checkbox" id="domestic" name="day" value="1day" defaultChecked={checked} /><span>1일</span>
                                     <input type="checkbox" id="foreigner" name="day" value="2day" /><span>2일</span>
                                 </div>
                             </li>
@@ -56,7 +68,7 @@ function Apply(){
                             <li className='width100'>
                                 <label>차량번호</label>
                                 <input className='min-input width100' type='text'/></li>
-                            <li><input type="checkbox" id="office" name="office" value="office" checked/><span>사옥 내 진입</span></li>
+                            <li><input type="checkbox" id="office" name="office" value="office" defaultChecked={checked}/><span>사옥 내 진입</span></li>
 
                         </ul>
                         <ul className='v-info-6'>
@@ -98,8 +110,9 @@ function Apply(){
                         </div>
                     </section>
             </form>
-
-    )
+        )}
+        </div>
+    );
 }
 
 export default Apply;

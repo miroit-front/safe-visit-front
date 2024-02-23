@@ -1,0 +1,68 @@
+.agreeModal{
+    border: 1px solid gray;
+    text-align: center;
+    padding: 0;
+    margin: 10%;
+    width: 700px;
+    position: fixed;
+    top: 32%;
+    left: 41%;
+    transform: translate(-50%, -50%);
+}
+.agreeModal header{
+    display: flex;
+    justify-content: space-between
+}
+.agreeModal button{
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+.agreeModal header{
+    background-color: rgb(14, 113, 199);
+
+    font-size: 11px;
+    padding: 7px;
+    color: white;
+}
+.agreeModal main{
+    color: #7f7f7f;
+    padding: 2%;
+}
+.agreeModal select{
+    float: right;
+}
+.agreeModal .post{
+    border-top: 1px solid #d9d9d9;
+    padding: 14% 10%;
+}
+.agreeModal .post-header{
+    margin-bottom: 10px;
+    display: flow-root;
+}
+.agreeModal .post-header2{
+    border: 1px solid #d9d9d9;
+    border-radius: 1px;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    font-size: 12px;
+    color: #7f7f7f;
+}
+.agreeModal footer{
+    padding: 5px 10px;
+}
+.agreeModal footer section{
+    display: flex;
+    padding-left: 8px;
+    gap: 2px;
+    font-size: 13px;
+    color: #7f7f7f;
+}
+.agreeModal footer button{
+    background-color: white;
+    color: #8b8b8b;
+    border: 1px solid #afabab;
+    padding: 3px 20px;
+    font-size: 12px;
+    border-radius: 5px;
+}
