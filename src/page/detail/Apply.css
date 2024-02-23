@@ -95,6 +95,7 @@ form .staff-info button{
     float: right;
 }
 form .staff-info input[type=number]::-webkit-inner-spin-button,
+form .v-info-2 input[type=number]::-webkit-inner-spin-button,
 form .staff-info input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
