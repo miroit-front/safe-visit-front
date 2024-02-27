@@ -1,0 +1,47 @@
+.ExcelModal-container{
+    border: 1px solid gray;
+    text-align: left;
+    padding: 2% 1%;
+    margin: 10%;
+    width: 420px;
+    position: fixed;
+    top: 32%;
+    left: 41%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: #ffffff;
+    color: #7f7f7f;
+}
+.ExcelModal-container .upload-btn{
+    margin-top: 8px;
+    width: 100px;
+    background: transparent;
+    border: 1px solid #afabab;
+    border-radius: 5px;
+    height: 25px;
+    font-size: 13px;
+    color: #7f7f7f;
+    white-space: nowrap;
+}
+.ExcelModal-container .upload-input{
+    width: 415px;
+    padding: 12px 5px;
+
+}
+.ExcelModal-container input[type=file]::file-selector-button {
+    width: 100px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid rgb(77,77,77);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .ExcelModal-container .download-btn{
+    margin: 14px 0;
+  }
+  .ExcelModal-container .modal-footer-btn{    
+    display: flex;
+    gap: 7px;
+    justify-content: center;
+    margin-top: 10px;
+}

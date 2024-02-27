@@ -1,6 +1,7 @@
 import './Search.css';
 
 function Search(){
+
     return(
         <form action="#">
             <h2>방문신청 조회</h2>

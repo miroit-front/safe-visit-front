@@ -1,21 +1,34 @@
 import { useState } from 'react';
 import './Apply.css';
 import AgreementModal from './modal/AgreementModal';
+import ExcelUploadBtn from './modal/ExcelUploadBtn';
 
 function Apply(){      
-    const [checked , setChecked] = useState(true);
+    const [checkedNationality , setCheckedNationality] = useState('내국인');
+    const [checkedDay , setCheckedDay] = useState('1day');
     const [isOpen, setIsOpen] = useState(true);
 
     const handleConfirmModal = () => {
         setIsOpen(false);
     };
-    function checkOnlyOne(){
-        if(checked){
-            setChecked(false);
-        }else{
-            setChecked(true);
-        }
+    function checkOneNationality(e){
+        const checkedNationality = document.getElementsByName('nationality');
+        Array.prototype.forEach.call(checkedNationality, function(item){
+            item.checked = false;
+        });
+        e.target.checked = true;
+        setCheckedNationality(e.target.value);
+
     }
+    function checkOneDay(e){
+        const checkedDay = document.getElementsByName('day');
+        Array.prototype.forEach.call(checkedDay, function(item){
+            item.checked = false;
+        });
+        e.target.checked = true;
+        setCheckedDay(e.target.value);
+    }
+
     return(
         <div>
         {isOpen && <AgreementModal onClose={handleConfirmModal}  isOpen={isOpen} setIsOpen={setIsOpen}/>}
@@ -38,8 +51,11 @@ function Apply(){
                             <li className='flex'><label>성명</label>
                             <input className='min-input' type='text'/>
                                 <div className='nationality flex'>
-                                    <input type="checkbox" id="domestic" name="nationality" value="domestic" defaultChecked={checked} /><span>내국인</span>
-                                    <input type="checkbox" id="foreigner" name="nationality" value="foreigner" /><span>외국인</span>
+                                    <input type="checkbox" id="domestic" name="nationality" value="내국인" 
+                                    onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='내국인'}/><span>내국인</span>
+
+                                    <input type="checkbox" id="foreigner" name="nationality" value="외국인" 
+                                    onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='외국인'}/><span>외국인</span>
                                 </div>
                             </li>
                         </ul>
@@ -54,8 +70,8 @@ function Apply(){
                                 <span>~</span>
                                 <input type='date'/><input type='time'/>
                                 <div className='day flex'>
-                                    <input type="checkbox" id="domestic" name="day" value="1day" defaultChecked={checked} /><span>1일</span>
-                                    <input type="checkbox" id="foreigner" name="day" value="2day" /><span>2일</span>
+                                    <input type="checkbox" id="oneDay" name="day" value="1day" onChange={(e)=>{checkOneDay(e)}} checked={checkedDay==='1day'}/><span>1일</span>
+                                    <input type="checkbox" id="twoDay" name="day" value="2day" onChange={(e)=>{checkOneDay(e)}} checked={checkedDay==='2day'}/><span>2일</span>
                                 </div>
                             </li>
                         </ul>
@@ -68,7 +84,7 @@ function Apply(){
                             <li className='width100'>
                                 <label>차량번호</label>
                                 <input className='min-input width100' type='text'/></li>
-                            <li><input type="checkbox" id="office" name="office" value="office" defaultChecked={checked}/><span>사옥 내 진입</span></li>
+                            <li><input type="checkbox" id="office" name="office" value="office"/><span>사옥 내 진입</span></li>
 
                         </ul>
                         <ul className='v-info-6'>
@@ -102,7 +118,7 @@ function Apply(){
                             </div>
                         </div>
                         <div className='upBtns'>
-                            <button type='upload' className='upload-btn'>+ 엑셀 업로드</button>
+                            <ExcelUploadBtn/>
                             <button type='update' className='update-btn'>+ 방문객 추가</button>
                         </div>
                         <div className='submit-part'>

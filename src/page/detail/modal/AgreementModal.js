@@ -16,7 +16,7 @@ function AgreementModal(props){
     }
 
     const toggleModal = () => {
-        props.setIsOpen(!props.isOpen);
+        props.setAgreementModalState(false);
     }
     const handleCheckboxChange = (e) => {
         console.log(e.target.checked);
@@ -44,7 +44,8 @@ function AgreementModal(props){
                     <section>
                         <input type='checkbox' id='agree' name='agree' value='agree' defaultChecked={isChecked}
                         onChange={handleCheckboxChange}/>
-                        <p>방문자에게 개인정보 처리방침 및 수집/취득/활용 동의를 득 하였음</p>
+                        <p>방문자에게 개인정보 처리방침 및 수집/취득/활용 동의
+                            를 득 하였음</p>
                     </section>
                     <button type='submit' onClick={handleConfirm}>확인</button>
                 </footer>

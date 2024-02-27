@@ -1,22 +1,22 @@
-.agreeModal{
+.serviceModal{
     border: 1px solid gray;
     text-align: center;
     padding: 0;
-    margin: 10%;
+    margin: 4%;
     width: 700px;
     position: fixed;
-    top: 32%;
-    left: 41%;
+    top: 40%;
+    left: 47%;
     transform: translate(-50%, -50%);
     z-index: 1000;
     background: #ffffff;
 }
-.agreeModal button{
+.serviceModal header button{
     background-color: transparent;
     border: none;
     color: white;
 }
-.agreeModal header{
+.serviceModal header{
     background-color: rgb(14, 113, 199);
     display: flex;
     justify-content: space-between;
@@ -24,40 +24,29 @@
     padding: 7px;
     color: white;
 }
-.agreeModal main{
+.serviceModal main{
     color: #7f7f7f;
     padding: 2%;
 }
-.agreeModal select{
-    float: right;
-}
-.agreeModal .post{
+.serviceModal .main-post{
     border-top: 1px solid #d9d9d9;
     padding: 14% 10%;
 }
-.agreeModal .post-header{
+.serviceModal .main-header{
     margin-bottom: 10px;
     display: flow-root;
 }
-.agreeModal .post-header2{
-    border: 1px solid #d9d9d9;
-    border-radius: 1px;
-    padding: 5px 10px;
-    letter-spacing: 1px;
-    font-size: 12px;
-    color: #7f7f7f;
-}
-.agreeModal footer{
+.serviceModal footer{
     padding: 5px 10px;
 }
-.agreeModal footer section{
+.serviceModal footer section{
     display: flex;
     padding-left: 8px;
     gap: 2px;
     font-size: 13px;
     color: #7f7f7f;
 }
-.agreeModal footer button{
+.serviceModal footer button{
     background-color: white;
     color: #8b8b8b;
     border: 1px solid #afabab;
