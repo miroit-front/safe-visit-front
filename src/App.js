@@ -6,6 +6,7 @@ import SearchPage from './page/component/page/SearchPage';
 import NoticePage from './page/component/page/NoticePage';
 
 function App() {
+
   return (
     <div className="App">
     <Routes>

@@ -1,0 +1,105 @@
+.noticeModal-container{
+    border: 1px solid gray;
+    text-align: left;
+    margin: 10%;
+    width: 650px;
+    min-height: 400px;
+    position: fixed;
+    top: 32%;
+    left: 41%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: #ffffff;
+    color: #7f7f7f;
+}
+.noticeModal-container header button{
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+.noticeModal-container .main-header h4{
+    margin: 0;
+    padding: 1% 0;
+    background-color: #d9d9d9;
+}
+.noticeModal-container header{
+    background-color: rgb(14, 113, 199);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    padding: 7px;
+    color: white;
+}
+.noticeModal-container body{
+    height: 285px;
+    margin: 4% 6%;
+    border-top: 2px solid #bfbfbf;
+    border-bottom: 2px solid #bfbfbf;
+}
+.noticeModal-container main{
+    padding: 20px;
+    font-size: 13px;
+}
+.noticeModal-container .main-content {
+    min-height: 75px;
+}
+.noticeModal-container .upload-file{
+    border-top: 2px solid #bfbfbf;
+    border-bottom: 2px solid #bfbfbf;
+    display: flex;
+}
+.noticeModal-container .upload-file p{
+    margin: 0;
+    padding: 3px 0;
+    font-size: 13px;
+    padding: 5px 15px 5px 5px;
+}
+.noticeModal-container .upload-file p:nth-child(1){
+    background-color: #f2f2f2;
+    width: 25%;
+
+}
+.noticeModal-container .upload-file button{
+    background-color: white;
+    color: #8b8b8b;
+    border: 1px solid #afabab;
+    padding: 1px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    margin: 4px;
+}
+.noticeModal-container .notice-info{
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid #bfbfbf;
+    border-bottom: 2px solid #bfbfbf;
+}
+
+.noticeModal-container .notice-info div{
+    display: flex;
+}
+.noticeModal-container .notice-info div p{
+    font-size: 13px;
+    margin: 5px;
+}
+.noticeModal-container .main-header{
+    text-align: center;
+}
+.noticeModal-container .notice-footer{
+    text-align: center;
+}
+.noticeModal-container footer button{
+    background-color: white;
+    color: #8b8b8b;
+    border: 1px solid #afabab;
+    padding: 3px 20px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+.noticeModal-container .notice-list ul{
+    font-size: 13px;
+}
+.noticeModal-container .notice-list .lists{
+margin-right: 10px;
+margin-left: 3px;
+}

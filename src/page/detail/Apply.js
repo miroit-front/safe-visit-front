@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import './Apply.css';
+import { useState } from 'react';
 import AgreementModal from './modal/AgreementModal';
 import ExcelUploadBtn from './modal/ExcelUploadBtn';
 
@@ -42,7 +42,7 @@ function Apply(){
                         <li><label>임직원 이름</label><input type='text'/></li>
                         <li><label>전화번호 뒤 4자리</label><input type='number'/></li>
                     </ul>
-                    <button type='submit'>확인</button>
+                    <button type='submit' >확인</button>
                 </section>
                 <section className='visitor-info'>
                         <h5>방문자 정보</h5>
@@ -122,7 +122,7 @@ function Apply(){
                             <button type='update' className='update-btn'>+ 방문객 추가</button>
                         </div>
                         <div className='submit-part'>
-                        <button id='submitBtn' type='submit'>신청</button>
+                        <button id='submitBtn' type='submit' onClick={alert('방문시 초소 안내센터로 방문해야 합니다.')}>신청</button>
                         </div>
                     </section>
             </form>
