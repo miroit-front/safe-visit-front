@@ -1,7 +1,16 @@
+import { useState } from 'react';
 import './Search.css';
 
 function Search(){
-
+    const [checkedNationality , setCheckedNationality] = useState('내국인');
+    function checkOneNationality(e){
+        const checkedNationality = document.getElementsByName('nationality');
+        Array.prototype.forEach.call(checkedNationality, function(item){
+            item.checked = false;
+        });
+        e.target.checked = true;
+        setCheckedNationality(e.target.value);
+    }
     return(
         <form action="#">
             <h2>방문신청 조회</h2>
@@ -10,9 +19,11 @@ function Search(){
                 <ul>
                     <li><label>방문자 이름</label><input type='text'/>
                                 <div className='nationality flex'>
-                                    <input type="checkbox" id="domestic" name="nationality" value="domestic" 
-                                    checked /><span>내국인</span>
-                                    <input type="checkbox" id="foreigner" name="nationality" value="foreigner" /><span>외국인</span>
+                                <input type="checkbox" id="domestic" name="nationality" value="내국인" 
+                                    onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='내국인'}/><span>내국인</span>
+
+                                    <input type="checkbox" id="foreigner" name="nationality" value="외국인" 
+                                    onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='외국인'}/><span>외국인</span>
                                 </div></li>
                     <li><label>방문신청번호</label><input type='number'/></li>
                 </ul>

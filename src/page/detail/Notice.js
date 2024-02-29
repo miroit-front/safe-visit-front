@@ -37,7 +37,7 @@ function Notice(){
                             </div>
                         </div>
                         {isOpen && <NoticeModal closeModal={closeModal}/>}
-                    </section>
+        </section>
         </form>
     )
 }
