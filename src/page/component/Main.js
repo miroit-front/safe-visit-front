@@ -7,7 +7,7 @@ function Main(){
     return(
         <>
             <div className="main-img"></div>
-        <container>
+        <div id='main-container'>
                 <article className='main-article'>
                         <button className='apply-btn' onClick={(e)=>{
                             window.location.href = '/apply'
@@ -31,7 +31,7 @@ function Main(){
                         </ul>
                     </section>
                 </article>
-        </container>
+        </div>
         </>
     )
 }

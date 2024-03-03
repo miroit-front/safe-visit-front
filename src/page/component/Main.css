@@ -1,7 +1,8 @@
-container{
-    display: grid;
-    gap: 20px;
-    padding: 70px 0px 70px 86px;
+#main-container{
+    display: block;
+    width: 100%;
+    max-width: 1280px;
+    margin: 52px auto 0;
 }
 .main-img{
     background-image: url('../../img/mainImg.jpg');
@@ -12,8 +13,9 @@ container{
     display: flex;
     width: 95%;
     max-width: 1280px; /* 최대 너비 설정 */
-
-    gap: 5%;
+    padding-top: 16rem;
+    padding-bottom: 23rem;
+    gap: 4%;
 }
 .main-btns{
     display: flex;
