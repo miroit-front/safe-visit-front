@@ -5,9 +5,7 @@ import Search from '../../detail/Search';
 function SearchPage(){
     return(
         <div>
-            <Header/>
             <Search/>
-            <Footer/>
         </div>
     )
 }

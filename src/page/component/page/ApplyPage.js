@@ -5,9 +5,7 @@ import Apply from '../../detail/Apply';
 function ApplyPage(){
     return(
         <div>
-            <Header/>
             <Apply/>
-            <Footer/>
         </div>
     )
 }

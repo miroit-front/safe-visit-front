@@ -5,9 +5,7 @@ import Footer from './../layout/Footer';
 function NoticePage (){
     return(
         <div>
-            <Header/>
             <Notice/>
-            <Footer/>
         </div>
     )
 }

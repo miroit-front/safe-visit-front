@@ -7,6 +7,7 @@ function Apply(){
     const [checkedNationality , setCheckedNationality] = useState('내국인');
     const [checkedDay , setCheckedDay] = useState('1day');
     const [isOpen, setIsOpen] = useState(true);
+    const [excelModalOpen, setExcelModalOpen] = useState(false); //
 
     const handleConfirmModal = () => {
         setIsOpen(false);
@@ -28,7 +29,9 @@ function Apply(){
         e.target.checked = true;
         setCheckedDay(e.target.value);
     }
-
+    function handleExcelModalToggle(){
+        setExcelModalOpen(!excelModalOpen);
+    }
     return(
         <div>
         {isOpen && <AgreementModal onClose={handleConfirmModal}  isOpen={isOpen} setIsOpen={setIsOpen}/>}
@@ -118,7 +121,7 @@ function Apply(){
                             </div>
                         </div>
                         <div className='upBtns'>
-                            <ExcelUploadBtn/>
+                        <ExcelUploadBtn onToggle={handleExcelModalToggle}/>
                             <button type='update' className='update-btn'>+ 방문객 추가</button>
                         </div>
                         <div className='submit-part'>
