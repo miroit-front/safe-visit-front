@@ -23,3 +23,5 @@ a:active, a:hover {text-decoration:none;}
 address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal;}
 select{-webkit-appearance:none;appearance:none;}
 select::-ms-expand{display:none;}
+
+.App{display: flex;flex: 1;flex-direction: column;}
