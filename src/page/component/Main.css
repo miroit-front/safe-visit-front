@@ -1,22 +1,8 @@
-#main-container{
-    display: block;
-    width: 100%;
-    max-width: 1280px;
-    margin: 52px auto 0;
-}
-.main-img{
-    background-image: url('../../img/mainImg.jpg');
-    width: 100%;
-    height: 200px;
-}
-.main-article{
-    display: flex;
-    width: 95%;
-    max-width: 1280px; /* 최대 너비 설정 */
-    padding-top: 16rem;
-    padding-bottom: 23rem;
-    gap: 4%;
-}
+#main_wrap{position: relative;}
+.main-img{background-image: url('');width: 100%;height: 200px;}
+
+#main-container{display: block;width: 100%;max-width: 1280px;margin: 0 auto;}
+.main-article{display: flex;gap: 4%;}
 .main-btns{
     display: flex;
     width: 55%;
