@@ -26,7 +26,7 @@ function Main(){
                         <section className='main-notice'>
                             <header>
                                 <h3>공지사항</h3>
-                                <button><img src='../img/arrow_right.svg' alt='공지사항 바로가기'/></button>
+                                <button onClick={(e)=>{window.location.href = './notice'}}><img src='../img/arrow_right.svg' alt='공지사항 바로가기'/></button>
                             </header>
                             <ul>
                                 {noticeContext.map((item,i) =>
