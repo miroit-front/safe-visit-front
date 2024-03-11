@@ -24,14 +24,13 @@ function Search(){
         setCheckedNationality(e.target.value);
     }
     function searchRes() {
-        const apiUrl = `http://123.143.44.130:8084/visit-reservation-hist/get-list?name=박문자&phoneNumber=01012345678&page=0&size=20`;
-        console.log(apiUrl);
-        axios.get(apiUrl)
+        const apiUrl_search = `http://123.143.44.130:8084/visit-reservation-hist/get-list?name=박문자&phoneNumber=01012345678&page=0&size=20`;
+        console.log(apiUrl_search);
+        axios.get(apiUrl_search)
         .then((res)=>{
             console.log(res);
             console.log(res.data.content);
-            console.log(res.data.content[0].reservationId);
-            console.log(res.data.content[0].name);
+
             const {reservationId, createDate, team, name, visitDate, escortEmployeeName, status, parkingApprovalStatus} = res.data.content[0];
             setDetailData(detailData => [
                 ...detailData, 
@@ -69,6 +68,7 @@ function Search(){
                             <div className='search-list-result width100'>
                                 {detailData.map((data, i)=>(
                                     <div className='search-list flex' key={i}>
+                                     
                                         <div><label>No</label><p>{data.reservationId}</p></div>
                                         <div><label>신청일자</label><p>{data.createDate}</p></div>
                                         <div><label>회사</label><p>{data.team}</p></div>
@@ -78,6 +78,7 @@ function Search(){
                                         <div><label>방문</label><p>{data.status}</p></div>
                                         <div><label>주차</label><p>{data.parkingApprovalStatus}</p></div>
                                         </div>
+                             
                                 ))}    
                             </div>
                         </div>
