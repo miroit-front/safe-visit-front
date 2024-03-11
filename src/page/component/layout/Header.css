@@ -7,3 +7,4 @@
 
 #header .gnb{width: 66%;height: 100%;margin: 0;display: flex;justify-content: normal;gap: 10%;}
 #header .gnb li{font-size: 1.25rem;font-weight: 500;cursor: pointer;color: #131313;}
+#header .gnb li:hover{color:#002F87;font-weight: 600;}

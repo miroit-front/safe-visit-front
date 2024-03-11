@@ -5,7 +5,7 @@ function Header(){
         <header id='header'>
             <section>
                 <h1>
-                    <button type='button'>대한항공방문예약시스템</button>
+                    <button type='button' onClick={(e)=>{window.location.href = '/'}}>대한항공방문예약시스템</button>
                 </h1>
                 <ul className='gnb'>
                     <li onClick={(e)=>{window.location.href = './apply'}}>방문신청</li>
