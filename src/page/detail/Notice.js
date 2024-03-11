@@ -12,7 +12,6 @@ function Notice(){
     }
     return(
         <form action="#">
-        <h2>공지사항</h2>
         <section className='notice-search-parth flex'>
             <div className='flex'>
                 <div className="selectBox">

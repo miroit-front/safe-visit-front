@@ -8,7 +8,7 @@ function Main(){
         <div id='main_wrap'>
             <div className='main_bg'>
                 <div className='main_title'>
-                    <h2>대한항공<span>방문 예약 시스템</span></h2>
+                    <p className='m_tit'>대한항공<span>방문 예약 시스템</span></p>
                     <p>방문 예약 시스템으로 편리하게 방문 신청하세요.</p>
                 </div>
             </div>

@@ -9,12 +9,12 @@ function ApplyPage(){
         setStep(step + 1);
     } 
     return(
-        <div> 
+        <div className='inner'> 
             <h2>방문신청</h2>
             {step === 0 && <AgreementStep onNext={nextStep} />}
             {step === 1 && <InformationStep onNext={nextStep} />}
             {step === 2 && <CompletionStep />}
-      </div>
+       </div>
     ) 
 }
   
