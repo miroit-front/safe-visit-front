@@ -24,9 +24,8 @@ function Notice(){
                 </div>
                 <button type='submit' value="Submit" className='btn_notice_search'>조회</button>
             </section>
-            <section>
-                <div>
-                    <div className="basic_table">
+            <section className='notice-part'>
+                <div className="basic_table">
                         <div className="table-row table-header">
                             <div className="table-cell table_num">No</div>
                             <div className="table-cell table_tit">제목</div>
@@ -34,29 +33,45 @@ function Notice(){
                             <div className="table-cell table_name">작성자</div>
                         </div>
                         <div>
+                            <div className="table-row notice_important">
+                                <div className="table-cell table_num"><span className='notice_tag'>공지</span></div>
+                                <div className="table-cell table_tit" onClick={showListModal}>제목입니다</div>
+                                <div className="table-cell table_date">2024.03.11</div>
+                                <div className="table-cell table_name">관리자</div>
+                            </div>
+                        </div>
+                        <div>
                             <div className="table-row">
                                 <div className="table-cell table_num">00</div>
                                 <div className="table-cell table_tit" onClick={showListModal}>제목입니다</div>
                                 <div className="table-cell table_date">2024.03.11</div>
-                                <div className="table-cell table_name">김대한</div>
+                                <div className="table-cell table_name">관리자</div>
                             </div>
                         </div>
-                    </div>
-                </div>    
-            </section>
-            <section className='notice-part'>
-                <div className='flex layout'>
-                    <div className='notice-list-result width100'>
-                        <div className='notice-list lists flex'>
-                            <div><label>No</label><p>dd</p></div>
-                            <div><label>제목</label><p onClick={showListModal}>dd</p></div>
-                            <div><label>작성일</label><p>dd</p></div>
-                            <div><label>작성자</label><p>dd</p></div>
-                        </div>
-                    </div>
                 </div>
-                {isOpen && <NoticeModal closeModal={closeModal}/>}
+                {isOpen && <NoticeModal closeModal={closeModal}/>}    
             </section>
+            <nav className='pagination_wrap'>
+                <div className='prev_btn_wrap'>
+                    <ul>
+                        <li><a href='#' className='btn_prev_faster' title='맨 앞으로 이동'></a></li>
+                        <li><a href='#' className='btn_prev' title='이전 페이지'></a></li>
+                    </ul>
+                </div>
+                <div className='num_wrap'>
+                    <ul className='num_list'>
+                        <li className='page_num'><a href='#' className='pagination clicked'>1</a></li>
+                        <li className='page_num'><a href='#' className='pagination active'>2</a></li>
+                        <li className='page_num'><a href='#' className='pagination'>3</a></li>
+                    </ul>
+                </div>
+                <div className='next_btn_wrap'>
+                    <ul>
+                        <li><a href='#' className='btn_next' title='다음 페이지'></a></li>
+                        <li><a href='#' className='btn_next_faster' title='맨 뒤로 이동'></a></li>
+                    </ul>
+                </div>
+            </nav>
         </form>
     )
 }
