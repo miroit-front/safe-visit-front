@@ -24,7 +24,7 @@ function Search(){
         setCheckedNationality(e.target.value);
     }
     function searchRes() {
-        const apiUrl_search = `http://123.143.44.130:8084/visit-reservation-hist/get-list?name=박문자&phoneNumber=01012345678&page=0&size=20`;
+        const apiUrl_search = `http://123.143.44.130:8084/visit-reservation-hist/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`;
         console.log(apiUrl_search);
         axios.get(apiUrl_search)
         .then((res)=>{
@@ -38,7 +38,8 @@ function Search(){
             ]);
             console.log(detailData);
         }).catch(err => {
-            console.error('API 호출 에러:', err);
+            console.error('API 호출 에러:', err.response.data.info);
+            console.log(err.response.status);
             alert('데이터를 가져오는 중 오류가 발생했습니다.');
         });
     }
