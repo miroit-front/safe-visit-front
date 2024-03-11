@@ -7,6 +7,7 @@ import NoticePage from './page/component/page/NoticePage';
 
 import Header from './page/component/layout/Header';
 import Footer from './page/component/layout/Footer';
+import FooterContent from "./page/component/page/FooterContent";
 function App() {
 
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/apply" element={<ApplyPage />}></Route>
         <Route path="/search" element={<SearchPage/>}></Route>
         <Route path="/notice" element={<NoticePage/>}></Route>
+        <Route path="/footerContent" element={<FooterContent/>}></Route>
     </Routes>
 
     <Footer/>
