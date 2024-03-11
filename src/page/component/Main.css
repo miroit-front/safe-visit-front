@@ -9,13 +9,19 @@
 
 #main-container{position:relative;height: 100%;width: 100%;max-width: 1280px;margin: 0 auto;transform: translateY(-50%);}
 .main-article{position: relative;}
-.main_conwrap{display: flex;gap: 4%;position: relative;}
+.main_conwrap{display: flex;gap: 1.75rem;position: relative;}
 
-.main-article button{width: 300px;height: 283px;border-radius: 20px;color: white;font-size: 22px;cursor: pointer;}
-.main-article .apply-btn{background: #002F87;}
-.main-article .search-btn{background: #188AD6;}
+.main-article button.apply-btn, button.search-btn{display: flex;flex-direction: column; width: 100%;border-radius: 20px;color: white;font-size: 1.625rem;cursor: pointer;text-align: left;padding: 36px;}
+.main-article button.apply-btn:hover, button.search-btn:hover{box-shadow: rgba(0, 37, 108, 0.2) 0px 3px 8px 3px;transform: translateY(-0.25rem);transition: transform 0.1s ease-in-out;}
+.main-article button.apply-btn:not(:hover), button.search-btn:not(:hover){transform: translateY(0);transition: trasform 0.1s ease-in-out;}
+.main-article button.apply-btn:hover span, button.search-btn:hover span{text-decoration: underline;}
+.main-article button p{font-weight: 600;margin-bottom: 16px;}
+.main-article button span{font-weight: 500;display: inline-flex;-webkit-box-align: center;gap: 0.625rem; font-size: 0.875rem;color: #131313;border-radius: 2.25rem;padding: 8px 16px;background-color: white;}
+.main-article button span::after{display: inline-block;width: 8px;height: auto;content: "";background: url('../../img/arrow_right.svg') no-repeat center;}
+.main-article .apply-btn{background: url(../../img/ico_apply.png) no-repeat 95% 90%;background-color: #002F87;}
+.main-article .search-btn{background: url(../../img/ico_search.png) no-repeat 95% 90%;background-color: #188AD6;}
 
-.main-article .main-notice{position: relative;width: 38%;height: auto;background-color: #EAF3FA;border-radius: 20px;padding: 36px 32px;min-width: 500px;}
+.main-article .main-notice{position: relative;min-width: 35.125rem;height: auto;background-color: #EAF3FA;border-radius: 20px;padding: 36px 32px;}
 .main-notice header{display: flex;justify-content: space-between;padding-bottom: 4px;}
 .main-notice header h3{color: #131313;font-size: 1.625rem;font-weight: 500;}
 .main-notice header button{width: 32px;height: 32px;color: #131313;background-color: white;border-radius: 50%;font-size: 1rem;}

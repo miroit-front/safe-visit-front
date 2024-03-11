@@ -16,14 +16,17 @@ function Main(){
                 <article className='main-article'>
                     <div className='main_conwrap'>
                         <button className='apply-btn' onClick={(e)=>{window.location.href = '/apply'}}>
-                            방문신청
-                            <p>바로가기</p>
+                            <p>방문 신청</p>
+                            <span>바로가기</span>
                         </button>
-                        <button className='search-btn' onClick={(e)=>{window.location.href='/search'}}>방문조회</button>
+                        <button className='search-btn' onClick={(e)=>{window.location.href='/search'}}>
+                            <p>방문 조회</p>
+                            <span>바로가기</span>
+                        </button>
                         <section className='main-notice'>
                             <header>
                                 <h3>공지사항</h3>
-                                <button><img src='./img/arrow_right.svg' alt='공지사항 바로가기'/></button>
+                                <button><img src='../img/arrow_right.svg' alt='공지사항 바로가기'/></button>
                             </header>
                             <ul>
                                 {noticeContext.map((item,i) =>
