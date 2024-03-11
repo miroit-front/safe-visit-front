@@ -14,9 +14,7 @@
 .width90{
     width: 90%
 }
-form{
-    padding: 5% 14%;
-}
+form{overflow: hidden;}
 input[type="number"]::-webkit-outer-spin-button,
 form .visitor-info-group .upBtns button[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
