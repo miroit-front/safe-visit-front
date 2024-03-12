@@ -1,7 +1,9 @@
+*, *::before, *::after{box-sizing: border-box;}
+
 .modal_bg{position: fixed;inset: 0px;z-index: 1000;pointer-events: auto;background: rgba(0, 0, 0, 0.5);
 transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;-webkit-tap-highlight-color: transparent;}
 .modal_wrap{position: fixed;z-index:1000;inset: 0px;display: block;overflow: auto;-webkit-box-pack: justify;contain: size layout style;}
-.modal_center{position: relative;display: flex;-webkit-box-pack: center;justify-content: center;padding: 2.5% 0px;height: auto;width: 100%;}
+.modal_center{position: relative;display: flex;-webkit-box-pack: center;justify-content: center;padding: 2.5% 0px;height: auto;min-height: 100%;width: 100%;align-items: center;-webkit-box-pack: center;-webkit-box-align: center;}
 .modalcon_wrap{text-align: left;width: 840px;height: auto;border: solid 1px #dadada;background: #ffffff;color: #7f7f7f;border-radius: 20px; }
 
 .noticeModal-container header{display: flex;justify-content: right;padding: 26px 38px 0;}

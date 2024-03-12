@@ -55,21 +55,21 @@ function Notice(){
             <nav className='pagination_wrap'>
                 <div className='prev_btn_wrap'>
                     <ul>
-                        <li><a href='#' className='btn_prev_faster' title='맨 앞으로 이동'></a></li>
-                        <li><a href='#' className='btn_prev' title='이전 페이지'></a></li>
+                        <li><a href='.' className='btn_prev_faster' title='맨 앞으로 이동'></a></li>
+                        <li><a href='.' className='btn_prev' title='이전 페이지'></a></li>
                     </ul>
                 </div>
                 <div className='num_wrap'>
                     <ul className='num_list'>
-                        <li className='page_num'><a href='#' className='pagination clicked'>1</a></li>
-                        <li className='page_num'><a href='#' className='pagination active'>2</a></li>
-                        <li className='page_num'><a href='#' className='pagination'>3</a></li>
+                        <li className='page_num'><a href='.' className='pagination clicked'>1</a></li>
+                        <li className='page_num'><a href='.' className='pagination active'>2</a></li>
+                        <li className='page_num'><a href='.' className='pagination'>3</a></li>
                     </ul>
                 </div>
                 <div className='next_btn_wrap'>
                     <ul>
-                        <li><a href='#' className='btn_next' title='다음 페이지'></a></li>
-                        <li><a href='#' className='btn_next_faster' title='맨 뒤로 이동'></a></li>
+                        <li><a href='.' className='btn_next' title='다음 페이지'></a></li>
+                        <li><a href='.' className='btn_next_faster' title='맨 뒤로 이동'></a></li>
                     </ul>
                 </div>
             </nav>
