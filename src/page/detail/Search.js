@@ -24,10 +24,12 @@ function Search(){
         setCheckedNationality(e.target.value);
     }
     function searchRes() {
-        const apiUrl_search = `http://123.143.44.130:8084/visit-reservation-hist/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`;
+        // const apiUrl_search = `http://123.143.44.130:8084/visit-reservation-hist/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`;
+        const apiUrl_search = `visit-reservation-hist/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`;
         console.log(apiUrl_search);
+        console.log(name);
         axios.get(apiUrl_search)
-        .then((res)=>{
+        .then(res=>{
             console.log(res);
             console.log(res.data.content);
 
