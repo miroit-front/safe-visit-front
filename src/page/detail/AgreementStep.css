@@ -26,7 +26,3 @@ background-color: #002f87;color: white;border-radius: 4px;}
 .agree_box .policy_box>h4{font-weight: 600;color: #131313;font-size: 1.125rem;}
 .agree_box .policy_box>h5{font-weight: 600;color: #002f87;font-size: 1rem;margin: 12px 0 10px;}
 .agree_box .policy_box>p{line-height: 1.58;}
-
-.agree_btn{display: flex;justify-content: center;}
-.btn_blue{width: 200px;height: 50px;color: white;background-color: #002f87;border-radius: 8px;font-weight: 600;font-size: 1.125rem;margin-top: 40px;}
-.btn_blue:hover{background-color: #0F3E86;}

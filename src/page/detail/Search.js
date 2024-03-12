@@ -52,7 +52,6 @@ function Search(){
     
     return(
         <form action="#">
-            <h2>방문신청 조회</h2>
             <section className='apply-info'>
                 <h5>신청자 정보</h5>
                 <ul>
@@ -66,7 +65,7 @@ function Search(){
                                 </div></li>
                     <li><label name='phoneNumber'>방문신청번호</label><input type='number' value={phoneNumber} onChange={handlePhoneNumberChange}/></li>
                 </ul>
-                <button type='submit' onClick={searchRes}>조회</button>
+                <div className="center_btn"><button type='submit' onClick={searchRes} className="btn_blue">조회</button></div>
             </section>
             <section className='search-info'>
                 <h5>조회 결과</h5>
@@ -89,9 +88,7 @@ function Search(){
                                 ))}    
                             </div>
                         </div>
-                        <div className='submit-part'>
-                        <button id='submitBtn' type='submit'>확인</button>
-                        </div>
+                        <div className="center_btn"><button id='submitBtn' type='submit' className="btn_blue">확인</button></div>
                     </section>
             </section>
         </form>
