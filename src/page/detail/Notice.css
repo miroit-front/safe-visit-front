@@ -1,14 +1,15 @@
 /*공통css*/
-.flex{display: flex;}
 .width100{width: 100%;}
 form{overflow: hidden;  }
 
 
 /*검색창*/
-.notice-search-part{border: solid 1px #dadada;justify-content: center;padding: 50px 0;border-radius: 8px;gap: 2%;}
-.notice-search-part .selectBox .selectBtn{border: solid 1px #dadada;background-color: transparent;border-radius: 8px;height: 50px;padding: 0 40px;text-align:left;
+.notice-search-part{display: flex;border: solid 1px #dadada;justify-content: center;padding: 50px 0;border-radius: 8px;gap: 2%;}
+.selectBox_wrap{display: flex;gap: 4%;}
+.notice-search-part .selectBox .selectBtn{border: solid 1px #dadada;border-radius: 8px;width: 160px;height: 50px;padding: 0 50px 0 16px;
+background: url(../../img/ico_down.svg) no-repeat 90% center;background-size: 16px auto; text-align:left;
 &:focus{outline: none;}}
-.notice-search-part input{width: 680px;display: flex;align-items: center;justify-content: center;border-width: 0px 0px 1px 0px;border-color: #dadada;}
+.notice-search-part input{width: 680px;display: flex;align-items: center;justify-content: center;border-width: 0px 0px 1px 0px;border-color: #dadada;margin: 0;}
 .notice-search-part button{border-radius: 8px;height: 50px;color: white;background-color: #0B2468;}
 .notice-search-part .btn_notice_search{display: inline-flex;gap: 0.5rem;align-items: center;padding: 0 40px;}
 .notice-search-part .btn_notice_search::before{content: "";display: inline-block;width: 16px;height: 16px; background: url(../../img/ico_search.svg) no-repeat center;}

@@ -6,21 +6,23 @@ function Notice(){
     const [isOpen, setIsOpen] = useState(false);
     const closeModal = ()=>{
         setIsOpen(false);
+        document.body.style.overflow = "auto";
     }
     const showListModal = ()=>{
         setIsOpen(true);
+        document.body.style.overflow = "hidden";
     }
     return(
         <form action="#">
-            <section className='notice-search-part flex'>
-                <div className='flex'>
+            <section className='notice-search-part'>
+                <div className='selectBox_wrap'>
                     <div className="selectBox">
                         <select className="selectBtn">선택
                             <option value="title">제목</option>
                             <option className="content">내용</option>
                         </select>
                     </div>
-                    <input type='text'/>
+                    <input type='search' placeholder="검색어를 입력해주세요" title='검색어를 입력해주세요'/>
                 </div>
                 <button type='submit' value="Submit" className='btn_notice_search'>조회</button>
             </section>
@@ -49,7 +51,6 @@ function Notice(){
                             </div>
                         </div>
                 </div>
-                {isOpen && <NoticeModal closeModal={closeModal}/>}    
             </section>
             <nav className='pagination_wrap'>
                 <div className='prev_btn_wrap'>
@@ -72,6 +73,7 @@ function Notice(){
                     </ul>
                 </div>
             </nav>
+            {isOpen && <NoticeModal closeModal={closeModal}/>}    
         </form>
     )
 }
