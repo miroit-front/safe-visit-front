@@ -24,21 +24,25 @@ function Search(){
         setCheckedNationality(e.target.value);
     }
     function searchRes() {
-        // const apiUrl_search = `http://123.143.44.130:8084/visit-reservation-hist/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`;
-        const apiUrl_search = `visit-reservation-hist/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`;
+        const apiUrl_search = `visit-reservation-hist/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`; //api주소 객체에 담아
         console.log(apiUrl_search);
-        console.log(name);
-        axios.get(apiUrl_search)
-        .then(res=>{
+
+        axios.get(apiUrl_search) //get방식으로 보내서
+        .then(res=>{ //답변res받음
             console.log(res);
             console.log(res.data.content);
 
-            const {reservationId, createDate, team, name, visitDate, escortEmployeeName, status, parkingApprovalStatus} = res.data.content[0];
-            setDetailData(detailData => [
-                ...detailData, 
-                { reservationId, createDate, team, name, visitDate, escortEmployeeName, status, parkingApprovalStatus }
-            ]);
-            console.log(detailData);
+            const newData = res.data.content.map(data=>({ //res의 data안에 content를 반복문에 돌리고 newData라는 객체에 담음
+                reservationId: data.reservationId,
+                createDate: data.createDate,
+                team: data.team,
+                name: data.name,
+                visitDate: data.visitDate,
+                escortEmployeeName: data.escortEmployeeName,
+                status: data.status,
+                parkingApprovalStatus: data.parkingApprovalStatus
+            }));
+            setDetailData(newData); //setDetailData에 newData를 저장
         }).catch(err => {
             console.error('API 호출 에러:', err.response.data.info);
             console.log(err.response.status);
