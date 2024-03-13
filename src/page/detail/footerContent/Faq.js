@@ -1,6 +1,11 @@
+import TabLayout from "../../component/layout/TabLayout";
+
 function Faq(){
     return(
-        <div>faq내용 주르륵</div>
+        <div>
+            <TabLayout/>
+            faq내용 주르륵
+            </div>
     )
 }
 export default Faq;

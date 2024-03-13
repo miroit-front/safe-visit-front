@@ -8,6 +8,9 @@ import NoticePage from './page/component/page/NoticePage';
 import Header from './page/component/layout/Header';
 import Footer from './page/component/layout/Footer';
 import FooterContent from "./page/component/page/FooterContent";
+import TermsOfService from './page/detail/footerContent/TermsOfService';
+import PrivacyPolicy from './page/detail/footerContent/PrivacyPolicy';
+import Faq from './page/detail/footerContent/Faq';
 function App() {
 
   return (
@@ -20,6 +23,9 @@ function App() {
         <Route path="/search" element={<SearchPage/>}></Route>
         <Route path="/notice" element={<NoticePage/>}></Route>
         <Route path="/footerContent" element={<FooterContent/>}></Route>
+        <Route path="/footerContent/termOfService" element={<TermsOfService/>}></Route>
+        <Route path="/footerContent/privacyPolicy" element={<PrivacyPolicy/>}></Route>
+        <Route path="/footerContent/faq" element={<Faq/>}></Route>
     </Routes>
 
     <Footer/>
