@@ -6,9 +6,9 @@
 .agree_progress .progress_circle{width: 28px;height: 28px;background-color: white;border: solid 5px #dadada;border-radius: 56px;margin-bottom: 10px;}
 .agree_progress .progress_circle._colored{border-color: #002f87;}
 
-.agree_tit h3{font-weight: 700;color: #002f87;font-size: 1.5rem;margin-bottom: 4px;}
+.apply_tit h3{font-weight: 700;color: #002f87;font-size: 1.5rem;margin-bottom: 4px;}
 .allagree_check{display: flex;border-bottom: solid 1px #dadada;padding-bottom: 40px;margin-top: 40px;color: #131313;font-size: 1.125rem;}
-.agree_check{display: flex;color: #131313;font-size: 1.375rem;font-weight: 500;font-size: 1.125em;}
+.agree_check{display: flex;color: #131313;font-size: 1.375rem;font-weight: 500;}
 .agree_check span{color: #002f87;}
 .allagree_check input, .agree_check input{margin: 0;}
 

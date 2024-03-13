@@ -63,71 +63,76 @@ function Apply({onNext}){
     return(
         <div>
             <form action="#">
-                <section>
-                    <h4>약관 동의</h4>
-                    <p>약관 및 개인정보 수집 이용에 동의 해주세요</p>
+                <section className="apply_tit">
+                    <h3>방문신청 정보 입력</h3>
+                    <p>접견자와 방문자 정보를 입력해주세요.</p>
                 </section>
                 <section className='staff-info'>
-                    <h5>임직원 정보</h5>
+                    <h5>임직원 정보 <span className='tit_info'>&#42; 임직원(접견자) 조회 완료 후 방문신청을 할 수 있습니다.</span></h5>
                     <ul>
                         <li><label>임직원 이름</label><input type='text'value={name} onChange={handleNameChange}/></li>
                         <li><label>전화번호 뒤 4자리</label><input type='number' value={phoneNumber} onChange={handlePhoneNumberChange}/></li>
                     </ul>
-                    <button type='submit' onClick={visitApplyBtn}>확인</button>
+                    <div className="center_btn"><button type='submit' onClick={visitApplyBtn} className="btn_blue">조회</button></div>
                 </section>
                 <section className='visitor-info'>
-                        <h5>방문자 정보</h5>
-                        <ul className='v-info-1'> 
-                            <li><label>회사명</label><input type='text'/></li>
-                            <li className='flex'><label>성명</label>
+                    <h5>방문자 정보</h5>
+                    <ul className='v-info-1'> 
+                        <li><label>회사명</label><input type='text'/></li>
+                        <li className='flex'><label>성명</label>
                             <input className='min-input' type='text'/>
-                                <div className='nationality flex'>
-                                    <input type="checkbox" id="domestic" name="nationality" value="내국인" 
+                            <div className='nationality flex'>
+                                <input type="checkbox" id="domestic" name="nationality" value="내국인" 
                                     onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='내국인'}/><span>내국인</span>
-
-                                    <input type="checkbox" id="foreigner" name="nationality" value="외국인" 
+                                <input type="checkbox" id="foreigner" name="nationality" value="외국인" 
                                     onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='외국인'}/><span>외국인</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul className='v-info-2'>
-                            <li><label>직책</label><input type='text'/></li>
-                            <li className='width100'><label>전화번호</label>
-                            <input className='width100' type='number'/></li>
-                        </ul>
-                        <ul className='v-info-3'>
-                            <li className='width100'><label>방문일시</label>
-                                <input type='date'/><input type='time'/>
-                                <span>~</span>
-                                <input type='date'/><input type='time'/>
-                                <div className='day flex'>
-                                    <input type="checkbox" id="oneDay" name="day" value="1day" onChange={(e)=>{checkOneDay(e)}} checked={checkedDay==='1day'}/><span>1일</span>
-                                    <input type="checkbox" id="twoDay" name="day" value="2day" onChange={(e)=>{checkOneDay(e)}} checked={checkedDay==='2day'}/><span>2일</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul className='v-info-4'>
-                            <li><label>생년월일</label><input type='text'/></li>
-                            <li><label>방문 구역</label><input type='text'/></li>
-                        </ul>
-                        <ul className='v-info-5'>
-                            <li><label>방문목적</label><input type='text'/></li>
-                            <li className='width100'>
-                                <label>차량번호</label>
-                                <input className='min-input width100' type='text'/></li>
-                            <li><input type="checkbox" id="office" name="office" value="office"/><span>사옥 내 진입</span></li>
-
-                        </ul>
-                        <ul className='v-info-6'>
-                            <li className='width100'><label>주소</label>
-                            <input className='width100' type='text'/></li>
-                        </ul>
-                        <ul className='v-info-7'>
-                            <li className='width100'><label>추가사항</label>
-                            <textarea className='width100'></textarea></li>
-                        </ul>
-                    </section>
-                    <section className='visitor-info-group'>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul className='v-info-2'>
+                        <li><label>직책</label><input type='text'/></li>
+                        <li className='width100'>
+                            <label>전화번호</label>
+                            <input className='width100' type='number'/>
+                        </li>
+                    </ul>
+                    <ul className='v-info-3'>
+                        <li className='width100'><label>방문일시</label>
+                            <input type='date'/><input type='time'/>
+                            <span>~</span>
+                            <input type='date'/><input type='time'/>
+                            <div className='day flex'>
+                                <input type="checkbox" id="oneDay" name="day" value="1day" onChange={(e)=>{checkOneDay(e)}} checked={checkedDay==='1day'}/><span>1일</span>
+                                <input type="checkbox" id="twoDay" name="day" value="2day" onChange={(e)=>{checkOneDay(e)}} checked={checkedDay==='2day'}/><span>2일</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul className='v-info-4'>
+                        <li><label>생년월일</label><input type='text'/></li>
+                        <li><label>방문 구역</label><input type='text'/></li>
+                    </ul>
+                    <ul className='v-info-5'>
+                        <li><label>방문목적</label><input type='text'/></li>
+                        <li>
+                            <label>차량번호</label>
+                            <input className='min-input' type='text'/>
+                            <input type="checkbox" id="office" name="office" value="office"/><span>사옥 내 진입</span>
+                        </li>
+                    </ul>
+                    <ul className='v-info-6'>
+                        <li>
+                            <label>주소</label>
+                            <input type='text'/>
+                        </li>
+                    </ul>
+                    <ul className='v-info-7'>
+                        <li>
+                            <label>추가사항</label>
+                            <textarea></textarea>
+                        </li>
+                    </ul>
+                </section>
+                <section className='visitor-info-group'>
                             <div className='flex width100 layout'>
                                 <div className='visitor-info-group-list width90'>
                                         <div className='group-list topPart flex'>
@@ -152,10 +157,11 @@ function Apply({onNext}){
                                 <ExcelUploadBtn onToggle={handleExcelModalToggle}/>
                                 <button type='update' className='update-btn'>+ 방문객 추가</button>
                             </div>
-                            <div className='submit-part'>
-                                <button   button id='submitBtn' type='submit' onClick={onNext}>신청</button>
+                            <div className="center_btn">
+                                <button onClick={(e)=>{window.location.href = '/'}} type='button' className="btn_gr">이전</button>
+                                <button button id='submitBtn' type='submit' onClick={onNext} className="btn_blue">신청</button>
                             </div>
-                        </section>
+                </section>
             </form>
         </div>
     )};

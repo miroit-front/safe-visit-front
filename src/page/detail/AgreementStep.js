@@ -38,7 +38,7 @@ function AgreementStep({onNext,setStep}){
                     </div>
                 </div>
             </section>
-            <section className="agree_tit">
+            <section className="apply_tit">
                 <h3>약관 동의</h3>
                 <p>약관 및 개인정보 수집 이용에 동의 해주세요.</p>
                 <div className="allagree_check checkbox_wrap">

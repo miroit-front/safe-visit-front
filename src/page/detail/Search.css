@@ -1,134 +1,24 @@
-/*공통css*/
-.flex{
-    display: flex;
-}
-.min-input{
-    width: 40% !important;
-}
-.width100{
-    width: 100%;
-}
-.width10{
-    width: 10%;
-}
-.width90{
-    width: 90%
-}
-form{overflow: hidden;}
-input[type="number"]::-webkit-outer-spin-button,
-form .visitor-info-group .upBtns button[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input{
-    margin: 5px 0 5px 10px;
-        &:focus{
-            outline: none;
-        }
-}
-
-form h5{font-weight: 500;font-size: 1.375rem;color: #131313;}
-form section li{
-    list-style: none;
-    display: flex;
-    height: 33px;
-    padding-right: 12px;
-    
-}
-ul li label {
-    display: inline-block;
-    min-width: 155px; /* 최소 너비 */
-    max-width: 200px; /* 최대 너비 */
-    height: 40px;
-    text-align: center;
-    background: #d9d9d9;
-    color: #7f7f7f;
-    line-height: 40px;
-    font-size: 14px;
-  }
-  form ul{
-    padding: 0;
-    border-left: none;
-    border-right: none;
-}
-form section ul li input{
-    border: 1px solid #d0cece;
-}
+form h5{font-weight: 500;font-size: 1.375rem;color: #131313;margin-bottom: 12px;}
 
 /*신청자 정보*/
-form .apply-info{height: 175px;}
+form .apply-info ul{border-top: solid 1px #002f87;border-bottom: solid 1px #dadada;}
+form .apply-info ul li{display: flex;align-items: center;height: 72px;}
+form .apply-info ul li:first-child{border-bottom: solid 1px #ebebeb;}
+form .apply-info ul li label{width: 200px;background-color: #F8F9FC;font-weight: 500;padding-left: 20px;height: 70px;line-height: 70px;}
+form .apply-info ul li span {}
+form .apply-info input.input_basic{width: 312px;border: solid 1px #dadada;border-radius: 8px;height: 50px;margin: 0 10px 0 20px;padding: 0 16px;
+    &:focus{border-color: #989898;}}
 form .apply-info input[type="checkbox"] {width: 10px;margin-right: 4px;}
-form .apply-info ul{
-    border: 1px solid gray;
-    border-left: none;
-    border-right: none;
-}
-form .apply-info ul li{
-    border: 0.5px solid #5f5f5f;
-    border-right: none;
-    border-left: none;
-    height: 40px;
-}
 
-form .apply-info ul li label{
-    border-right: 1.5px solid #7f7f7f;
-    font-size: 14px;
-}
+/*조회 결과*/
+.search-info{margin-top: 60px;}
+.search-part{position: relative;width: 100%;}
+.table-body:hover{background-color: #F8F9FC;}
 
-form .apply-info input[type=number]::-webkit-inner-spin-button,
-form .apply-info input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-form .apply-info li span {
-    font-size: 13px;
-    white-space: nowrap;
-    line-height: 40px;
-    color: #7f7f7f;
-}
-
-/*조회결과*/
-    .search-info h5{
-        line-height: 32px;
-    }
-
-    .search-list-result{
-        display: flex;
-        flex-direction: column;
-    }
-    .search-list:nth-child(2){
-    border-right: 1px solid;
-    }
-
-    .search-list:nth-child(1) label{
-        border-bottom: 1px solid;
-    }
-    .search-list{
-        display: flex;
-        justify-content: space-between;
-    }
-    .search-list:nth-child(1){
-        flex-grow: 1;
-    }
-    .search-list div{
-        width: calc(100%/6);
-        border-right: 1px solid;
-    }
-    .search-list div:nth-last-child(1){
-        border-right: none;
-    }
-    .search-list-result div p{
-        margin: 0;
-        height: 40px;
-    }
-    .search-list-result label {
-        width: 100%;
-        height: 40px;
-        display: inline-block;
-        text-align: center;
-        background: #d9d9d9;
-        color: #7f7f7f;
-        line-height: 40px;
-        font-size: 13px;
-      }
+.search-info .tb_num{}
+.search-info .tb_date{}
+.search-info .tb_team{}
+.search-info .tb_name{}
+.search-info .tb_escort{}
+.search-info .tb_status{}
+.search-info .tb_parking{}
