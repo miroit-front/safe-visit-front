@@ -1,20 +1,28 @@
 import { useState } from 'react';
 import './Search.css';
 import axios from 'axios';
+import SearchDetailModal from './modal/SearchDetailModal';
 
 function Search(){
     const [detailData, setDetailData] = useState([]);
     const [checkedNationality , setCheckedNationality] = useState('내국인');
     const [name, setName] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [showModal, setShowModal] = useState(false);
 
+    const handleShowModal=()=>{ 
+        setShowModal(true);
+    }
     const handleNameChange=(event) => {
         setName(event.target.value);
     }
     const handlePhoneNumberChange=(event) => {
         setPhoneNumber(event.target.value);
     }
-
+    const handleFormSubmit = (event) => {
+        event.preventDefault(); // 폼 제출 방지
+        searchRes(); // 검색 함수 호출
+    }
     function checkOneNationality(e){
         const checkedNationality = document.getElementsByName('nationality');
         Array.prototype.forEach.call(checkedNationality, function(item){
@@ -23,6 +31,8 @@ function Search(){
         e.target.checked = true;
         setCheckedNationality(e.target.value);
     }
+    
+    /*api로 데이터 받아오는 함수 */
     function searchRes() {
         const apiUrl_search = `visit-reservation-hist/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`; //api주소 객체에 담아
         console.log(apiUrl_search);
@@ -51,7 +61,7 @@ function Search(){
     }
     
     return(
-        <form action="#">
+        <form action="#" onSubmit={handleFormSubmit}>
             <section className='apply-info'>
                 <h5>신청자 정보</h5>
                 <ul>
@@ -81,16 +91,17 @@ function Search(){
                                         <div><label>이름</label><p>{data.name}</p></div>
                                         <div><label>방문일자</label><p>{data.visitDate}</p></div>
                                         <div><label>인솔자 정보</label><p>{data.escortEmployeeName}</p></div>
-                                        <div><label>방문</label><p>{data.status}</p></div>
-                                        <div><label>주차</label><p>{data.parkingApprovalStatus}</p></div>
+                                        <div onClick={handleShowModal}><label>방문</label><p>{data.status}</p></div>
+                                        <div onClick={handleShowModal}><label>주차</label><p>{data.parkingApprovalStatus}</p></div>
                                         </div>
                              
                                 ))}    
                             </div>
                         </div>
-                        <div className="center_btn"><button id='submitBtn' type='submit' className="btn_blue">확인</button></div>
+                        <div className="center_btn"><button id='submitBtn' type='button' className="btn_blue">확인</button></div>
                     </section>
             </section>
+            {showModal && (<SearchDetailModal setShowModal={setShowModal} detailData={detailData}/>)} {/*showModal이 true */}
         </form>
     )
 }

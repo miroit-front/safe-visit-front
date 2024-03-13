@@ -1,8 +1,8 @@
-import PrivacyPolicy from '../../detail/footerContent/PrivacyPolicy';
-import TermsOfService from '../../detail/footerContent/TermsOfService';
 import './FooterContent.css';
-import Faq from '../../detail/footerContent/Faq';
 import TabLayout from "../../component/layout/TabLayout";
+import TermsOfService from '../../detail/footerContent/TermsOfService';
+import PrivacyPolicy from './../../detail/footerContent/PrivacyPolicy';
+import Faq from './../../detail/footerContent/Faq';
 
 function FooterContent({tab, setTab}){
     
