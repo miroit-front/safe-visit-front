@@ -7,6 +7,7 @@
 .ft_wrap .footer-ul li{cursor: pointer;line-height: 1;margin-right: 28px;}
 .ft_wrap .footer-ul li:first-child::before{content: '';margin-right:0px;}
 .ft_wrap .footer-ul li::before{content: '|';margin-right: 28px;color: #777;}
-.ft_wrap .footer-ul li.ft_privacy{font-weight: 500;color: #fff;}
+.ft_wrap .footer-ul li a{color: #C9C9C9;}
+.ft_wrap .footer-ul li.ft_privacy a{font-weight: 500;color: #fff;}
 
 .ft_wrap > p{display: flex;font-size: 0.875 rem;color: #777;text-align: right;}

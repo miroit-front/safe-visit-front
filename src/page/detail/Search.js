@@ -65,42 +65,78 @@ function Search(){
             <section className='apply-info'>
                 <h5>신청자 정보</h5>
                 <ul>
-                    <li><label name='name'>방문자 이름</label><input type='text'value={name} onChange={handleNameChange}/>
-                                <div className='nationality flex'>
-                                <input type="checkbox" id="domestic" name="nationality" value="내국인" 
-                                    onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='내국인'}/><span>내국인</span>
-
-                                    <input type="checkbox" id="foreigner" name="nationality" value="외국인" 
-                                    onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='외국인'}/><span>외국인</span>
-                                </div></li>
-                    <li><label name='phoneNumber'>방문신청번호</label><input type='number' value={phoneNumber} onChange={handlePhoneNumberChange}/></li>
+                    <li>
+                        <label name='name'>방문자 이름</label>
+                        <input type='text'value={name} onChange={handleNameChange} placeholder="이름을 입력해주세요" title='이름을 입력해주세요' className='input_basic'/>
+                        <div className='nationality'>
+                            <input type="checkbox" id="domestic" name="nationality" value="내국인" 
+                            onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='내국인'}/><span>내국인</span>
+                            <input type="checkbox" id="foreigner" name="nationality" value="외국인" 
+                            onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='외국인'}/><span>외국인</span>
+                        </div>
+                    </li>
+                    <li>
+                        <label name='phoneNumber'>방문신청번호</label>
+                        <input type='number' value={phoneNumber} onChange={handlePhoneNumberChange} placeholder="숫자만 입력해주세요" title='숫자만 입력해주세요' className='input_basic'/>
+                        * 방문신청 시 입력한 핸드폰 번호를 입력해주세요.
+                    </li>
                 </ul>
                 <div className="center_btn"><button type='submit' onClick={searchRes} className="btn_blue">조회</button></div>
             </section>
             <section className='search-info'>
                 <h5>조회 결과</h5>
                 <section className='search-part'>
-                        <div className='flex width100 layout'>
-                            <div className='search-list-result width100'>
-                                {detailData.map((data, i)=>(
-                                    <div className='search-list flex' key={i}>
-                                     
-                                        <div><label>No</label><p>{data.reservationId}</p></div>
-                                        <div><label>신청일자</label><p>{data.createDate}</p></div>
-                                        <div><label>회사</label><p>{data.team}</p></div>
-                                        <div><label>이름</label><p>{data.name}</p></div>
-                                        <div><label>방문일자</label><p>{data.visitDate}</p></div>
-                                        <div><label>인솔자 정보</label><p>{data.escortEmployeeName}</p></div>
-                                        <div onClick={handleShowModal}><label>방문</label><p>{data.status}</p></div>
-                                        <div onClick={handleShowModal}><label>주차</label><p>{data.parkingApprovalStatus}</p></div>
-                                        </div>
-                             
-                                ))}    
+                    <div className="basic_table">
+                            <div className="table-row table-header">
+                                <div className="table-cell tb_num">No</div>
+                                <div className="table-cell tb_date">신청일자</div>
+                                <div className="table-cell tb_team">회사</div>
+                                <div className="table-cell tb_name">이름</div>
+                                <div className="table-cell tb_date">방문일자</div>
+                                <div className="table-cell tb_escort">인솔자 정보</div>
+                                <div className="table-cell tb_status">방문</div>
+                                <div className="table-cell tb_parking">주차</div>
                             </div>
-                        </div>
-                        <div className="center_btn"><button id='submitBtn' type='button' className="btn_blue">확인</button></div>
-                    </section>
+                            {detailData.map((data, i)=>(
+                            <div className='table-body'>
+                                <div className="table-row" key={i}>
+                                    <div className="table-cell">{data.reservationId}</div>
+                                    <div className="table-cell">{data.createDate}</div>
+                                    <div className="table-cell">{data.team}</div>
+                                    <div className="table-cell">{data.name}</div>
+                                    <div className="table-cell">{data.visitDate}</div>
+                                    <div className="table-cell">{data.escortEmployeeName}</div>
+                                    <div onClick={handleShowModal} className="table-cell">{data.status}</div>
+                                    <div onClick={handleShowModal} className="table-cell">{data.parkingApprovalStatus}</div>
+                                </div>
+                            </div>
+                             ))}
+                    </div>
+                
+                </section>
+                <nav className='pagination_wrap'>
+                    <div className='prev_btn_wrap'>
+                        <ul>
+                            <li><a href='.' className='btn_prev_faster' title='맨 앞으로 이동'></a></li>
+                            <li><a href='.' className='btn_prev' title='이전 페이지'></a></li>
+                        </ul>
+                    </div>
+                    <div className='num_wrap'>
+                        <ul className='num_list'>
+                            <li className='page_num'><a href='.' className='pagination clicked'>1</a></li>
+                            <li className='page_num'><a href='.' className='pagination active'>2</a></li>
+                            <li className='page_num'><a href='.' className='pagination'>3</a></li>
+                        </ul>
+                    </div>
+                    <div className='next_btn_wrap'>
+                        <ul>
+                            <li><a href='.' className='btn_next' title='다음 페이지'></a></li>
+                            <li><a href='.' className='btn_next_faster' title='맨 뒤로 이동'></a></li>
+                        </ul>
+                    </div>
+                </nav>
             </section>
+            <div className="center_btn"><button onClick={(e)=>{window.location.href = '/'}} type='button' className="btn_blue">확인</button></div>
             {showModal && (<SearchDetailModal setShowModal={setShowModal} detailData={detailData}/>)} {/*showModal이 true */}
         </form>
     )

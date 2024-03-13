@@ -34,7 +34,7 @@ function Notice(){
                             <div className="table-cell table_date">작성일</div>
                             <div className="table-cell table_name">작성자</div>
                         </div>
-                        <div>
+                        <div className='table-body'>
                             <div className="table-row notice_important">
                                 <div className="table-cell table_num"><span className='notice_tag'>공지</span></div>
                                 <div className="table-cell table_tit" onClick={showListModal}>제목입니다</div>
@@ -42,7 +42,7 @@ function Notice(){
                                 <div className="table-cell table_name">관리자</div>
                             </div>
                         </div>
-                        <div>
+                        <div className='table-body'>
                             <div className="table-row">
                                 <div className="table-cell table_num">00</div>
                                 <div className="table-cell table_tit" onClick={showListModal}>제목입니다</div>
