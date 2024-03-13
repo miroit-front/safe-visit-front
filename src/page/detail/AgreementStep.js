@@ -101,7 +101,7 @@ function AgreementStep({onNext,setStep}){
                     <p>서비스를 이용하기 위해서는 동의가 필요합니다.</p>
                 </div>
             </section>
-            <div className="agree_btn"><button  onClick={handleNextBtnChange} className="btn_blue">다음</button></div>
+            <div className="center_btn"><button  onClick={handleNextBtnChange} className="btn_blue">다음</button></div>
         </div>
     )
 }

@@ -35,7 +35,7 @@ function CompletionStep(){
                     </ul>
                 </div>
             </section>
-            <div className="agree_btn"><button  onClick={(e)=>{window.location.href = '/'}} className="btn_blue">확인</button></div>
+            <div className="center_btn"><button  onClick={(e)=>{window.location.href = '/'}} className="btn_blue">확인</button></div>
         </div>
     )
 }
