@@ -61,10 +61,21 @@ form .visitor-info input[type="time"]{width: 220px;text-align: center;}
 form .visitor-info ul.v-info-1{border-top: 1px solid #002f87;}
 form .visitor-info ul.v-info-6 input{width: 1018px;}
 form .visitor-info ul.v-info-7{border-bottom: 1px solid #dadada;}
-form .visitor-info .v-info-7 textarea{width: 1018px;height: 120px; resize: none;border: 1px solid #dadada;border-radius: 8px;height: 50px;margin: 0 10px 0 20px;padding: 8px 16px;
+form .visitor-info ul.v-info-7 li label{line-height: 142px;}
+form .visitor-info ul.v-info-7 textarea{width: 1018px;height: 120px;resize: none;border: 1px solid #dadada;border-radius: 8px;margin: 12px 10px 12px 20px;padding: 8px 16px;
     &:focus{outline: none;border-color: #989898;}}
 
 /*그룹리스트*/
+.visitor_add{display: flex;justify-content: space-between;align-items: center;background-color: #F8F9FC;
+    border-radius: 8px;margin-top: 30px;font-weight: 500;padding: 0 45px 0 25px;height: 110px;}
+.visitor_add .update-btn{display: inline-flex;gap: 6%;align-items: center;padding: 0 40px;background-color: #188AD6;border-radius: 8px;
+    color: white;width: 234px;height: 50px;justify-content: center;font-weight: 500;}
+.visitor_add .update-btn::before{content: '';display: inline-block; background: url(../../img/ico_visitoradd.svg) no-repeat center;width: 24px;height: 24px;}
+
+.visit_group_add{display: flex;gap: 3%;align-items: flex-start;background-color: #EAF3FA;border-radius: 8px;margin-top: 40px;padding: 46px 0 46px 25px;}
+.visit_group_add .group_tit{font-weight: 500;color: #131313;font-size: 1.25rem;}
+.visit_group_add .group_con{}
+/*
 .layout{
 border: 1px solid;
 border-right: none;
@@ -128,10 +139,10 @@ form .visitor-info-group .upBtns button{
 }
 .visitor-info-group-list .group-list:nth-child(7) div:nth-child(2) {
     width: calc(100% - (100% / 7) * 5); /* 두 번째 행에 있는 일곱 번째 열의 너비 설정 */
-}
+/*}
 .visitor-info .del-part{
     height: 105px;
 }
 .visitor-info .del-part p{
 height: 90px;
-}
+}*/

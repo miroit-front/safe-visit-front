@@ -133,7 +133,30 @@ function Apply({onNext}){
                     </ul>
                 </section>
                 <section className='visitor-info-group'>
-                            <div className='flex width100 layout'>
+                    <div className='visitor_add'>
+                        <p>방문자 추가를 눌러 추가 방문객 정보를 입력해주세요.</p>
+                        <button type='update' className='update-btn'><span>방문자 추가</span></button>
+                    </div>
+                    <div className='addvisitor_form'>
+
+                    </div>
+                    <div className='visit_group_add'>
+                        <div className='group_tit'>단체 방문 안내</div>
+                        <div className='group_con'>
+                            엑셀을 업로드하여 다수의 방문자를 등록할 수 있습니다.<br />
+                            아래 양식을 다운로드하여 입력 후 업로드하시기 바랍니다.(최대 00명)
+                            <ul>
+                                <li><button className="download-btn">양식 다운로드</button></li>
+                                <li><input type="file"/>
+                                <button type='upload' className='upload-btn'>파일선택</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="center_btn">
+                        <button onClick={(e)=>{window.location.href = '/'}} type='button' className="btn_gr">이전</button>
+                        <button button id='submitBtn' type='submit' onClick={onNext} className="btn_blue">신청</button>
+                    </div>
+                            {/*<div className='flex width100 layout'>
                                 <div className='visitor-info-group-list width90'>
                                         <div className='group-list topPart flex'>
                                             <div><label>회사명</label><p></p></div>
@@ -157,10 +180,7 @@ function Apply({onNext}){
                                 <ExcelUploadBtn onToggle={handleExcelModalToggle}/>
                                 <button type='update' className='update-btn'>+ 방문객 추가</button>
                             </div>
-                            <div className="center_btn">
-                                <button onClick={(e)=>{window.location.href = '/'}} type='button' className="btn_gr">이전</button>
-                                <button button id='submitBtn' type='submit' onClick={onNext} className="btn_blue">신청</button>
-                            </div>
+                            */}
                 </section>
             </form>
         </div>
