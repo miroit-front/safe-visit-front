@@ -9,7 +9,7 @@ function Apply({onNext}){
     const [checkedDay , setCheckedDay] = useState('1day');//1일, 2일 체크박스
     const [excelModalOpen, setExcelModalOpen] = useState(false);  //엑셀 모달 열고닫는 useState
     const [selectedOption, setSelectedOption] = useState(''); //방문구역 secletbox
-    const [selectedFile, setSelectedFile] = useState(null); //
+    const [selectedFile, setSelectedFile] = useState(null); // 파일선택
     const [isValidStaff, setIsValidStaff] = useState(false);
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -59,15 +59,17 @@ function Apply({onNext}){
         document.getElementById('fileInput').value = ""; // 파일 입력 요소의 값을 초기화
     };
 
-    function checkOneNationality(e){
-        const checkedNationality = document.getElementsByName('nationality');
-        Array.prototype.forEach.call(checkedNationality, function(item){
+    function checkOneNationality(e) {
+        const targetValue = e.target.value;
+        setCheckedNationality(targetValue);
+    
+        const checkedNationalityInputs = document.getElementsByName('nationality');
+        Array.prototype.forEach.call(checkedNationalityInputs, function(item) {
             item.checked = false;
         });
         e.target.checked = true;
-        setCheckedNationality(e.target.value);
-
     }
+    
 
     function checkOneDay(e){
         const checkedDay = document.getElementsByName('day');
@@ -82,25 +84,23 @@ function Apply({onNext}){
         setExcelModalOpen(!excelModalOpen);
     }
 
+    const [visitorForms, setVisitorForms] = useState([]); //방문객 추가
+    const MAX_VISITORS = 10;
+
+    const handleAddVisitorClick = () => {
+        if (visitorForms.length < MAX_VISITORS) {
+            setVisitorForms([...visitorForms, { id: visitorForms.length }]);
+        } else {
+            alert('최대 방문객 개수에 도달했습니다.');
+        }
+    };
+    const handleDeleteVisitorClick = (id) => {
+        setVisitorForms(visitorForms.filter(form => form.id !== id));
+    };
+
     return(
         <div>
-            <section className="agree_progress">
-                <div className="progress_wrap">
-                    <div>
-                        <p className="progress_circle"></p>
-                        <p>약관 동의</p>
-                    </div>
-                    <div>
-                        <p className="progress_circle _colored"></p>
-                        <p>정보 입력</p>
-                    </div>
-                    <div>
-                        <p className="progress_circle"></p>
-                        <p>신청 완료</p>
-                    </div>
-                </div>
-            </section>
-            <form action="#">
+            <form action="#" className='applyForm'>
                 <section className="apply_tit">
                     <h3>방문신청 정보 입력</h3>
                     <p>접견자와 방문자 정보를 입력해주세요.</p>
@@ -179,11 +179,46 @@ function Apply({onNext}){
                 <section className='visitor-info-group'>
                     <div className='visitor_add'>
                         <p>방문자 추가를 눌러 추가 방문객 정보를 입력해주세요.</p>
-                        <button type='update' className='update-btn'><span>방문자 추가</span></button>
+                        <button type="button" className='update-btn' onClick={handleAddVisitorClick}><span>방문자 추가</span></button>
                     </div>
                     <div className='addvisitor_form'>
-
+                    {visitorForms.map(form => (
+                        <VisitorForm key={form.id} id={form.id} onDelete={handleDeleteVisitorClick} />
+                    ))}
                     </div>
+                    {/*
+                    <div className='addvisitor_form'>
+                        <div className='form_wrap'>
+                            <ul>
+                                <li><label>회사명</label><input type='text' placeholder='회사명을 입력해주세요' title='회사명'/></li>
+                                <li><label>성명</label>
+                                    <input type='text' placeholder='성명을 입력해주세요' title='성명'/>
+                                    <div className='nationality flex'>
+                                        <input type="checkbox" id="domestic" name="nationality" value="내국인" 
+                                            onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='내국인'}/><span>내국인</span>
+                                        <input type="checkbox" id="foreigner" name="nationality" value="외국인" 
+                                            onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='외국인'}/><span>외국인</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li><label>직책</label><input type='text' placeholder='직책을 입력해주세요' title='직책'/></li>
+                                <li>
+                                    <label>전화번호</label>
+                                    <input type='number' placeholder='숫자만 입력해주세요(-생략)' title='전화번호'/>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li><label>생년월일</label><input type='text' placeholder='숫자 8자리 입력해주세요 YYYYMMDD' title='생년월일'/></li>
+                                <li><label>이메일</label><input type='text' placeholder='이메일을 입력해주세요' title='이메일'/></li>
+                            </ul>
+                            <ul>
+                                <li><label>차량번호</label><input type='text' placeholder='빈칸없이 입력해주세요' title='차량번호'/></li>
+                                <li><label>주소</label><input type='text' className='l_input' placeholder='방산구역 방문자만 입력해주세요' title='주소'/></li>
+                            </ul>
+                        </div>
+                        <div className='form_delete'><button>삭제</button></div>
+                    </div>*/}
                     <div className='visit_group_add'>
                         <div className='group_tit'>단체 방문 안내</div>
                         <div className='group_con'>
@@ -234,4 +269,40 @@ function Apply({onNext}){
         </div>
     )};
 
+    const VisitorForm = ({ id, onDelete, checkOneNationality, checkedNationality }) => {
+        return (
+            <form>
+                <div className='form_wrap'>
+                            <ul>
+                                <li><label>회사명</label><input type='text' placeholder='회사명을 입력해주세요' title='회사명'/></li>
+                                <li><label>성명</label>
+                                    <input type='text' placeholder='성명을 입력해주세요' title='성명'/>
+                                    <div className='nationality flex'>
+                                        <input type="checkbox" id="domestic" name="nationality" value="내국인" 
+                                            onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='내국인'}/><span>내국인</span>
+                                        <input type="checkbox" id="foreigner" name="nationality" value="외국인" 
+                                            onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='외국인'}/><span>외국인</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li><label>직책</label><input type='text' placeholder='직책을 입력해주세요' title='직책'/></li>
+                                <li>
+                                    <label>전화번호</label>
+                                    <input type='number' placeholder='숫자만 입력해주세요(-생략)' title='전화번호'/>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li><label>생년월일</label><input type='text' placeholder='숫자 8자리 입력해주세요 YYYYMMDD' title='생년월일'/></li>
+                                <li><label>이메일</label><input type='text' placeholder='이메일을 입력해주세요' title='이메일'/></li>
+                            </ul>
+                            <ul>
+                                <li><label>차량번호</label><input type='text' placeholder='빈칸없이 입력해주세요' title='차량번호'/></li>
+                                <li><label>주소</label><input type='text' className='l_input' placeholder='방산구역 방문자만 입력해주세요' title='주소'/></li>
+                            </ul>
+                </div>
+                <div className='form_delete'><button type="button" onClick={() => onDelete(id)}>삭제</button></div>
+            </form>
+        );
+    };
 export default Apply;
