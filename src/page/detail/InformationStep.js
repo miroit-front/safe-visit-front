@@ -84,6 +84,22 @@ function Apply({onNext}){
 
     return(
         <div>
+            <section className="agree_progress">
+                <div className="progress_wrap">
+                    <div>
+                        <p className="progress_circle"></p>
+                        <p>약관 동의</p>
+                    </div>
+                    <div>
+                        <p className="progress_circle _colored"></p>
+                        <p>정보 입력</p>
+                    </div>
+                    <div>
+                        <p className="progress_circle"></p>
+                        <p>신청 완료</p>
+                    </div>
+                </div>
+            </section>
             <form action="#">
                 <section className="apply_tit">
                     <h3>방문신청 정보 입력</h3>
