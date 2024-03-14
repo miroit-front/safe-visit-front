@@ -3,22 +3,6 @@ import './CompletionStep.css';
 function CompletionStep(){
     return(
         <div>
-            <section className="agree_progress">
-                <div className="progress_wrap">
-                    <div>
-                        <p className="progress_circle"></p>
-                        <p>약관 동의</p>
-                    </div>
-                    <div>
-                        <p className="progress_circle"></p>
-                        <p>정보 입력</p>
-                    </div>
-                    <div>
-                        <p className="progress_circle _colored"></p>
-                        <p>신청 완료</p>
-                    </div>
-                </div>
-            </section>
             <section className='completecon_wrap'>
                 <div className='complete_con01'>
                     <ul>

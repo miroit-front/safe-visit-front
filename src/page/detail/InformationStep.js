@@ -8,29 +8,30 @@ function Apply({onNext}){
     const [checkedDay , setCheckedDay] = useState('1day');//1일, 2일 체크박스
     const [excelModalOpen, setExcelModalOpen] = useState(false);  //엑셀 모달 열고닫는 useState
     const [isValidStaff, setIsValidStaff] = useState(false);
-    const [name, setName] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+
+    const [staffName, setStaffName] = useState(''); //임직원 확인 시 이름 state
+    const [staffPhoneNumber, setStaffPhoneNumber] = useState('');//임직원 확인 시 번호 state
 
     const handleNameChange = (e) =>{ //이름입력
-        setName(e.target.value);
+        setStaffName(e.target.value);
     }
     const handlePhoneNumberChange = (e) =>{//폰번호입력
-        setPhoneNumber(e.target.value);
+        setStaffPhoneNumber(e.target.value);
     }
 
     const visitApplyBtn=(e)=>{
         e.preventDefault();
         //임직원정보 전송해서 검증하기
-        const apiUrl_apply = 'http://123.143.44.130:8084//visit-reservation/save';
-        axios.post(apiUrl_apply, {name, phoneNumber})
+        const apiUrl_staff = ''; //임직원정보 api
+        axios.post(apiUrl_staff, {staffName, staffPhoneNumber}) //api로 임직원 정보 보냄
         .then(response =>{
             //api응답을 받아 유효성 확인 후 처리
             const isValid = response.data.isValid;
             setIsValidStaff(isValid);
             if(isValid){
-                setName(response.data.name);
-                phoneNumber(response.data.phoneNumber);
-                console.log(name, phoneNumber);
+                setStaffName(response.data.staffName); //staffName은 수정할 것
+                setStaffPhoneNumber(response.data.staffPhoneNumber);//staffPhoneNumber은 수정할 것
+                console.log(staffName, staffPhoneNumber);
             }else{
                 alert('임직원 정보를 확인해주세요');
             }
@@ -44,7 +45,6 @@ function Apply({onNext}){
         });
         e.target.checked = true;
         setCheckedNationality(e.target.value);
-
     }
 
     function checkOneDay(e){
@@ -70,8 +70,8 @@ function Apply({onNext}){
                 <section className='staff-info'>
                     <h5>임직원 정보 <span className='tit_info'>&#42; 임직원(접견자) 조회 완료 후 방문신청을 할 수 있습니다.</span></h5>
                     <ul>
-                        <li><label>임직원 이름</label><input type='text'value={name} onChange={handleNameChange}/></li>
-                        <li><label>전화번호 뒤 4자리</label><input type='number' value={phoneNumber} onChange={handlePhoneNumberChange}/></li>
+                        <li><label>임직원 이름</label><input type='text'value={staffName} onChange={handleNameChange}/></li>
+                        <li><label>전화번호 뒤 4자리</label><input type='number' value={staffPhoneNumber} onChange={handlePhoneNumberChange}/></li>
                     </ul>
                     <div className="center_btn"><button type='submit' onClick={visitApplyBtn} className="btn_blue">조회</button></div>
                 </section>
@@ -82,10 +82,8 @@ function Apply({onNext}){
                         <li className='flex'><label>성명</label>
                             <input className='min-input' type='text'/>
                             <div className='nationality flex'>
-                                <input type="checkbox" id="domestic" name="nationality" value="내국인" 
-                                    onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='내국인'}/><span>내국인</span>
-                                <input type="checkbox" id="foreigner" name="nationality" value="외국인" 
-                                    onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='외국인'}/><span>외국인</span>
+                                <input type="radio" id="domestic" name="nationality" value="내국인"onChange={(e)=>checkOneNationality(e)}/><span>내국인</span>
+                                <input type="radio" id="foreigner" name="nationality" value="외국인" onChange={(e)=>checkOneNationality(e)}/><span>외국인</span>
                             </div>
                         </li>
                     </ul>
@@ -102,8 +100,10 @@ function Apply({onNext}){
                             <span>~</span>
                             <input type='date'/><input type='time'/>
                             <div className='day flex'>
-                                <input type="checkbox" id="oneDay" name="day" value="1day" onChange={(e)=>{checkOneDay(e)}} checked={checkedDay==='1day'}/><span>1일</span>
-                                <input type="checkbox" id="twoDay" name="day" value="2day" onChange={(e)=>{checkOneDay(e)}} checked={checkedDay==='2day'}/><span>2일</span>
+                                <input type="radio" id="oneDay" name="day" value="1day" onChange={(e)=>{checkOneDay(e)}} 
+                                /><span>1일</span>
+                                <input type="radio" id="twoDay" name="day" value="2day" onChange={(e)=>{checkOneDay(e)}}
+                                /><span>2일</span>
                             </div>
                         </li>
                     </ul>

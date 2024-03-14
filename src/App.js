@@ -10,8 +10,11 @@ import Footer from './page/component/layout/Footer';
 import TermsOfService from './page/detail/footerContent/TermsOfService';
 import PrivacyPolicy from './page/detail/footerContent/PrivacyPolicy';
 import Faq from './page/detail/footerContent/Faq';
-function App() {
+import InformationStep from './page/detail/InformationStep';
+import CompletionStep from "./page/detail/CompletionStep";
 
+function App() {
+  
   return (
     <div className="App">
        <Header/>
@@ -24,6 +27,8 @@ function App() {
         <Route path="/termOfService" element={<TermsOfService/>}></Route>
         <Route path="/privacyPolicy" element={<PrivacyPolicy/>}></Route>
         <Route path="/faq" element={<Faq/>}></Route>
+        <Route path="/informaion-step" element={<InformationStep/>}></Route>
+        <Route path="/completion-step" element={<CompletionStep/>}></Route>
     </Routes>
 
     <Footer/>

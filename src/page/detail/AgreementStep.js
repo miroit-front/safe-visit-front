@@ -1,20 +1,35 @@
-import { useState } from "react";
+import React from "react";
 import './AgreementStep.css';
+import { Link } from 'react-router-dom';
 
-function AgreementStep({onNext,setStep}){
-    const [allChk, setAllchk] = useState(false);
-    const [chk1, setChk1] = useState(false);
-    const [chk2, setChk2] = useState(false);
+function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk2,}){
 
-    function handleAllChkChange(){
-        setAllchk(prev => !prev)
-        setChk1(true)
-        setChk2(true)
+
+    function handleAllChkChange(){ //약관동의 체크박스
+        if(allChk === true && (chk1 === false || chk2 === false)){
+            setAllchk(prev => !prev);
+            setChk1(false);
+            setChk2(false);
+        } else if (allChk === true && (chk2 === false && chk1 === true)) {
+            setAllchk(false);
+            setChk1(false);
+            setChk2(false);
+        } else if (allChk === true && (chk2 === true && chk1 === false)) {
+            setAllchk(false);
+            setChk1(false);
+            setChk2(false);
+        } else {
+            setAllchk(prev => !prev);
+            setChk1(prev => !prev);
+            setChk2(prev => !prev);
+        }
     }
-    function handleNextBtnChange(){
-        if(allChk===true || (chk1===true && chk2===true)){
+    
+    function handleNextBtnChange(){ //동의 상태에 따른 다음 페이지 이동 처리
+        if(allChk===true && chk1===true && chk2===true){
             onNext();
-            
+        }else if(allChk===false && chk1===true && chk2===true){
+            onNext();
         }else{
             setStep(0);
             alert('약관 동의를 확인해주세요. \n서비스를 이용하기 위해서는 동의가 필요합니다.');
@@ -22,22 +37,7 @@ function AgreementStep({onNext,setStep}){
     }
     return(
         <div>
-            <section className="agree_progress">
-                <div className="progress_wrap">
-                    <div>
-                        <p className="progress_circle _colored"></p>
-                        <p>약관 동의</p>
-                    </div>
-                    <div>
-                        <p className="progress_circle"></p>
-                        <p>정보 입력</p>
-                    </div>
-                    <div>
-                        <p className="progress_circle"></p>
-                        <p>신청 완료</p>
-                    </div>
-                </div>
-            </section>
+
             <section className="apply_tit">
                 <h3>약관 동의</h3>
                 <p>약관 및 개인정보 수집 이용에 동의 해주세요.</p>
@@ -101,7 +101,9 @@ function AgreementStep({onNext,setStep}){
                     <p>서비스를 이용하기 위해서는 동의가 필요합니다.</p>
                 </div>
             </section>
-            <div className="center_btn"><button  onClick={handleNextBtnChange} className="btn_blue">다음</button></div>
+            <Link to={`/apply?agreed=${allChk && chk1 && chk2}`} className="center_btn">
+                <button  onClick={handleNextBtnChange} className="btn_blue">다음</button>
+            </Link>
         </div>
     )
 }
