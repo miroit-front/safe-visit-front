@@ -10,21 +10,49 @@ function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk
             setAllchk(prev => !prev);
             setChk1(false);
             setChk2(false);
-        } else if (allChk === true && (chk2 === false && chk1 === true)) {
+        } else if (allChk === true && (chk1 === true && chk2 === false)) {
             setAllchk(false);
             setChk1(false);
             setChk2(false);
-        } else if (allChk === true && (chk2 === true && chk1 === false)) {
+        } else if (allChk === true && (chk1 === false && chk2 === true)) {
             setAllchk(false);
             setChk1(false);
             setChk2(false);
-        } else {
+        } else if (allChk === false && (chk1 === false && chk2 === true)) {
+            setAllchk(true);
+            setChk1(true);
+            setChk2(true);
+        } else if (allChk === false && (chk1 === true && chk2 === false)) {
+            setAllchk(true);
+            setChk1(true);
+            setChk2(true);
+        }  else {
             setAllchk(prev => !prev);
             setChk1(prev => !prev);
             setChk2(prev => !prev);
         }
     }
-    
+    function handleSingleChkChange(e){
+            const id = e.target.id;
+            if(id === 'chk1'){
+                setChk1(prev =>!prev);
+            }else if(id === 'chk2'){
+                setChk2(prev =>!prev);
+            }
+            if(allChk===true && id === 'chk1'){
+                setAllchk(false);
+                setChk1(false);
+                setChk2(allChk);
+            }if(allChk===true && id === 'chk2'){
+                setAllchk(false);
+                setChk1(allChk);
+                setChk2(false);
+            }if(allChk === false && ((id === 'chk1'&& chk2) ||( id === 'chk2' && chk1))){
+                setAllchk(true);
+                setChk1(true);
+                setChk2(true);
+            }
+    }
     function handleNextBtnChange(){ //동의 상태에 따른 다음 페이지 이동 처리
         if(allChk===true && chk1===true && chk2===true){
             onNext();
@@ -48,7 +76,7 @@ function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk
             </section>
             <section className="agree_box">
                 <div className="agree_check checkbox_wrap">
-                    <input id="chk1" type="checkbox" checked={chk1} onChange={()=>{ setChk1(!chk1)}}/>
+                    <input id="chk1" type="checkbox" checked={chk1} onChange={handleSingleChkChange}/>
                     <label for="chk1"><span>[필수]</span> 서비스이용약관</label>
                 </div>
                 <div className="policy_box">
@@ -76,7 +104,7 @@ function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk
             </section>
             <section className="agree_box">
                 <div className="agree_check checkbox_wrap">
-                    <input id="chk2" type="checkbox" checked={chk2} onChange={()=>{setChk2(!chk2)}}/>
+                    <input id="chk2" type="checkbox" checked={chk2} onChange={handleSingleChkChange}/>
                     <label for="chk2"><span>[필수]</span> 개인정보처리방침</label>
                 </div>
                 <div className="policy_box">
