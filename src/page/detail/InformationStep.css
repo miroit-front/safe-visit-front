@@ -1,31 +1,5 @@
 /*공통css*/
-.flex{
-    display: flex;
-}
 .min-input{width: 220px !important;}
-
-.width100{
-    width: 100%;
-}
-.width10{
-    width: 10%;
-}
-.width90{
-    width: 90%
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-form .visitor-info-group .upBtns button[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input{
-    margin: 5px 0 5px 10px;
-        &:focus{
-            outline: none;
-        }
-}
 
 /*임직원정보*/
 form .staff-info{margin-top: 45px;}
@@ -42,7 +16,7 @@ form .visitor-info{margin-top: 60px;}
 form .visitor-info ul{display: flex;border-bottom: solid 1px #ebebeb;}
 form .visitor-info ul li{display: flex;align-items: center;flex: 1;}
 form .visitor-info ul li label{display: inline-block;width: 200px;background-color: #F8F9FC;font-weight: 500;padding-left: 20px;height: 100%;line-height: 72px;}
-form .visitor-info input{width: 360px;border: solid 1px #dadada;border-radius: 8px;height: 50px;margin: 0 10px 0 20px;padding: 0 16px;
+form .visitor-info input{width: 376px;border: solid 1px #dadada;border-radius: 8px;height: 50px;margin: 0 10px 0 20px;padding: 0 16px;
     &:focus{border-color: #989898;}}
 
 form .visitor-info .nationality p{
@@ -55,11 +29,20 @@ form .visitor-info input[type="checkbox"]{
     margin-right: 4px
 }
 
-form .visitor-info input[type="date"]{width: 180px;text-align: center;}
-form .visitor-info input[type="time"]{width: 220px;text-align: center;}
+form .visitor-info input[type="date"]{width: 185px;text-align: center;}
+form .visitor-info input[type="date"]::-webkit-calendar-picker-indicator {background-image: url('../../img/ico_calendar.svg');background-size: cover;width: 16px;height: 16px;cursor: pointer;}
+form .visitor-info input[type="date"]::-moz-calendar-picker-indicator {background-image: url('../../img/ico_calendar.svg');background-size: cover;width: 16px;height: 16px;cursor: pointer;}
+form .visitor-info input[type="time"]{width: 185px;text-align: center;}
+form .visitor-info input[type="time"]::-webkit-calendar-picker-indicator {background-image: url('../../img/ico_clock.svg');background-size: cover;width: 16px;height: 16px;cursor: pointer;}
+form .visitor-info input[type="time"]::-moz-calendar-picker-indicator {background-image: url('../../img/ico_clock.svg');background-size: cover;width: 16px;height: 16px;cursor: pointer;}
+
+form .visitor-info .selectBox{border: solid 1px #dadada;border-radius: 8px;width: 376px;height: 50px;padding: 0 50px 0 16px;margin: 0 10px 0 20px;background: url(../../img/ico_down.svg) no-repeat 90% center;background-size: 16px auto; text-align:left;
+    &:focus{outline: none;}}
 
 form .visitor-info ul.v-info-1{border-top: 1px solid #002f87;}
-form .visitor-info ul.v-info-6 input{width: 1018px;}
+form .visitor-info ul.v-info-3 label{margin-right: 20px;}
+form .visitor-info ul.v-info-3 input{margin: 0 8px 0 0;}
+form .visitor-info ul.v-info-3 span{margin-right: 8px;}
 form .visitor-info ul.v-info-7{border-bottom: 1px solid #dadada;}
 form .visitor-info ul.v-info-7 li label{line-height: 142px;}
 form .visitor-info ul.v-info-7 textarea{width: 1018px;height: 120px;resize: none;border: 1px solid #dadada;border-radius: 8px;margin: 12px 10px 12px 20px;padding: 8px 16px;
@@ -74,7 +57,20 @@ form .visitor-info ul.v-info-7 textarea{width: 1018px;height: 120px;resize: none
 
 .visit_group_add{display: flex;gap: 3%;align-items: flex-start;background-color: #EAF3FA;border-radius: 8px;margin-top: 40px;padding: 46px 0 46px 25px;}
 .visit_group_add .group_tit{font-weight: 500;color: #131313;font-size: 1.25rem;}
-.visit_group_add .group_con{}
+.visit_group_add .group_con span{font-weight: 500;color: #188AD6;}
+.visit_group_add .group_con .exel_wrap{display: flex;margin-top: 16px;}
+.visit_group_add .group_con .download-btn{display: inline-flex;gap: 6%;align-items: center;padding: 0 40px;background-color: white;border-radius: 8px;
+   border: solid 1px #dadada; color: #002F87;width: 244px;height: 50px;justify-content: center;font-weight: 500;}
+.visit_group_add .group_con .download-btn::before{content: '';display: inline-block; background: url(../../img/ico_exel.svg) no-repeat center;width: 20px;height: 20px;}
+
+.visit_group_add .group_con .exel_wrap li:last-child{margin-left: 20px;border: solid 1px #dadada;background-color: #fff;height: 50px;border-radius: 8px;width: 400px;display: flex;
+justify-content: space-between;padding: 0 6px 0 16px;align-items: center;}
+.visit_group_add .group_con .exel_wrap .filename_wrap{display: flex;align-items: center;gap: 2%;}
+.visit_group_add .group_con .exel_wrap .filename_wrap input{border: 0;width: 220px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.visit_group_add .group_con .exel_wrap .filename_wrap .btn_delete{background: url(../../img/ico_delete02.svg) no-repeat 0 2px;width: 12px;height: 14px;}
+.visit_group_add .group_con .exel_wrap .upload-btn{width: 120px;background-color: #eee;font-weight: 500;border-radius: 10px;padding: 6px 0;
+}
+
 /*
 .layout{
 border: 1px solid;
