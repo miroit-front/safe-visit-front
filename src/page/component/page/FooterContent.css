@@ -1,2 +1,38 @@
-.ftcon_tab{display: flex;}
-.ftcon_tab li{cursor: pointer;}
+.ftcon_tab{display: flex;justify-content: space-between;border-radius: 10px;}
+.ftcon_tab li{cursor: pointer;flex: 33%;text-align: center;background-color: #F7F7F7;font-size: 1.125rem;padding: 16px 0;border: solid #dadada;border-width: 1px 0px 1px 0px;}
+.ftcon_tab li:first-child{border-top-left-radius: 10px;border-bottom-left-radius: 10px;border-left: solid 1px #dadada;}
+.ftcon_tab li:last-child{border-top-right-radius: 10px;border-bottom-right-radius: 10px;border-right: solid 1px #dadada;}
+.ftcon_tab li.active{background-color: #0D1D2C;color: white;border-color: #0D1D2C;}
+
+.footercon_tit{margin-top: 50px;color: #131313;border-bottom: solid 2px #0D1D2C;padding-bottom: 40px;}
+.footercon_tit h3{font-weight: 500;font-size: 1.75rem;margin-bottom: 10px;}
+
+.footercon_wrap{margin-top: 40px;}
+.footercon_wrap h4{font-size: 1.125rem;color: #131313;font-weight: 600;}
+.footercon_wrap h5{font-size: 1rem;color: #002F87;font-weight: 600;margin-top: 13px;}
+.footercon_wrap p{color: #777;margin-top: 10px;}
+
+
+/*개인정보처리방침*/
+.privacy_box{display: flex;justify-content: space-between;align-items: flex-end;}
+.privacy_box .selectBox .selectBtn{border: solid 1px #dadada;border-radius: 8px;width: 350px;height: 50px;padding: 0 50px 0 16px;
+    background: url(../../../img/ico_down.svg) no-repeat 95% center;background-size: 16px auto; text-align:left;
+    &:focus{outline: none;}}
+
+
+
+/*faq*/
+.faqcon_box{border-bottom: solid 1px #dadada;cursor: pointer;}
+.faqcon_box div ul{display: flex;gap: 24px;}
+.faqcon_box h4{font-size: 1.125rem;font-weight: 700;color: #002F87;}
+.faqcon_box .question_box{display: flex;justify-content: space-between;align-items: center;padding: 24px 20px;}
+.faqcon_box .question_box ul{align-items: flex-end;}
+.faqcon_box .question_box ul li{font-weight: 500;color: #131313;white-space: nowrap;}
+
+.faqcon_box .faq_button{width: 16px;height: 16px;background-repeat: no-repeat;}
+.faqcon_box .faq_button.open {background-image: url('../../../img/ico_faq_up.svg');}
+.faqcon_box .faq_button.close {background-image: url('../../../img/ico_faq_down.svg');}
+
+.faqcon_box .answer_box {display: none;background-color: #F8F9FC;padding: 30px 20px;}
+.faqcon_box .answer_box.open {display: block;}
+.faqcon_box .answer_box h4{color: #188ad6;}

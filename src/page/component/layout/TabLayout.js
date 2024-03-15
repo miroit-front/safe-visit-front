@@ -1,3 +1,5 @@
+import '../page/FooterContent.css';
+ 
  function TabLayout({tab}){
     return(
         <nav>
