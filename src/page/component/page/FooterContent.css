@@ -1,9 +1,14 @@
+/*탭메뉴*/
 .ftcon_tab{display: flex;justify-content: space-between;border-radius: 10px;}
-.ftcon_tab li{cursor: pointer;flex: 33%;text-align: center;background-color: #F7F7F7;font-size: 1.125rem;padding: 16px 0;border: solid #dadada;border-width: 1px 0px 1px 0px;}
-.ftcon_tab li:first-child{border-top-left-radius: 10px;border-bottom-left-radius: 10px;border-left: solid 1px #dadada;}
-.ftcon_tab li:last-child{border-top-right-radius: 10px;border-bottom-right-radius: 10px;border-right: solid 1px #dadada;}
-.ftcon_tab li.active{background-color: #0D1D2C;color: white;border-color: #0D1D2C;}
+.ftcon_tab a{cursor: pointer;flex: 33%;text-align: center;background-color: #F7F7F7;padding: 16px 0;border: solid #dadada;border-width: 1px 0px 1px 0px;}
+.ftcon_tab a button{font-size: 1.125rem;}
+.ftcon_tab a:first-child{border-top-left-radius: 10px;border-bottom-left-radius: 10px;border-left: solid 1px #dadada;}
+.ftcon_tab a:last-child{border-top-right-radius: 10px;border-bottom-right-radius: 10px;border-right: solid 1px #dadada;}
+.ftcon_tab a.active{background-color: #0D1D2C;border-color: #0D1D2C;}
+.ftcon_tab a.active button{color: white;}
 
+
+/*공통 스타일*/
 .footercon_tit{margin-top: 50px;color: #131313;border-bottom: solid 2px #0D1D2C;padding-bottom: 40px;}
 .footercon_tit h3{font-weight: 500;font-size: 1.75rem;margin-bottom: 10px;}
 
