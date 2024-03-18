@@ -204,7 +204,7 @@ function InformationStep({onNext, visitorData, setVisitorData, onChange }){
                     </div>
                     <div className="center_btn">
                         <button onClick={(e)=>{window.location.href = '/'}} type='button' className="btn_gr">이전</button>
-                        <button button id='submitBtn' type='submit' className="btn_blue">신청</button>
+                        <button button id='submitBtn' type='submit' className="btn_blue" onClick={onNext}>신청</button>
                     </div>
                 </section>
             </form>
