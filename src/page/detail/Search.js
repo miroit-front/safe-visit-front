@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './Search.css';
 import axios from 'axios';
 import SearchDetailModal from './modal/SearchDetailModal';
+import Paging from '../component/layout/Paging';
 
 function Search(){
     const [detailData, setDetailData] = useState([]);
@@ -69,9 +70,9 @@ function Search(){
                         <label name='name'>방문자 이름</label>
                         <input type='text'value={name} onChange={handleNameChange} placeholder="이름을 입력해주세요" title='이름을 입력해주세요' className='input_basic'/>
                         <div className='nationality'>
-                            <input type="checkbox" id="domestic" name="nationality" value="내국인" 
+                            <input type="radio" id="domestic" name="nationality" value="내국인" 
                             onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='내국인'}/><span>내국인</span>
-                            <input type="checkbox" id="foreigner" name="nationality" value="외국인" 
+                            <input type="radio" id="foreigner" name="nationality" value="외국인" 
                             onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='외국인'}/><span>외국인</span>
                         </div>
                     </li>
@@ -112,29 +113,10 @@ function Search(){
                             </div>
                              ))}
                     </div>
-                
                 </section>
-                <nav className='pagination_wrap'>
-                    <div className='prev_btn_wrap'>
-                        <ul>
-                            <li><a href='.' className='btn_prev_faster' title='맨 앞으로 이동'></a></li>
-                            <li><a href='.' className='btn_prev' title='이전 페이지'></a></li>
-                        </ul>
-                    </div>
-                    <div className='num_wrap'>
-                        <ul className='num_list'>
-                            <li className='page_num'><a href='.' className='pagination clicked'>1</a></li>
-                            <li className='page_num'><a href='.' className='pagination active'>2</a></li>
-                            <li className='page_num'><a href='.' className='pagination'>3</a></li>
-                        </ul>
-                    </div>
-                    <div className='next_btn_wrap'>
-                        <ul>
-                            <li><a href='.' className='btn_next' title='다음 페이지'></a></li>
-                            <li><a href='.' className='btn_next_faster' title='맨 뒤로 이동'></a></li>
-                        </ul>
-                    </div>
-                </nav>
+
+                <Paging detailData={detailData} setDetailData={setDetailData}/>
+                
             </section>
             <div className="center_btn"><button onClick={(e)=>{window.location.href = '/'}} type='button' className="btn_blue">확인</button></div>
             {showModal && (<SearchDetailModal setShowModal={setShowModal} detailData={detailData}/>)} {/*showModal이 true */}

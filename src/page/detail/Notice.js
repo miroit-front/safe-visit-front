@@ -2,15 +2,15 @@ import { useState } from 'react';
 import './Notice.css';
 import NoticeModal from './modal/NoticeListModal';
 
-function Notice() {
+function Notice(){
+    const [noticeContext] = useState(['방문 예약 시스템','방문 예약 시스템 점검 안내','단체방문 예약시 주의사항','단체방문 예약시 주의사항']);
+    const [noticeCal]= useState(['2023.10.27','2023.10.27','2023.10.27','2023.10.27']);
     const [isOpen, setIsOpen] = useState(false);
-
-    const closeModal = () => {
+    const closeModal = ()=>{
         setIsOpen(false);
         document.body.style.overflow = "auto";
     }
-
-    const showListModal = () => {
+    const showListModal = ()=>{
         setIsOpen(true);
         document.body.style.overflow = "hidden";
     }
@@ -107,7 +107,7 @@ function Notice() {
                             <option value="title">제목</option>
                             <option className="content">내용</option>
                         </select>
-                    </div>*/}
+    </div>*/}
                     <input type='search' placeholder="검색어를 입력해주세요" title='검색어를 입력해주세요'/>
                 </div>
                 <button type='submit' value="Submit" className='btn_notice_search'>조회</button>
@@ -120,6 +120,7 @@ function Notice() {
                             <div className="table-cell table_date">작성일</div>
                             <div className="table-cell table_name">작성자</div>
                         </div>
+                        
                         <div className='table-body'>
                             <div className="table-row notice_important">
                                 <div className="table-cell table_num"><span className='notice_tag'>공지</span></div>
@@ -128,14 +129,18 @@ function Notice() {
                                 <div className="table-cell table_name">관리자</div>
                             </div>
                         </div>
+                          
+                          {noticeContext.map((item,i) =>
                         <div className='table-body'>
                             <div className="table-row">
-                                <div className="table-cell table_num">00</div>
-                                <div className="table-cell table_tit" onClick={showListModal}>제목입니다</div>
-                                <div className="table-cell table_date">2024.03.11</div>
+                                <div className="table-cell table_num">{i+1}</div>
+                                <div className="table-cell table_tit" onClick={showListModal}>{item}</div>
+                                <div className="table-cell table_date">{noticeCal[i]}</div>
                                 <div className="table-cell table_name">관리자</div>
                             </div>
                         </div>
+                        )}
+                    
                 </div>
             </section>
             <nav className='pagination_wrap'>
