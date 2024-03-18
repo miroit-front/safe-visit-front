@@ -2,7 +2,7 @@ import './Main.css';
 import { useState } from 'react';
 
 function Main(){
-    const [noticeContext] = useState(['방문 예약 시스템','방문 예약 시스템 점검 안내','단체방문 예약시 주의사항','단체방문 예약시 주의사항']);
+   const [noticeContext] = useState(['방문 예약 시스템','방문 예약 시스템 점검 안내','단체방문 예약시 주의사항','단체방문 예약시 주의사항']);
     const [noticeCal]= useState(['2023.10.27','2023.10.27','2023.10.27','2023.10.27']);
     return(
         <div id='main_wrap'>

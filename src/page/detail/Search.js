@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './Search.css';
 import axios from 'axios';
 import SearchDetailModal from './modal/SearchDetailModal';
-import Paging from '../component/layout/Paging';
 
 function Search(){
     const [detailData, setDetailData] = useState([]);
@@ -115,7 +114,27 @@ function Search(){
                     </div>
                 </section>
 
-                <Paging detailData={detailData} setDetailData={setDetailData}/>
+                <nav className='pagination_wrap'>
+                    <div className='prev_btn_wrap'>
+                        <ul>
+                            <li><a href='#' className='btn_prev_faster' title='맨 앞으로 이동'></a></li>
+                            <li><a href='#' className='btn_prev' title='이전 페이지'></a></li>
+                        </ul>
+                    </div>
+                    <div className='num_wrap'>
+                    <ul className='num_list'>
+                        <li className='page_num'><a href='.' className='pagination clicked'>1</a></li>
+                        <li className='page_num'><a href='.' className='pagination active'>2</a></li>
+                        <li className='page_num'><a href='.' className='pagination'>3</a></li>
+                    </ul>
+                </div>
+                    <div className='next_btn_wrap'>
+                        <ul>
+                            <li><a href='#' className='btn_next' title='다음 페이지'></a></li>
+                            <li><a href='#' className='btn_next_faster' title='맨 뒤로 이동'></a></li>
+                        </ul>
+                    </div>
+                </nav>
                 
             </section>
             <div className="center_btn"><button onClick={(e)=>{window.location.href = '/'}} type='button' className="btn_blue">확인</button></div>
