@@ -17,6 +17,7 @@
 .applyForm .visitor-info ul{border-bottom: solid 1px #ebebeb;}
 .applyForm .visitor-info input{width: 376px;}
 .applyForm .visitor-info input[type="checkbox"]{width: 10px;margin-right: 4px}
+.applyForm .visitor-info input[type="radio"]{width: 10px;margin-right: 4px}
 
 .applyForm .nationality p{background-color: transparent;width: 56px;margin: 8px 0;}
 

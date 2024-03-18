@@ -114,7 +114,7 @@ function InformationStep({onNext, visitorData, setVisitorData, onChange }){
                         <li><label>회사명</label><input type='text' placeholder={`회사명을 입력해주세요`} title='회사명'/></li>
                         <li className='flex'><label>성명</label>
                             <input className='min-input' type='text' placeholder={`성명을 입력해주세요`} title='성명'/>
-                            <div className='nationality flex'>
+                            <div className='nationality'>
                                 <input type="radio" id="domestic" name="nationality" value="내국인"
                                 checked={checkedNationality === "내국인"} 
                                 onChangeCapture={(e) => checkOneNationality(e)}
