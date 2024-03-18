@@ -6,15 +6,36 @@ form{overflow: hidden;  }
 /*검색창*/
 .notice-search-part{display: flex;border: solid 1px #dadada;justify-content: center;padding: 50px 0;border-radius: 8px;gap: 2%;}
 .selectBox_wrap{display: flex;gap: 4%;}
-.notice-search-part .selectBox .selectBtn{border: solid 1px #dadada;border-radius: 8px;width: 160px;height: 50px;padding: 0 50px 0 16px;
+/*.notice-search-part .selectBox .selectBtn{border: solid 1px #dadada;border-radius: 8px;width: 160px;height: 50px;padding: 0 50px 0 16px;
 background: url(../../img/ico_down.svg) no-repeat 90% center;background-size: 16px auto; text-align:left;
-&:focus{outline: none;}}
+&:focus{outline: none;}}*/
 .notice-search-part input{width: 680px;display: flex;align-items: center;justify-content: center;border-width: 0px 0px 1px 0px;border-color: #dadada;margin: 0;
     &:focus{border-color: #131313;}}
 .notice-search-part button{border-radius: 8px;height: 50px;color: white;background-color: #0B2468;}
 .notice-search-part .btn_notice_search{display: inline-flex;gap: 0.5rem;align-items: center;padding: 0 40px;}
 .notice-search-part .btn_notice_search::before{content: "";display: inline-block;width: 16px;height: 16px; background: url(../../img/ico_search.svg) no-repeat center;}
 .notice-search-part .btn_notice_search:hover{text-decoration: underline;}
+
+.select_wrap{display: block; position: relative; width: 160px;
+  div{border-radius: 0.5rem; position: relative;}}
+.select_wrap select{background: none transparent;height: 50px;border-radius: 0.5rem;padding: 0 50px 0 16px;display: block;
+    width: 100%;border: 1px solid #dadada;}
+.select_wrap ul{position: absolute;z-index: 99;width: 100%;border-radius: 0.5rem;padding: 0.5rem 0.5rem;background: white;
+    box-shadow: rgba(0, 37, 108, 0.08) 0px 3px 4px 0px;border:solid 1px #ebebeb;
+    button{display: block;width: 100%;text-align: left;transition: all 0.3s;padding: 0.5rem;border-radius: 0.5rem;background: white;color:#343434;
+      &:hover{color: #118FE4;text-decoration: underline;}
+      &:focus{outline: none;}
+      &:active{color: #118FE4;text-decoration: underline;}
+      &.selected{color: #118FE4;text-decoration: underline;}
+    }
+}
+.select_wrap .arrow{width: 20px;height: 20px;display: block;position: absolute;right:1rem;top: 14px;pointer-events: none;
+    &:after{content: "";background: url(../../img/ico_down.svg) no-repeat 90% center;background-size: 16px auto;
+      width: 16px;height: 16px;display: block;position: absolute;transform: rotate(0);
+      transform-origin: center;top: 2px;left: 9px;transition: all 0.1s;}
+    &.is-expanded{&:after {transform: rotate(-180deg);}}
+    &:after {transform: rotate(0);}
+}
 
 /*검색결과 리스트*/
 .notice-part{position: relative;width: 100%;margin-top: 50px;}

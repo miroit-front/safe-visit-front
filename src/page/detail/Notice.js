@@ -2,26 +2,112 @@ import { useState } from 'react';
 import './Notice.css';
 import NoticeModal from './modal/NoticeListModal';
 
-function Notice(){
+function Notice() {
     const [isOpen, setIsOpen] = useState(false);
-    const closeModal = ()=>{
+
+    const closeModal = () => {
         setIsOpen(false);
         document.body.style.overflow = "auto";
     }
-    const showListModal = ()=>{
+
+    const showListModal = () => {
         setIsOpen(true);
         document.body.style.overflow = "hidden";
     }
+
+    function CustomSelect() {
+        const [isExpand, setIsExpand] = useState(false);
+        const [selected, setSelected] = useState("key01");
+
+        const optionData = [
+            { optionKey: "key01", optionName: "제목" },
+            { optionKey: "key02", optionName: "내용" }
+        ];
+
+        const handleKeydown = (e) => {
+            if (e.KeyCode === 38 || e.KeyCode === 40 || e.keyCode === 13) {
+                e.preventDefault();
+            }
+
+            if (e.keyCode === 38 || e.keyCode === 40) {
+                setIsExpand(() => true);
+                setSelected((prev) => {
+                    const newIdx = () => {
+                        const oldIdx = optionData.findIndex(
+                            (option) => option.optionKey === prev
+                        );
+                        if (e.keyCode === 38) {
+                            return oldIdx === 0 ? oldIdx : oldIdx - 1;
+                        }
+                        if (e.keyCode === 40) {
+                            return oldIdx === optionData.length - 1 ? oldIdx : oldIdx + 1;
+                        }
+                    };
+
+                    return optionData[newIdx()].optionKey;
+                });
+            }
+            if (e.keyCode === 13) {
+                setIsExpand((prev) => !prev);
+            }
+        };
+
+        const handleMouseDown = (e) => {
+            e.preventDefault();
+
+            if (e.target.matches(":focus")) {
+                setIsExpand((prev) => !prev);
+            } else {
+                e.target.focus();
+                setIsExpand(() => true);
+            }
+        };
+
+        const handleWrapperBlur = () => {
+            setIsExpand(false);
+        };
+
+        return (
+            <div className="select_wrap" onBlur={handleWrapperBlur}
+                onKeyDown={(e) => handleKeydown(e)} onMouseDown={(e) => handleMouseDown(e)} tabIndex={0}>
+                <div>
+                    <span className={`arrow ${isExpand ? "is-expanded" : ""}`}></span>
+                    <select name="select" value={selected} onChange={(e) => setSelected(e.target.value)}>
+                        {optionData.length > 0 && optionData.map(({ optionKey, optionName }) => (
+                            <option key={optionKey} value={optionKey}>
+                                {optionName}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                {isExpand && (
+                    <ul>
+                        {optionData.length > 0 && optionData.map(({ optionKey, optionName }) => (
+                            <li key={optionKey}>
+                                <button buttonid={optionKey} type="button"  onClick={() => { setSelected(optionKey); setIsExpand(false);}}
+                                    className={selected === optionKey ? "selected" : ""}>
+                                    {optionName}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+        );
+    } 
+
+
     return(
         <form action="#">
             <section className='notice-search-part'>
                 <div className='selectBox_wrap'>
-                    <div className="selectBox">
+                    <CustomSelect />
+                    {/*<div className="selectBox">
                         <select className="selectBtn">선택
                             <option value="title">제목</option>
                             <option className="content">내용</option>
                         </select>
-                    </div>
+                    </div>*/}
                     <input type='search' placeholder="검색어를 입력해주세요" title='검색어를 입력해주세요'/>
                 </div>
                 <button type='submit' value="Submit" className='btn_notice_search'>조회</button>
