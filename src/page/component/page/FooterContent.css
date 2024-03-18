@@ -34,9 +34,9 @@
 .faqcon_box .question_box ul{align-items: flex-end;}
 .faqcon_box .question_box ul li{font-weight: 500;color: #131313;white-space: nowrap;}
 
-.faqcon_box .faq_button{width: 16px;height: 16px;background-repeat: no-repeat;}
-.faqcon_box .faq_button.open {background-image: url('../../../img/ico_faq_up.svg');}
-.faqcon_box .faq_button.close {background-image: url('../../../img/ico_faq_down.svg');}
+.faqcon_box .faq_button{width: 16px;height: 16px;background-repeat: no-repeat;transition: all 0.1s;background-image: url('../../../img/ico_faq_down.svg');}
+.faqcon_box .faq_button.open{transform: rotate(-180deg)}
+.faqcon_box .faq_button.close{transform: rotate(0)}
 
 .faqcon_box .answer_box {display: none;background-color: #F8F9FC;padding: 30px 20px;}
 .faqcon_box .answer_box.open {display: block;}
