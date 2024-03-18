@@ -68,11 +68,11 @@ function Search(){
                     <li>
                         <label name='name'>방문자 이름</label>
                         <input type='text'value={name} onChange={handleNameChange} placeholder="이름을 입력해주세요" title='이름을 입력해주세요' className='input_basic'/>
-                        <div className='nationality'>
+                        <div className='nationality radio_bl'>
                             <input type="radio" id="domestic" name="nationality" value="내국인" 
-                            onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='내국인'}/><span>내국인</span>
+                            onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='내국인'}/><label for="domestic">내국인</label>
                             <input type="radio" id="foreigner" name="nationality" value="외국인" 
-                            onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='외국인'}/><span>외국인</span>
+                            onChange={(e)=>checkOneNationality(e)} checked={checkedNationality==='외국인'}/><label for="foreigner">외국인</label>
                         </div>
                     </li>
                     <li>
