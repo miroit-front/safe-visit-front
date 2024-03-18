@@ -6,11 +6,11 @@ function InformationPlusData  ({ id, onDelete, checkOneNationality, checkedNatio
                             <li><label>회사명</label><input type='text' placeholder='회사명을 입력해주세요' title='회사명'/></li>
                             <li><label>성명</label>
                                 <input type='text' placeholder='성명을 입력해주세요' title='성명'/>
-                                <div className='nationality flex'>
-                                    <input type="radio" id="domestic" name="nationality" value="내국인" 
-                                        onChange={(e)=>checkOneNationality(e)}/><span>내국인</span>
-                                    <input type="radio" id="foreigner" name="nationality" value="외국인" 
-                                        onChange={(e)=>checkOneNationality(e)}/><span>외국인</span>
+                                <div className='nationality radio_bl'>
+                                    <input type="radio" id="domestic_add" name="nationality" value="내국인" 
+                                        onChange={(e)=>checkOneNationality(e)}/><label for="domestic_add">내국인</label>
+                                    <input type="radio" id="foreigner_add" name="nationality" value="외국인" 
+                                        onChange={(e)=>checkOneNationality(e)}/><label for="foreigner_add">외국인</label>
                                 </div>
                             </li>
                         </ul>

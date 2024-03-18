@@ -114,15 +114,15 @@ function InformationStep({onNext, visitorData, setVisitorData, onChange }){
                         <li><label>회사명</label><input type='text' placeholder={`회사명을 입력해주세요`} title='회사명'/></li>
                         <li className='flex'><label>성명</label>
                             <input className='min-input' type='text' placeholder={`성명을 입력해주세요`} title='성명'/>
-                            <div className='nationality'>
+                            <div className='nationality radio_bl'>
                                 <input type="radio" id="domestic" name="nationality" value="내국인"
                                 checked={checkedNationality === "내국인"} 
                                 onChangeCapture={(e) => checkOneNationality(e)}
-                                    onChange={(e)=>checkOneNationality(e)}/><span>내국인</span>
+                                    onChange={(e)=>checkOneNationality(e)}/><label for="domestic">내국인</label>
                                 <input type="radio" id="foreigner" name="nationality" value="외국인" 
                                 checked={checkedNationality === "외국인"} 
                                 onChangeCapture={(e) => checkOneNationality(e)}
-                                    onChange={(e)=>checkOneNationality(e)}/><span>외국인</span>
+                                    onChange={(e)=>checkOneNationality(e)}/><label for="foreigner">외국인</label>
                             </div>
                         </li>
                     </ul>
@@ -138,9 +138,9 @@ function InformationStep({onNext, visitorData, setVisitorData, onChange }){
                             <input type='date' data-placeholder="날짜 선택"/><input type='time'/>
                             <span>~</span>
                             <input type='date'/><input type='time'/>
-                            <div className='day flex'>
-                                <input type="radio" id="oneDay" name="day" value="1day" onChange={(e)=>{checkOneDay(e)}}/><span>1일</span>
-                                <input type="radio" id="twoDay" name="day" value="2day" onChange={(e)=>{checkOneDay(e)}}/><span>2일</span>
+                            <div className='day radio_bl'>
+                                <input type="radio" id="oneDay" name="day" value="1day" onChange={(e)=>{checkOneDay(e)}}/><label for="oneDay">1일</label>
+                                <input type="radio" id="twoDay" name="day" value="2day" onChange={(e)=>{checkOneDay(e)}}/><label for="twoDay">2일</label>
                             </div>
                         </li>
                     </ul>
@@ -164,7 +164,7 @@ function InformationStep({onNext, visitorData, setVisitorData, onChange }){
                         <li>
                             <label>차량번호</label>
                             <input className='min-input' type='text' placeholder='빈칸없이 입력해주세요' title='차량번호'/>
-                            <input type="checkbox" id="office" name="office" value="office"/><span>사옥 내 진입</span>
+                            <input type="checkbox" id="office" name="office" value="office"/><label for="office">사옥 내 진입</label>
                         </li>
                         <li><label>주소</label><input type='text' placeholder='방산구역 방문자만 입력해주세요' title='주소'/></li>
                     </ul>

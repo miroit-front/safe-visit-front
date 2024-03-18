@@ -16,10 +16,14 @@
 .applyForm .visitor-info{margin-top: 60px;}
 .applyForm .visitor-info ul{border-bottom: solid 1px #ebebeb;}
 .applyForm .visitor-info input{width: 376px;}
-.applyForm .visitor-info input[type="checkbox"]{width: 10px;margin-right: 4px}
-.applyForm .visitor-info input[type="radio"]{width: 10px;margin-right: 4px}
+.applyForm .visitor-info input[type="radio"]{width: 20px;height: 20px; margin: 0px;}
 
-.applyForm .nationality p{background-color: transparent;width: 56px;margin: 8px 0;}
+.applyForm .radio_bl{display: flex;align-items: center;}
+.applyForm input[type="radio"]{position: absolute;width: 1px;height: 1px;padding: 0;margin: -1px;overflow: hidden;clip: rect(0, 0, 0, 0);border: 0;}
+.applyForm input[type="radio"] + label{display: inline-block;position: relative;width: auto;padding: 0 16px 0 24px;cursor: pointer;background-color: white;font-weight: 400;}
+.applyForm input[type="radio"] + label:before{content: '';position: absolute;left: 0;top: 26px;width: 20px;height: 20px;text-align: center;background: url(../../img/ico_radio.svg) no-repeat center;}
+.applyForm input[type="radio"]:checked + label:after{content: '';position: absolute;top: 26px;left: 0;width: 20px;height: 20px;background: url(../../img/ico_radio_active.svg) no-repeat center;}
+
 
 .applyForm .visitor-info input[type="date"]{width: 185px;text-align: center;}
 .applyForm .visitor-info input[type="date"]::-webkit-calendar-picker-indicator {background-image: url('../../img/ico_calendar.svg');background-size: cover;width: 16px;height: 16px;cursor: pointer;}
@@ -32,9 +36,17 @@
     &:focus{outline: none;}}
 
 .applyForm .visitor-info ul.v-info-1{border-top: 1px solid #002f87;}
-.applyForm .visitor-info ul.v-info-3 label{margin-right: 20px;}
-.applyForm .visitor-info ul.v-info-3 input{margin: 0 8px 0 0;}
+.applyForm .visitor-info ul.v-info-3 li>label{margin-right: 20px;}
+.applyForm .visitor-info ul.v-info-3 li>input{margin: 0 8px 0 0;}
 .applyForm .visitor-info ul.v-info-3 span{margin-right: 8px;}
+
+.applyForm .visitor-info input[type="checkbox"]{position: absolute;width: 1px;height: 1px;padding: 0;margin: -1px;overflow: hidden;clip: rect(0, 0, 0, 0);border: 0;}
+.applyForm .visitor-info input[type="checkbox"] + label{display: inline-block;position: relative;width: auto;padding-left: 26px;cursor: pointer;background-color: white;font-weight: 400;}
+.applyForm .visitor-info input[type="checkbox"] + label:before{content: '';position: absolute;left: 0;top: 26px;width: 20px;height: 20px;text-align: center;background: url(../../img/ico_check.svg) no-repeat center;
+border-radius: 4px;border: solid 1px #dadada;}
+.applyForm .visitor-info input[type="checkbox"]:checked + label:after{content: '';position: absolute;top: 26px;left: 0;width: 20px;height: 20px;background: url(../../img/ico_check.svg) no-repeat center;
+    background-color: #002f87;color: white;border-radius: 4px;}
+
 .applyForm .visitor-info ul.v-info-7{border-bottom: 1px solid #dadada;}
 .applyForm .visitor-info ul.v-info-7 li label{line-height: 142px;}
 .applyForm .visitor-info ul.v-info-7 textarea{width: 1018px;height: 120px;resize: none;border: 1px solid #dadada;border-radius: 8px;margin: 12px 10px 12px 20px;padding: 8px 16px;
@@ -48,16 +60,16 @@
 .applyForm .visitor_add .update-btn::before{content: '';display: inline-block; background: url(../../img/ico_visitoradd.svg) no-repeat center;width: 24px;height: 24px;}
 
 .applyForm .addvisitor_form{margin-top: 30px;}
-.addvisitor_form>form{display: flex;justify-content: space-between;}
+.addvisitor_form>form{display: flex;justify-content: space-between;border-top: solid 0.5px #002F87;}
 .addvisitor_form>form:first-child{border-top: solid 1px #002F87;}
 .addvisitor_form>form:last-child{border-bottom: solid 1px #dadada;}
 .addvisitor_form .form_wrap{flex: auto;}
 .addvisitor_form ul{border-bottom: solid 1px #ebebeb;gap: 2.5%;}
 .applyForm .addvisitor_form ul li{flex: none;}
-.applyForm .addvisitor_form ul li label{width: 130px;}
+.applyForm .addvisitor_form ul li>label{width: 130px;}
 .applyForm .addvisitor_form input{width: 300px;}
 .applyForm .addvisitor_form input.l_input{width: 500px;}
-.applyForm .addvisitor_form input[type="checkbox"]{width: 10px;margin-right: 4px}
+.applyForm .addvisitor_form input[type="radio"]{width: 20px;height: 20px; margin: 0px;}
 .applyForm .addvisitor_form .form_delete{display: flex;align-items: center;padding: 0 30px;background-color: #F8F9FC;border-bottom: solid 1px #ebebeb;}
 .applyForm .addvisitor_form .form_delete button{color: #002F87;display: flex;align-items: center;}
 .applyForm .addvisitor_form .form_delete button::before{content: '';display: inline-block; background: url(../../img/ico_delete.svg) no-repeat 0 50%;width: 16px;height: 18px;}
