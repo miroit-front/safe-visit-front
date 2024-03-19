@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import ko from 'date-fns/locale/ko';
-import styles from "./ApplyDate.css";
+import "./ApplyDate.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { subDays, getYear, getMonth } from "date-fns";
 const _ = require('lodash');
