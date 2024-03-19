@@ -9,7 +9,7 @@ function ApplyDate(){
     const [endDate, setEndDate] = useState(new Date());
     
     return(
-        <div>
+        <div className="date_wrap">
             <DatePicker
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
@@ -18,8 +18,7 @@ function ApplyDate(){
                 timeFormat="HH:mm"
                 timeIntervals={30}
                 timeCaption="time"
-                dateFormat="MMMM d, yyyy h:mm aa"
-    />
+                dateFormat="MMMM d, yyyy h:mm aa"/>
             <span>~</span>
             <DatePicker
                 selected={endDate}
@@ -29,8 +28,7 @@ function ApplyDate(){
                 timeFormat="HH:mm"
                 timeIntervals={30}
                 timeCaption="time"
-                dateFormat="MMMM d, yyyy h:mm aa"
-    />
+                dateFormat="MMMM d, yyyy h:mm aa"/>
         </div>
     )
 }

@@ -36,9 +36,9 @@
     &:focus{outline: none;}}
 
 .applyForm .visitor-info ul.v-info-1{border-top: 1px solid #002f87;}
-.applyForm .visitor-info ul.v-info-3 li>label{margin-right: 20px;}
+.applyForm .visitor-info ul.v-info-3 li>label{/*margin-right: 20px;*/}
 .applyForm .visitor-info ul.v-info-3 li>input{margin: 0 8px 0 0;}
-.applyForm .visitor-info ul.v-info-3 span{margin-right: 8px;}
+.applyForm .visitor-info ul.v-info-3 span{margin-right: -12px;}
 
 .applyForm .visitor-info input[type="checkbox"]{position: absolute;width: 1px;height: 1px;padding: 0;margin: -1px;overflow: hidden;clip: rect(0, 0, 0, 0);border: 0;}
 .applyForm .visitor-info input[type="checkbox"] + label{display: inline-block;position: relative;width: auto;padding-left: 26px;cursor: pointer;background-color: white;font-weight: 400;}
