@@ -1,9 +1,9 @@
 import './NoticeListModal.css';
-import { useNotices } from '../../component/page/NoticeContext';
+import { useNotices } from '../../component/page/NoticeProvider';
 import React, { useState } from 'react';
 
 function NoticeListModal(){
-    const { isOpen, closeModal, selectedNotice, setSelectedNotice,  handlePrevNext, currentNoticeIndex, noticeTitle } = useNotices();
+    const { isOpen, closeModal, selectedNotice,  handlePrevNext, currentNoticeIndex, noticeTitle } = useNotices();
 
 
     if(!isOpen || !selectedNotice){ //이게 없어서 닫히지 않았던 것이다. 모달이 열려있지 않거나, 선택된 공지사항이 없으면 아무것도 표시하지 않음

@@ -12,7 +12,7 @@ import PrivacyPolicy from './page/detail/footerContent/PrivacyPolicy';
 import Faq from './page/detail/footerContent/Faq';
 import InformationStep from './page/detail/InformationStep';
 import CompletionStep from "./page/detail/CompletionStep";
-import NoticeProvider from "./page/component/page/NoticeContext";
+import NoticeProvider from "./page/component/page/NoticeProvider";
 import NoticeListModal from "./page/detail/modal/NoticeListModal";
 
 function App() {

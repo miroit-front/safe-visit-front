@@ -11,7 +11,7 @@ export const NoticeProvider = ({ children }) => {
         document.body.style.overflow = "auto";
     }
     const [noticeTitle, setNoticeTitle] = useState(['방문 예약 시스템', '방문 예약 시스템 점검 안내', '단체방문 예약시 주의사항', '단체방문 예약시 주의사항']);
-    const [noticeCal, setNoticeCal] = useState(['2023.10.27', '2023.10.27', '2023.10.27', '2023.10.27']);
+    const [noticeCal, setNoticeCal] = useState(['2023.10.30', '2024.01.27', '2024.03.27', '2024.04.27']);
     const [noticeWriter, setNoticeWriter] = useState(['관리자1', '관리자2', '관리자3','관리자4']);
     const [noticeBody, setNoticeBody] = useState(['방문자 등록 안내 내용입니다.', '내용1','내용2','내용3']);
     const [selectedNotice, setSelectedNotice] = useState(''); //공지사항 제목 클릭했을 때 모달에 뜰 상세내용

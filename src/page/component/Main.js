@@ -1,9 +1,15 @@
 import './Main.css';
-import { useState } from 'react';
+import { useNotices } from './page/NoticeProvider';
 
 function Main(){
-   const [noticeContext] = useState(['방문 예약 시스템','방문 예약 시스템 점검 안내','단체방문 예약시 주의사항','단체방문 예약시 주의사항']);
-    const [noticeCal]= useState(['2023.10.27','2023.10.27','2023.10.27','2023.10.27']);
+    const { noticeTitle, noticeCal, noticeBody, setIsOpen, setSelectedNotice, showListModal } = useNotices();
+
+    const handleNoticeClick = (e, index) => {
+        e.preventDefault(); //  a태그 기본동작 방지
+        e.stopPropagation(); // 이벤트 전파 방지
+        showListModal(index);
+    }
+
     return(
         <div id='main_wrap'>
             <div className='main_bg'>
@@ -29,15 +35,16 @@ function Main(){
                                 <button onClick={(e)=>{window.location.href = './notice'}}><img src='../img/arrow_right.svg' alt='공지사항 바로가기'/></button>
                             </header>
                             <ul>
-                                {noticeContext.map((item,i) =>
-                                <li key={i}>
-                                    <a href='/' className='main-notice_link'>
+                                {noticeTitle.map((item,i) =>
+                                <li key={i} onClick={(e)=>handleNoticeClick(e, i)}>
+                                    <a href='#!' className='main-notice_link'>
                                         <p>{item}</p>
                                         <p>{noticeCal[i]}</p>
                                     </a>
                                 </li>
                             )}
                             </ul>
+                            
                         </section>
                     </div>
                 </article>

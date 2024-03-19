@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Notice.css';
 import NoticeListModal from './modal/NoticeListModal';
-import { useNotices } from '../component/page/NoticeContext';
+import { useNotices } from '../component/page/NoticeProvider';
 
 function Notice(){
     const {isOpen, setIsOpen, noticeTitle, noticeCal, noticeWriter, showListModal} = useNotices();
