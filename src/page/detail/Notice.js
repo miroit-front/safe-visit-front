@@ -1,21 +1,10 @@
 import { useState } from 'react';
 import './Notice.css';
-import NoticeModal from './modal/NoticeListModal';
+import NoticeListModal from './modal/NoticeListModal';
+import { useNotices } from '../component/page/NoticeContext';
 
 function Notice(){
-    const [noticeContext] = useState(['방문 예약 시스템','방문 예약 시스템 점검 안내','단체방문 예약시 주의사항','단체방문 예약시 주의사항']);
-    const [noticeCal]= useState(['2023.10.27','2023.10.27','2023.10.27','2023.10.27']);
-    const [isOpen, setIsOpen] = useState(false);
-
-    const closeModal = ()=>{
-        setIsOpen(false);
-        document.body.style.overflow = "auto";
-    }
-
-    const showListModal = ()=>{
-        setIsOpen(true);
-        document.body.style.overflow = "hidden";
-    }
+    const {isOpen, setIsOpen, noticeTitle, noticeCal, noticeWriter, showListModal} = useNotices();
 
     function CustomSelect() {
         const [isExpand, setIsExpand] = useState(false);
@@ -125,18 +114,18 @@ function Notice(){
                         <div className='table-body'>
                             <div className="table-row notice_important">
                                 <div className="table-cell table_num"><span className='notice_tag'>공지</span></div>
-                                <div className="table-cell table_tit" onClick={showListModal}>제목입니다</div>
+                                <div className="table-cell table_tit" onClick={()=>showListModal()}>제목입니다</div>
                                 <div className="table-cell table_date">2024.03.11</div>
                                 <div className="table-cell table_name">관리자</div>
                             </div>
                         </div>
-                        {noticeContext.map((item,i) =>
+                        {noticeTitle.map((item,i) =>
                        <div className='table-body'>
                             <div className="table-row">
                             <div className="table-cell table_num">{i+1}</div>
-                                <div className="table-cell table_tit" onClick={showListModal}>{item}</div>
+                                <div className="table-cell table_tit" onClick={()=>showListModal(i)}>{item}</div>
                                 <div className="table-cell table_date">{noticeCal[i]}</div>
-                                <div className="table-cell table_name">관리자</div>
+                                <div className="table-cell table_name">{noticeWriter[i]}</div>
                             </div>
                         </div>
                          )}
@@ -163,7 +152,7 @@ function Notice(){
                     </ul>
                 </div>
             </nav>
-            {isOpen && <NoticeModal closeModal={closeModal}/>}    
+            {isOpen && <NoticeListModal/>}    
         </form>
     )
 }
