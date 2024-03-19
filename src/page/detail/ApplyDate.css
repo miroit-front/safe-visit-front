@@ -1,5 +1,18 @@
 .date_wrap{display: flex;align-items: center;}
+.custom-datepicker{cursor: pointer;}
+.react-datepicker__input-container::before{content: '';display: inline-block;position: absolute;top: 16px;right: 30px;background-image: url('../../img/ico_calendar.svg');background-size: cover;width: 16px;height: 16px;}
 
-.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list{
-    display: block;
-}
+.date-customheader{display: flex;justify-Content: center;background-color: white;}
+.custom-month{font-size: 1.25rem;margin: 0 32px;}
+
+
+
+.date_wrap .react-datepicker{font-family: 'Noto Sans KR', sans-serif;display: flex;justify-content: space-between;width: 375px;gap: 0;border-color: #dadada;border-radius: 8px;}
+.date_wrap .react-datepicker__month-container{float: none;flex: 1 1;}
+.date_wrap .react-datepicker__header{background-color: white;border-bottom: none;}
+.date_wrap .react-datepicker__day-names{margin-top: 10px;}
+.date_wrap .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name{width: 2.8rem;}
+.date_wrap .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name{margin: 0;}
+.date_wrap .react-datepicker__day, .react-datepicker__month-text, .react-datepicker__quarter-text, .react-datepicker__year-text{width: 40px;height: 40px;line-height: 40px;}
+.date_wrap .react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range{background-color: #216ba5;border-radius: 50%;}
+.date_wrap .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list{display: block;}

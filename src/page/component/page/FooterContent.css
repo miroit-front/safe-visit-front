@@ -28,13 +28,13 @@
     &:after{content: "";background: url(../../../img/ico_down.svg) no-repeat center;
         width: 16px;height: 16px;display: block;position: absolute;transform: rotate(0);
         transform-origin: center;top: 1rem;right: 1rem;transition: all 0.1s;}
-    &:focus{outline: none;}
+    &:focus{outline: none;border-color: #989898;}
+    &.open{border-color: #989898;}
     &.open{&:after {transform: rotate(-180deg);}}
 }
 .selectwrap .select-options{position: absolute;top: 100%;left: 0;z-index: 999;border: solid 1px #ebebeb;border-radius: 8px;width: 350px;padding: 16px;background: white;box-shadow: rgba(0, 37, 108, 0.08) 0px 3px 4px 0px;}
 .selectwrap .select-options .option-item{padding: 5px 0;color: #555;}
-.selectwrap .select-options .option-item:hover{text-decoration: underline;}
-.selectwrap .select-options .option-item.select{color: #131313;}
+.selectwrap .select-options .option-item:hover{text-decoration: underline;color: #118FE4;}
 .select-box.open + .select-options {display: block;}
 
 

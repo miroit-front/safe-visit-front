@@ -52,6 +52,10 @@ border-radius: 4px;border: solid 1px #dadada;}
 .applyForm .visitor-info ul.v-info-7 textarea{width: 1018px;height: 120px;resize: none;border: 1px solid #dadada;border-radius: 8px;margin: 12px 10px 12px 20px;padding: 8px 16px;
     &:focus{outline: none;border-color: #989898;}}
 
+.applyForm .visitor-info .selectwrap{margin-left: 20px;}
+.applyForm .visitor-info .selectwrap .select-box{width: 376px;}
+.applyForm .visitor-info .selectwrap .select-options{width: 376px;}
+
 /*방문객 추가*/
 .applyForm .visitor_add{display: flex;justify-content: space-between;align-items: center;background-color: #F8F9FC;
     border-radius: 8px;margin-top: 30px;font-weight: 500;padding: 0 45px 0 25px;height: 110px;}

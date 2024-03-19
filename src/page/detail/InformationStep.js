@@ -1,6 +1,5 @@
 import './InformationStep.css';
-import { useState } from 'react';
-import { useRef } from "react";
+import { useState, useEffect, useRef } from 'react';
 import ExcelUploadBtn from './modal/ExcelUploadBtn';
 import axios from 'axios';
 import InformationPlusData from './InformationPlusData';
@@ -77,6 +76,33 @@ function InformationStep({onNext, visitorData, setVisitorData, onChange }){
         setCheckedDay(e.target.value);
     }
 
+    const [menu, setMenu] = useState(['방문구역1', '방문구역2', '방문구역3', '방문구역4']);
+    const [menuItem, setMenuItem] = useState('방문구역을 선택해주세요'); // 선택된 메뉴 아이템
+    const [showMenu, setShowMenu] = useState(false); // 옵션박스 열고 닫힘 여부를 알려주는 값
+
+    const handleSelect = (cate) => {
+        setMenuItem(cate);
+        setShowMenu(false);
+    }
+
+    useEffect(() => {
+        // 전체 문서에 클릭 이벤트 추가
+        document.addEventListener("click", handleDocumentClick);
+
+        // 컴포넌트 언마운트 시 클릭 이벤트 제거
+        return () => {
+            document.removeEventListener("click", handleDocumentClick);
+        };
+    }, []);
+
+    const handleDocumentClick = (event) => {
+        // 선택 상자 이외의 영역을 클릭했을 때 선택 상자를 닫음
+        const selectBox = document.querySelector(".select-box");
+        if (selectBox && !selectBox.contains(event.target)) {
+            setShowMenu(false);
+        }
+    };
+
     function handleExcelModalToggle(){
         setExcelModalOpen(!excelModalOpen);
     }
@@ -136,12 +162,9 @@ function InformationStep({onNext, visitorData, setVisitorData, onChange }){
                         </li>
                     </ul>
                     <ul className='v-info-3'>
-                        <li><label>방문일시</label>
-                                <ApplyDate/>
-                            <div className='day radio_bl'>
-                                <input type="radio" id="oneDay" name="day" value="1day" onChange={(e)=>{checkOneDay(e)}}/><label for="oneDay">1일</label>
-                                <input type="radio" id="twoDay" name="day" value="2day" onChange={(e)=>{checkOneDay(e)}}/><label for="twoDay">2일</label>
-                            </div>
+                        <li>
+                            <label>방문일시</label>
+                            <ApplyDate/>
                         </li>
                     </ul>
                     <ul className='v-info-4'>
@@ -151,12 +174,22 @@ function InformationStep({onNext, visitorData, setVisitorData, onChange }){
                     <ul className='v-info-5'>
                         <li>
                             <label>방문구역</label>
-                            <select value={selectedOption} onChange={handleChange} className='selectBox'>
-                                <option value="">선택하세요</option>
-                                <option value="option1">방문구역 1</option>
-                                <option value="option2">방문구역 2</option>
-                                <option value="option3">방문구역 3</option>
-                            </select>
+                            <div className='selectwrap'>
+                                <div className={`select-box ${showMenu ? 'open' : ''}`} onClick={() => setShowMenu(!showMenu)}>
+                                    {menuItem}
+                                </div>
+
+                                {showMenu && (
+                                    <div className="select-options">
+                                        {menu.map((item, index) => (
+                                            <div key={index} className={`option-item ${item === menuItem ? 'select' : ''}`}
+                                                onClick={() => handleSelect(item)}>
+                                                {item}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                         </li>
                         <li><label>방문목적</label><input type='text' placeholder='방문목적을 입력해주세요' title='방문목적'/></li>
                     </ul>
@@ -177,7 +210,7 @@ function InformationStep({onNext, visitorData, setVisitorData, onChange }){
                 </section>
                 <section className='visitor-info-group'>
                     <div className='visitor_add'>
-                        <p>방문자 추가를 눌러 추가 방문객 정보를 입력해주세요.</p>
+                        <p>방문자 추가를 눌러 추가 방문객 정보를 입력해주세요.(최대 10명)</p>
                         <button type="button" className='update-btn' onClick={handleAddVisitorClick}><span>방문자 추가</span></button>
                     </div>
                     <div className='addvisitor_form'>
