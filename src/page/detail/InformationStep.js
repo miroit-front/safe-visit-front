@@ -4,6 +4,7 @@ import { useRef } from "react";
 import ExcelUploadBtn from './modal/ExcelUploadBtn';
 import axios from 'axios';
 import InformationPlusData from './InformationPlusData';
+import ApplyDate from './ApplyDate';
 
 function InformationStep({onNext, visitorData, setVisitorData, onChange }){      
     const [checkedNationality , setCheckedNationality] = useState('내국인'); //내외국인 체크박스
@@ -14,6 +15,7 @@ function InformationStep({onNext, visitorData, setVisitorData, onChange }){
     const [isValidStaff, setIsValidStaff] = useState(false);
     const [staffName, setStaffName] = useState('');
     const [staffPhoneNumber, setStaffPhoneNumber] = useState('');
+
 
     //임직원 이름입력
     const handleNameChange = (e) =>{ 
@@ -118,7 +120,7 @@ function InformationStep({onNext, visitorData, setVisitorData, onChange }){
                                 <input type="radio" id="domestic" name="nationality" value="내국인"
                                 checked={checkedNationality === "내국인"} 
                                 onChangeCapture={(e) => checkOneNationality(e)}
-                                    onChange={(e)=>checkOneNationality(e)}/><label for="domestic">내국인</label>
+                                onChange={(e)=>checkOneNationality(e)}/><label for="domestic">내국인</label>
                                 <input type="radio" id="foreigner" name="nationality" value="외국인" 
                                 checked={checkedNationality === "외국인"} 
                                 onChangeCapture={(e) => checkOneNationality(e)}
@@ -135,9 +137,7 @@ function InformationStep({onNext, visitorData, setVisitorData, onChange }){
                     </ul>
                     <ul className='v-info-3'>
                         <li><label>방문일시</label>
-                            <input type='date' data-placeholder="날짜 선택"/><input type='time'/>
-                            <span>~</span>
-                            <input type='date'/><input type='time'/>
+                                <ApplyDate/>
                             <div className='day radio_bl'>
                                 <input type="radio" id="oneDay" name="day" value="1day" onChange={(e)=>{checkOneDay(e)}}/><label for="oneDay">1일</label>
                                 <input type="radio" id="twoDay" name="day" value="2day" onChange={(e)=>{checkOneDay(e)}}/><label for="twoDay">2일</label>
