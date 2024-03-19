@@ -7,13 +7,7 @@ import { subDays } from 'date-fns';
 function ApplyDate(){
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
-    const [applyHours, setApplyHours] = useState(new Date());
-    const [applyMinutes, setApplyMinutes] = useState(new Date());
-    const onChange = (dates) => {
-        const [start, end] = dates;
-        setStartDate(start);
-        setEndDate(end);
-      };
+    
     return(
         <div>
             <DatePicker
