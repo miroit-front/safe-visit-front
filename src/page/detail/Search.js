@@ -34,7 +34,7 @@ function Search(){
     
     /*api로 데이터 받아오는 함수 */
     function searchRes() {
-        const apiUrl_search = `visit-reservation-hist/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`; //api주소 객체에 담아
+        const apiUrl_search = `reservation/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`; //api주소 객체에 담아
         console.log(apiUrl_search);
 
         axios.get(apiUrl_search) //get방식으로 보내서
@@ -43,14 +43,15 @@ function Search(){
             console.log(res.data.content);
 
             const newData = res.data.content.map(data=>({ //res의 data안에 content를 반복문에 돌리고 newData라는 객체에 담음
-                reservationId: data.reservationId,
-                createDate: data.createDate,
-                team: data.team,
-                name: data.name,
-                visitDate: data.visitDate,
+                reservationCode: data.reservationCode,
+                createDt: data.createDt,
+                companyName: data.companyName,
+                visitorName: data.visitorName,
+                visitStartDt: data.visitStartDt,
+                escortEmployeeTeam: data.escortEmployeeTeam,
                 escortEmployeeName: data.escortEmployeeName,
-                status: data.status,
-                parkingApprovalStatus: data.parkingApprovalStatus
+                proceedingCode: data.proceedingCode,
+                parkingApproval: data.parkingApproval
             }));
             setDetailData(newData); //setDetailData에 newData를 저장
         }).catch(err => {
@@ -100,14 +101,14 @@ function Search(){
                             {detailData.map((data, i)=>(
                             <div className='table-body'>
                                 <div className="table-row" key={i}>
-                                    <div className="table-cell">{data.reservationId}</div>
-                                    <div className="table-cell">{data.createDate}</div>
-                                    <div className="table-cell">{data.team}</div>
-                                    <div className="table-cell">{data.name}</div>
-                                    <div className="table-cell">{data.visitDate}</div>
-                                    <div className="table-cell">{data.escortEmployeeName}</div>
-                                    <div onClick={handleShowModal} className="table-cell">{data.status}</div>
-                                    <div onClick={handleShowModal} className="table-cell">{data.parkingApprovalStatus}</div>
+                                    <div className="table-cell">{data.reservationCode}</div>
+                                    <div className="table-cell">{data.createDt}</div>
+                                    <div className="table-cell">{data.companyName}</div>
+                                    <div className="table-cell">{data.visitorName}</div>
+                                    <div className="table-cell">{data.visitStartDt}</div>
+                                    <div className="table-cell">{data.escortEmployeeTeam} / {data.escortEmployeeName}</div>
+                                    <div onClick={handleShowModal} className="table-cell">{data.proceedingCode}</div>
+                                    <div onClick={handleShowModal} className="table-cell">{data.parkingApproval}</div>
                                 </div>
                             </div>
                              ))}
