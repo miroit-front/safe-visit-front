@@ -3,7 +3,7 @@ import React from 'react';
 const Policycon01 = () => {
     return (
         <div>
-            <h4 style={{ marginBottom: '2rem', fontWeight: '400' }}>개인정보처리방침 0000.00.00</h4>
+            <h4 className='policy-date'>개인정보처리방침 0000.00.00</h4>
             <h4>제 1 장 총칙</h4>
             <h5>제1조 개인정보처리방침의 의의</h5>
             <p>본 개인정보처리방침은 ㈜대한항공(이하”대한항공”)의 개인정보 주체와 관련된 개인정보 처리 및 보호와 정보통신망 안전성확보에 대하여 규정하고 있습니다.</p>
