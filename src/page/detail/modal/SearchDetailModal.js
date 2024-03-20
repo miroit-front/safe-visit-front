@@ -24,26 +24,64 @@ function SearchDetailModal({setShowModal}){
     // }
     return(
         <div className='search-modal'>
-            <header><button onClick={closeModal}>X</button></header>
-           <div>대 충 내 용</div>
-            {/* <div className='search-list-result width100'>
-                                {detailApplyData.map((data, i)=>(
-                                    <div className='search-list flex' key={i}>
-                                        <div><label>No</label><p>{data.reservationId}</p></div>
-                                        <div><label>신청일자</label><p>{data.createDate}</p></div>
-                                        <div><label>회사</label><p>{data.team}</p></div>
-                                        <div><label>이름</label><p>{data.name}</p></div>
-                                        <div><label>방문일자</label><p>{data.visitDate}</p></div>
-                                        <div><label>인솔자 정보</label><p>{data.escortEmployeeName}</p></div>
-                                        <div><label>방문</label><p>{data.status}</p></div>
-                                        <div><label>주차</label><p>{data.parkingApprovalStatus}</p></div>
-                                        </div>
-                                ))}    
-                            </div> */}
-            
-                    <button type='submit' onClick={closeModal}>확인</button>
+            <div className='modal_bg' onClick={closeModal}></div>
+            <div className='modal_wrap noticeModal-container'>
+                <div className='modal_center'>
+                    <div className='modalcon_wrap'>
+                        <header>
+                            <p>추가 방문자 정보</p>
+                            <button type='button' onClick={closeModal}><img src='./img/ico_close.svg' alt='닫기'/></button>
+                        </header>
+                        <body>
+                            <div className="basic_table">
+                                <div className="table-row table-header">
+                                    <div className="table-cell">회사명/생년월일</div>
+                                    <div className="table-cell">직책/전화번호</div>
+                                    <div className="table-cell">성명/차량번호</div>
+                                    <div className="table-cell">이메일/주소</div>
+                                    <div className="table-cell">주차승인</div>
+                                </div>
+                                <div className='table-con'>
+                                    <div>
+                                        <ul>
+                                            <li>미로아이티</li>
+                                            <li>대리</li>
+                                            <li>이나다</li>
+                                            <li>naea.lee@miroit.com</li>
+                                        </ul>
+                                        <ul>
+                                            <li>2001.01.01</li>
+                                            <li>010-1111-1111</li>
+                                            <li>123가4567</li>
+                                            <li>서울시 강남구 역삼동 000000000</li>
+                                        </ul>
+                                    </div>
+                                    <div className='tag_done'><span>승인완료</span></div>
+                                </div>
+                            </div>
+                            
+                        </body>
+                        <footer className='notice-footer'>
+                                <button type='button' onClick={closeModal}>확인</button>
+                        </footer>
+                    </div>            
+                </div>
+            </div>
         </div>
     )
 }
-
+{/* <div className='search-list-result width100'>
+                                            {detailApplyData.map((data, i)=>(
+                                                <div className='search-list flex' key={i}>
+                                                    <div><label>No</label><p>{data.reservationId}</p></div>
+                                                    <div><label>신청일자</label><p>{data.createDate}</p></div>
+                                                    <div><label>회사</label><p>{data.team}</p></div>
+                                                    <div><label>이름</label><p>{data.name}</p></div>
+                                                    <div><label>방문일자</label><p>{data.visitDate}</p></div>
+                                                    <div><label>인솔자 정보</label><p>{data.escortEmployeeName}</p></div>
+                                                    <div><label>방문</label><p>{data.status}</p></div>
+                                                    <div><label>주차</label><p>{data.parkingApprovalStatus}</p></div>
+                                                    </div>
+                                            ))}    
+                        </div> */}
 export default SearchDetailModal;

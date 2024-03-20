@@ -19,10 +19,20 @@ form .apply-info input.input_basic{width: 312px;border: solid 1px #dadada;border
 .search-part{position: relative;width: 100%;}
 .table-body:hover{background-color: #F8F9FC;}
 
-.search-info .tb_num{}
-.search-info .tb_date{}
-.search-info .tb_team{}
-.search-info .tb_name{}
-.search-info .tb_escort{}
-.search-info .tb_status{}
-.search-info .tb_parking{}
+.search-info .tb_num{max-width: 50px;}
+.search-info .tb_date{width: 10%;}
+.search-info .tb_status{max-width: 110px;margin-right: 30px;}
+.search-info .tb_parking{max-width: 110px;}
+
+.table-body .tb_status{border-radius: 3rem;height: 35px;line-height: 0;}
+.table-body .tb_parking{border-radius: 3rem;height: 35px;line-height: 0;}
+
+/*승인 태그값*/
+.tag_done{background-color: #118FE4;color: white;}
+.tag_first{background-color: #E1F2FE;color: #118FE4;}
+.tag_second{background-color: #C8E9FF;color: #0063A5;}
+.tag_reject{background-color: #FFEDEE;color: #DE001B;}
+.tag_wait{background-color: #EBEBEB;color: #555;}
+.tag_parkingnum{border: solid 1px #C9C9C9;color: #777;}
+.tag_parkingnum._done{border-color: #118FE4;}
+.tag_parkingnum span{font-weight: 500;color: #118FE4;}

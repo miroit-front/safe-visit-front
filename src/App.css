@@ -43,8 +43,8 @@ input[type="number"]::-webkit-inner-spin-button {-webkit-appearance: none;margin
 /*공통 테이블 디자인*/
 .basic_table{display: flex;flex-direction: column;overflow: hidden;}
 .basic_table:last-child{border-bottom: solid 1px #dadada;}
-.table-row{display: flex;border-top: 1px solid #ebebeb;padding: 0 30px;}
-.table-cell{flex: 1;padding: 22px 0;text-align: center;}
+.table-row{display: flex;border-top: 1px solid #ebebeb;padding: 0 30px;align-items: center;}
+.table-cell{flex: 1; padding: 22px 0;text-align: center;}
 
 .table-header{font-weight: 500;border-top: solid 1px #0B2468;background-color: #F8F9FC;}
 .table-header>.table-cell{padding: 15px 0;}

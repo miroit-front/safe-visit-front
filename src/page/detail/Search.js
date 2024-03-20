@@ -91,15 +91,39 @@ function Search(){
                             <div className="table-row table-header">
                                 <div className="table-cell tb_num">No</div>
                                 <div className="table-cell tb_date">신청일자</div>
-                                <div className="table-cell tb_team">회사</div>
+                                <div className="table-cell tb_team">회사명</div>
                                 <div className="table-cell tb_name">이름</div>
-                                <div className="table-cell tb_date">방문일자</div>
+                                <div className="table-cell tb_visitdate">방문일자</div>
                                 <div className="table-cell tb_escort">인솔자 정보</div>
                                 <div className="table-cell tb_status">방문</div>
                                 <div className="table-cell tb_parking">주차</div>
                             </div>
-                            {detailData.map((data, i)=>(
                             <div className='table-body'>
+                                <div className="table-row" onClick={handleShowModal}>
+                                    <div className="table-cell tb_num">00</div>
+                                    <div className="table-cell tb_date">2024.00.00</div>
+                                    <div className="table-cell tb_team">미로아이티</div>
+                                    <div className="table-cell tb_name">김미로</div>
+                                    <div className="table-cell tb_visitdate">2024.00.00 00:00</div>
+                                    <div className="table-cell tb_escort">기획팀 / 김대한</div>
+                                    <div className="table-cell tb_status tag_done">승인완료</div>
+                                    <div className="table-cell tb_parking tag_parkingnum"><span>8</span>/10</div>
+                                </div>
+                            </div>
+                            <div className='table-body'>
+                                <div className="table-row" onClick={handleShowModal}>
+                                    <div className="table-cell tb_num">00</div>
+                                    <div className="table-cell tb_date">2024.00.00</div>
+                                    <div className="table-cell tb_team">미로아이티</div>
+                                    <div className="table-cell tb_name">김미로</div>
+                                    <div className="table-cell tb_visitdate">2024.00.00 00:00</div>
+                                    <div className="table-cell tb_escort">기획팀 / 김대한</div>
+                                    <div className="table-cell tb_status tag_first">1차승인</div> {/* 2차승인 tag_second / 승인대기 tag_wait / 반려 tag_reject  */}
+                                    <div className="table-cell tb_parking tag_parkingnum _done"><span>10</span>/10</div>
+                                </div>
+                            </div>
+                            {detailData.map((data, i)=>(
+                            <div className='table-body' onClick={handleShowModal}>
                                 <div className="table-row" key={i}>
                                     <div className="table-cell">{data.reservationCode}</div>
                                     <div className="table-cell">{data.createDt}</div>
@@ -107,8 +131,8 @@ function Search(){
                                     <div className="table-cell">{data.visitorName}</div>
                                     <div className="table-cell">{data.visitStartDt}</div>
                                     <div className="table-cell">{data.escortEmployeeTeam} / {data.escortEmployeeName}</div>
-                                    <div onClick={handleShowModal} className="table-cell">{data.proceedingCode}</div>
-                                    <div onClick={handleShowModal} className="table-cell">{data.parkingApproval}</div>
+                                    <div className="table-cell">{data.proceedingCode}</div>
+                                    <div className="table-cell">{data.parkingApproval}</div>
                                 </div>
                             </div>
                              ))}
