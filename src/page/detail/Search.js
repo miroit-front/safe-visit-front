@@ -6,8 +6,8 @@ import SearchDetailModal from './modal/SearchDetailModal';
 function Search(){
     const [detailData, setDetailData] = useState([]);
     const [checkedNationality , setCheckedNationality] = useState('내국인');
-    const [name, setName] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [name, setName] = useState(''); //방문조회 이름
+    const [phoneNumber, setPhoneNumber] = useState(''); //방문조회 폰번호
     const [showModal, setShowModal] = useState(false);
 
     const handleShowModal=()=>{ 

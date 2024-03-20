@@ -1,5 +1,5 @@
 import './NoticeListModal.css';
-import { useNotices } from '../../component/page/NoticeProvider';
+import { useNotices } from '../../context/NoticeProvider';
 import React, { useState } from 'react';
 
 function NoticeListModal(){

@@ -1,5 +1,5 @@
 import './Main.css';
-import { useNotices } from './page/NoticeProvider';
+import { useNotices } from '../context/NoticeProvider';
 
 function Main(){
     const { noticeTitle, noticeCal, noticeBody, setIsOpen, setSelectedNotice, showListModal } = useNotices();
