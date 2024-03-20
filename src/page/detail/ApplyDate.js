@@ -69,17 +69,14 @@ function ApplyDate() {
             nextMonthButtonDisabled,
           }) => (
             <div className="date-customheader">
-              <button type="button" onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
-                {"<"}
-              </button>
+              <button type="button" onClick={decreaseMonth} disabled={prevMonthButtonDisabled} className="month_prev"></button>
               <div className="custom-month">{date.getFullYear()}년 {months[date.getMonth()]}월</div>
-              <button type="button" onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
-                {">"}
-              </button>
+              <button type="button" onClick={increaseMonth} disabled={nextMonthButtonDisabled} className="month_next"></button>
             </div>
           )}
         selected={startDate}
         onChange={(date) => handleStartDateChange(date)}
+        popperPlacement="bottom-end"
         showTimeSelect
         minDate={subDays(new Date(), 0)} //오늘의 이전 날짜는 선택 못하게
         timeFormat="HH:mm"
@@ -88,13 +85,26 @@ function ApplyDate() {
         dateFormat="yyyy년 MM월 dd일 aa h:mm"
         locale="ko"
         showPopperArrow={false}
-        className="custom-datepicker" // 스타일 클래스 적용
-        //dayClassName={(d) => (d.getDate() === startDate.getDate() ? 'selectedDay' : 'unselectedDay')} // 선택된 날짜에 스타일 적용
+        className="custom-datepicker" 
         />
         <span>~</span>
         <DatePicker
+        renderCustomHeader={({
+          date,
+          decreaseMonth,
+          increaseMonth,
+          prevMonthButtonDisabled,
+          nextMonthButtonDisabled,
+        }) => (
+          <div className="date-customheader">
+            <button type="button" onClick={decreaseMonth} disabled={prevMonthButtonDisabled} className="month_prev"></button>
+            <div className="custom-month">{date.getFullYear()}년 {months[date.getMonth()]}월</div>
+            <button type="button" onClick={increaseMonth} disabled={nextMonthButtonDisabled} className="month_next"></button>
+          </div>
+        )}
         selected={endDate}
         onChange={(date) => handleEndDateChange(date)}
+        popperPlacement="bottom-end"
         showTimeSelect
         minDate={startDate}
         timeFormat="HH:mm"
@@ -103,8 +113,7 @@ function ApplyDate() {
         dateFormat="yyyy년 MM월 dd일 aa h:mm"
         locale="ko"
         showPopperArrow={false}
-        className="custom-datepicker" // 스타일 클래스 적용
-        //dayClassName={(d) => (d.getDate() === startDate.getDate() ? 'selectedDay' : 'unselectedDay')} // 선택된 날짜에 스타일 적용
+        className="custom-datepicker"
         />
         <div className='day radio_bl'>
             <input type="radio" id="oneDay" name="day" value="1day" checked={selectedRadio === "1day"} onChange={(e) => checkOneDay(e)}/>
