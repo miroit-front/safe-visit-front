@@ -12,6 +12,7 @@ function Search(){
 
     const handleShowModal=()=>{ 
         setShowModal(true);
+        document.body.style.overflow = "hidden";
     }
     const handleNameChange=(event) => {
         setName(event.target.value);
@@ -63,6 +64,7 @@ function Search(){
     
     return(
         <form action="#" onSubmit={handleFormSubmit}>
+            {showModal && (<SearchDetailModal setShowModal={setShowModal} detailData={detailData}/>)} {/*showModal이 true */}
             <section className='apply-info'>
                 <h5>신청자 정보</h5>
                 <ul>
@@ -163,7 +165,6 @@ function Search(){
                 
             </section>
             <div className="center_btn"><button onClick={(e)=>{window.location.href = '/'}} type='button' className="btn_blue">확인</button></div>
-            {showModal && (<SearchDetailModal setShowModal={setShowModal} detailData={detailData}/>)} {/*showModal이 true */}
         </form>
     )
 }

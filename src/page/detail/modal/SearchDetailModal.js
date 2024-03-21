@@ -6,7 +6,9 @@ function SearchDetailModal({setShowModal}){
     const [detailApplyData, setDetailApplyData] = useState([]);
     const closeModal = () => {
         setShowModal(false);
+        document.body.style.overflow = "auto";
     }
+
     // function searchDetailRes(){
     //     const apiUrl_detail = `visit-reservation-hist/get-list/${id}?page=0&size=20`;
     //     console.log(apiUrl_detail);
@@ -34,15 +36,19 @@ function SearchDetailModal({setShowModal}){
                         </header>
                         <body>
                             <div className="basic_table">
-                                <div className="table-row table-header">
-                                    <div className="table-cell">회사명/생년월일</div>
-                                    <div className="table-cell">직책/전화번호</div>
-                                    <div className="table-cell">성명/차량번호</div>
-                                    <div className="table-cell">이메일/주소</div>
-                                    <div className="table-cell">주차승인</div>
+                                <div className="table-tit">
+                                    <div className='info_wrap'>
+                                        <ul>
+                                            <li>회사명/생년월일</li>
+                                            <li>직책/전화번호</li>
+                                            <li>성명/차량번호</li>
+                                            <li>이메일/주소</li>
+                                        </ul>
+                                    </div>
+                                    <div className='pakingbox'>주차승인</div>
                                 </div>
-                                <div className='table-con'>
-                                    <div>
+                                <div>{/* 이부분 반복 */}
+                                    <div className='info_wrap'>
                                         <ul>
                                             <li>미로아이티</li>
                                             <li>대리</li>
@@ -56,10 +62,77 @@ function SearchDetailModal({setShowModal}){
                                             <li>서울시 강남구 역삼동 000000000</li>
                                         </ul>
                                     </div>
-                                    <div className='tag_done'><span>승인완료</span></div>
+                                    <div className='pakingbox'><span className='tag_done'>승인완료</span></div>{/* tag_wait 승인대기 */}
+                                </div>
+                                <div>{/* 이부분 반복 */}
+                                    <div className='info_wrap'>
+                                        <ul>
+                                            <li>미로아이티</li>
+                                            <li>대리</li>
+                                            <li>이나다</li>
+                                            <li>naea.lee@miroit.com</li>
+                                        </ul>
+                                        <ul>
+                                            <li>2001.01.01</li>
+                                            <li>010-1111-1111</li>
+                                            <li>123가4567</li>
+                                            <li>서울시 강남구 역삼동 000000000</li>
+                                        </ul>
+                                    </div>
+                                    <div className='pakingbox'><span className='tag_done'>승인완료</span></div>
+                                </div>
+                                <div>{/* 이부분 반복 */}
+                                    <div className='info_wrap'>
+                                        <ul>
+                                            <li>미로아이티</li>
+                                            <li>대리</li>
+                                            <li>이나다</li>
+                                            <li>naea.lee@miroit.com</li>
+                                        </ul>
+                                        <ul>
+                                            <li>2001.01.01</li>
+                                            <li>010-1111-1111</li>
+                                            <li>123가4567</li>
+                                            <li>서울시 강남구 역삼동 000000000</li>
+                                        </ul>
+                                    </div>
+                                    <div className='pakingbox'><span className='tag_done'>승인완료</span></div>
+                                </div>
+                                <div>{/* 이부분 반복 */}
+                                    <div className='info_wrap'>
+                                        <ul>
+                                            <li>미로아이티</li>
+                                            <li>대리</li>
+                                            <li>이나다</li>
+                                            <li>naea.lee@miroit.com</li>
+                                        </ul>
+                                        <ul>
+                                            <li>2001.01.01</li>
+                                            <li>010-1111-1111</li>
+                                            <li>123가4567</li>
+                                            <li>서울시 강남구 역삼동 000000000</li>
+                                        </ul>
+                                    </div>
+                                    <div className='pakingbox'><span className='tag_done'>승인완료</span></div>
+                                </div>
+                                <div>{/* 이부분 반복 */}
+                                    <div className='info_wrap'>
+                                        <ul>
+                                            <li>미로아이티</li>
+                                            <li>대리</li>
+                                            <li>이나다</li>
+                                            <li>naea.lee@miroit.com</li>
+                                        </ul>
+                                        <ul>
+                                            <li>2001.01.01</li>
+                                            <li>010-1111-1111</li>
+                                            <li>123가4567</li>
+                                            <li>서울시 강남구 역삼동 000000000</li>
+                                        </ul>
+                                    </div>
+                                    <div className='pakingbox'><span className='tag_done'>승인완료</span></div>
                                 </div>
                             </div>
-                            
                         </body>
                         <footer className='notice-footer'>
                                 <button type='button' onClick={closeModal}>확인</button>
