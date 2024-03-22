@@ -9,7 +9,7 @@ function InformationPlusData  ({ id, onDelete, handleVisitorPlusInfo }){
     const [phoneNumber, setPhoneNumber] = useState('');
     const [carNumber, setCarNumber] = useState('');
     const [address, setAddress] = useState('');
-    const [primaryVisitor, setPrimaryVisitor] = useState('');
+    const [primaryVisitor, setPrimaryVisitor] = useState('N');
 
 
     // 회사명 입력 변경 시 호출되는 함수

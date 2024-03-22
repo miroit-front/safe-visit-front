@@ -3,7 +3,8 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import ko from 'date-fns/locale/ko';
 import "./ApplyDate.css";
 import "react-datepicker/dist/react-datepicker.css";
-import { subDays, getYear, getMonth } from "date-fns";
+import { subDays } from "date-fns";
+
 const _ = require('lodash');
 
 registerLocale('ko', ko); 
@@ -59,7 +60,7 @@ function ApplyDate({visitStartDt, setVisitStartDt, visitEndDt, setVisitEndDt, se
         renderCustomHeader={({
             date,
             decreaseMonth,
-            increaseMonth,
+            increaseMonth, 
             prevMonthButtonDisabled,
             nextMonthButtonDisabled,
           }) => (

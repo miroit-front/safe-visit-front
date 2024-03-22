@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import InformationPlusData from './InformationPlusData';
 import ApplyDate from './ApplyDate';
+import { format } from 'date-fns';
 
 function InformationStep({onNext, personalInfoConsent}){      
     const [selectedFile, setSelectedFile] = useState(null); // 파일선택
@@ -26,6 +27,7 @@ function InformationStep({onNext, personalInfoConsent}){
     const [escortEmployeeName, setEscortEmployeeName] = useState('');
     const [applicantName, setApplicantName] = useState('');
     const [applicantTeam, setApplicantTeam] = useState('');
+    const [applicantEmail, setApplicantEmail] = useState(''); 
     const [visitDepartment, setVisitDepartment] = useState('');
     
     const [companyName, setCompanyName] = useState(''); //대표방문자 회사명 state
@@ -38,19 +40,24 @@ function InformationStep({onNext, personalInfoConsent}){
     const [visitDepartmentLimitStatus, setVisitDepartmentLimitStatus] = useState(null); //대표방문자 1일, 2일 체크 state
     const [selectedDate, setSelectedDate] = useState(new Date()); //대표방문자 선택된 날짜 state
     const [resiNumber, setResiNumber] = useState(''); //대표방문자 생년월일
+    const [email, setEmail] = useState(''); //대표방문자 생년월일
+
     const [visitPurpose, setVisitPurpose] = useState(''); //대표방문자 방문 목적 state
     const [carNumber, setCarNumber] = useState(''); //대표방문자 차량번호 stat
     const [vehicleShortTermEntry, setVehicleShortTermEntry] = useState(''); //대표방문자 사옥내 진입일 때 Y state
     const [address, setAddress] = useState(''); //대표방문자 주소
     const [applicantComment, setApplicantComment] = useState(''); //대표방문자 추가사항 state 
-    const [primaryVisitor, setPrimaryVisitor] = useState('');//대표방문자일때만 Y state
+    const [primaryVisitor, setPrimaryVisitor] = useState('Y');//대표방문자일때만 Y state
 
     /*방문자 신청 정보 핸들러*/
     const handleReservationSiteChange = (e) => {setReservationSite(e.target.value);};
     const handleEmployeeNumberChange = (e) => {setEmployeeNumber(e.target.value);}
+    const handleEmployeeNameChange = (e) => {setEmployeeName(e.target.value);}
+    const handleEmployeeTeamChange = (e) => {setEmployeeTeam(e.target.value);}
     const handleEscortEmployeeNameChange = (e) => {setEscortEmployeeName(e.target.value);}
     const handleApplicantNameChange = (e) => {setApplicantName(e.target.value);}
     const handleApplicantTeamChange = (e) => {setApplicantTeam(e.target.value);}
+    const handleApplicantEmailChange = (e) => {setApplicantEmail(e.target.value);}
 
     const handleVisitPurposeChange = (e) => {setVisitPurpose(e.target.value);}
     const handleVisitDepartmentChange = (e) => {setVisitDepartment(e.target.value);}
@@ -61,10 +68,11 @@ function InformationStep({onNext, personalInfoConsent}){
     /*방문자 정보 시작 */
     const handleCompanyNameChange = (e) => {setCompanyName(e.target.value);} //회사명 저장
     const handleJobTitleChange = (e) => {setJobTitle(e.target.value);} //직책 저장
-    const handleVisitorNameChange = (e) => {setVisitorName(e.target.value);} //성명 저장
+    const handleVisitorNameChange = (e) => {setVisitorName(e.target.value);console.log(e.target.value);} //성명 저장
     const handleResiNumberChange = (e) => {setResiNumber(e.target.value);} //생년월일 저장
     const handlePhoneNumberChange = (e) => {setPhoneNumber(e.target.value);} //폰번호 저장
     const handleCarNumberChange = (e) => {setCarNumber(e.target.value);} //차량번호 저장
+    const handleEmailChange = (e) => {setEmail(e.target.value);} //차량번호 저장
     const handleVisitDepartmentLimitStatusChange = (e) => {setVisitDepartmentLimitStatus(e.target.value);} // 1일,2일 기간 저장
     const handleAddressChange = (e) => {setAddress(e.target.value);} //주소 저장(방산구역 방문자만)
     const handlePrimaryVisitoChange = (e) => {setPrimaryVisitor(e.target.value);} //대표방문자일때
@@ -91,7 +99,7 @@ function InformationStep({onNext, personalInfoConsent}){
         phoneNumber: '',
         carNumber: '',
         address: '',
-        primaryVisitor: '',
+        primaryVisitor: 'N',
     }]); 
 
     /*추가 방문객 정보 받아서 업데이트하는 함수*/
@@ -147,85 +155,109 @@ function InformationStep({onNext, personalInfoConsent}){
     function applyInfor(e){
         e.preventDefault(); // 폼 기본 제출동작 방지
 
-        // const request = { // 전송할 데이터 변수에 담음
+       // 서버에 맞는 날짜 포맷으로 변환
+        const foramttedVisitStartDt = format(visitStartDt, "yyyy-MM-dd HH:mm:ss");
+        const formattedVisitEndDt  = format(visitEndDt, "yyyy-MM-dd HH:mm:ss");
+        console.log(foramttedVisitStartDt);
+        console.log(formattedVisitEndDt );
+        console.log(companyName);
+        console.log(foreignerStatus);
+        console.log(resiNumber);
+        console.log(phoneNumber);
+        console.log(carNumber);
+        console.log(address);
+        console.log(email);
+        console.log(primaryVisitor);
+        console.log(applicantComment);
+
+        const request = { // 전송할 데이터 변수에 담음
+                reservationSite: "VISITOR",
+                employeeNumber: "000009",
+                employeeName : "이주연",
+                employeeTeam : "개발팀",
+                escortEmployeeTeam: "자금전략실",
+                escortEmployeeName: "김대한",
+                applicantCompany: "MiroIT",
+                applicantTeam: "개발팀",
+                applicantJob: "대리",
+                applicantEmployeeNumber: 'string',
+                applicantName: "이주연",
+                applicantPhoneNumber: "01012341234",
+                applicantEmail: "2mail@mail.com",
+                applicantComment: applicantComment,
+                visitPurpose: visitPurpose,
+                visitDepartment: visitDepartment,
+                visitDepartmentLimitStatus: visitDepartmentLimitStatus,
+                visitStartDt: foramttedVisitStartDt, //변환된 타입의 시작날짜
+                visitEndDt: formattedVisitEndDt, //변환된 타입의 마지막 날짜
+                personalInfoConsent: personalInfoConsent,
+                vehicleShortTermEntry: vehicleShortTermEntry,
+                visitorList: [ //기본 방문자 정보와 추가 방문자정보 배열을 visitorList라는 하나의 요청으로 전송
+                {
+                        companyName: companyName,
+                        jobTitle: jobTitle,
+                        name: visitorName,
+                        foreignerStatus: foreignerStatus,
+                        resiNumber: resiNumber,
+                        phoneNumber: phoneNumber,
+                        carNumber: carNumber,
+                        address:  address,
+                        email: email,
+                        primaryVisitor: "Y",
+                        },
+                       // ...visitorPlusInfo 
+                    ]
+                };
+
+        // const request = {
         //     reservationSite: "VISITOR",
         //     employeeNumber: "000009",
-        //     escortEmployeeName: "자금전략실",
-        //     escortEmployeeNumber: "000009",
-        //     applicantName: "김대한",
+        //     employeeName : "강민지",
+        //     employeeTeam : "개발팀",
+        //     escortEmployeeTeam: "자금전략실",
+        //     escortEmployeeName: "김대한",
         //     applicantCompany: "MiroIT",
         //     applicantTeam: "개발팀",
         //     applicantJob: "대리",
         //     applicantEmployeeNumber: "string",
-        //     applicantName: "이주연",
+        //     applicantName: "박문자",
         //     applicantPhoneNumber: "01012341234",
-        //     applicantEmail: "2mail@mail.com",
-        //     applicantComment: applicantComment,
-        //     visitPurpose: visitPurpose,
-        //     visitDepartment: visitDepartment,
-        //     visitDepartmentLimitStatus: visitDepartmentLimitStatus,
-        //     visitStartDt: visitStartDt,
-        //     visitEndDt: visitEndDt,
-        //     personalInfoConsent: personalInfoConsent,
-        //     vehicleShortTermEntry: vehicleShortTermEntry,
-        //     visitorList: [ //기본 방문자 정보와 추가 방문자정보 배열을 visitorList라는 하나의 요청으로 전송
-        //     {
-        //         companyName: companyName,
-        //         jobTitle: jobTitle,
-        //         name: visitorName,
-        //         foreignerStatus: foreignerStatus,
-        //         resiNumber: resiNumber,
-        //         phoneNumber: phoneNumber,
-        //         carNumber: carNumber,
-        //         address:  address,
+        //     applicantEmail: "mail@mail.com",
+        //     applicantComment: "신속한 처리 부탁드립니다.",
+        //     visitPurpose: "회의",
+        //     visitDepartment: "자금전략실",
+        //     visitDepartmentLimitStatus: "N",
+        //     visitStartDt: "2024-05-01 13:00:00",
+        //     visitEndDt: "2024-05-01 14:00:00",
+        //     personalInfoConsent: "Y",
+        //     vehicleShortTermEntry: "N",
+        //     visitorList: [
+        //       {
+        //         companyName: "MiroIT",
+        //         jobTitle: "대리",
+        //         name: "박문자",
+        //         foreignerStatus: "N",
+        //         resiNumber: "991231",
+        //         phoneNumber: "01012345678",
+        //         carNumber: "12가1234",
+        //         address: "서울특별시 중구 세종대로 110",
         //         email: "mail@mail.com",
-        //         primaryVisitor: "Y",
-        //         },
-        //         ...visitorPlusInfo 
+        //         primaryVisitor: "Y"
+        //       }
         //     ]
-        // };
+        //   };
 
-        const request = {
-            reservationSite: "VISITOR",
-            employeeNumber: "000009",
-            escortEmployeeTeam: "자금전략실",
-            escortEmployeeNumber: "000009",
-            escortEmployeeName: "김대한",
-            applicantCompany: "MiroIT",
-            applicantTeam: "개발팀",
-            applicantJob: "대리",
-            applicantEmployeeNumber: "",
-            applicantName: "박문자",
-            applicantPhoneNumber: "01012341234",
-            applicantEmail: "mail@mail.com",
-            applicantComment: "신속한 처리 부탁드립니다.",
-            visitPurpose: "회의",
-            visitDepartment: "자금전략실",
-            visitDepartmentLimitStatus: "N",
-            visitStartDt: "2024-05-01 13:00:00",
-            visitEndDt: "2024-05-01 14:00:00",
-            personalInfoConsent: "Y",
-            vehicleShortTermEntry: "N",
-            visitorList: [
-              {
-                companyName: "MiroIT",
-                jobTitle: "대리",
-                name: "박문자",
-                foreignerStatus: "N",
-                resiNumber: "991231",
-                phoneNumber: "01012345678",
-                carNumber: "12가1234",
-                address: "서울특별시 중구 세종대로 110",
-                email: "mail@mail.com",
-                primaryVisitor: "Y"
-              }
-            ]
-          };
-        
+        request.visitorList.forEach(visitor => {
+            console.log(visitor.name);
+          });
+
         const apiUrl_applyInfor = '/reservation/save'; //api 호출 통해 서버로 데이터 전송
-        console.log(apiUrl_applyInfor);   
-        console.log("제출된 신청 정보:", request); // 모든 입력 데이터
-        axios.post(apiUrl_applyInfor, request)
+        console.log(apiUrl_applyInfor);
+        const data = new FormData();
+        data.append('request', new Blob([JSON.stringify(request)], { type: 'application/json' })); // requestObject는 방문 예약 정보를 담은 객체입니다.
+        console.log(data);
+
+        axios.post(apiUrl_applyInfor, data)
         .then(response =>{
             console.log(response.data);//처리결과 출력
             onNext();
@@ -233,9 +265,21 @@ function InformationStep({onNext, personalInfoConsent}){
         .catch(error => {
             console.log(error);
         })
-    }
 
+    //     const apiUrl_applyInfor = '/reservation/save'; //api 호출 통해 서버로 데이터 전송
+    //     console.log(apiUrl_applyInfor);   
+    //     console.log(Date()+"제출된 신청 정보:", request); // 모든 입력 데이터
+    //     axios.post(apiUrl_applyInfor, request)
+    //     .then(response =>{
+    //         console.log(response.data);//처리결과 출력
+    //         onNext();
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //     })
+     }
 
+    
 
 
     useEffect(() => {
@@ -337,7 +381,7 @@ function InformationStep({onNext, personalInfoConsent}){
                     </ul>
                     <ul className='v-info-4'>
                         <li><label>생년월일</label><input type='text' value={resiNumber} onChange={handleResiNumberChange} placeholder='숫자 8자리 입력해주세요 YYYYMMDD' title='생년월일'/></li>
-                        <li><label>이메일</label><input type='text' placeholder='이메일을 입력해주세요' title='이메일'/></li>
+                        <li><label>이메일</label><input type='text' value={email} onChange={handleEmailChange}  placeholder='이메일을 입력해주세요' title='이메일'/></li>
                     </ul>
                     <ul className='v-info-5'>
                         <li>

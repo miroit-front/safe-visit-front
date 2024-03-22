@@ -59,7 +59,7 @@ function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk
             console.log(personalInfoConsent);  //콘솔에 상태가 찍히고
             onNext(); //다음 단계로 이동
         }
-    }, [personalInfoConsent]);
+    }, [onNext, personalInfoConsent]);
     
     function handleNextBtnChange(){ //동의 상태에 따른 다음 페이지 이동 처리
         if((allChk && chk1 && chk2) || (!allChk && chk1 && chk2)){
