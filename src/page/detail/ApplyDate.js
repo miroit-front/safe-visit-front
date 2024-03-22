@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import ko from 'date-fns/locale/ko';
 import "./ApplyDate.css";
@@ -8,12 +8,7 @@ const _ = require('lodash');
 
 registerLocale('ko', ko); 
 
-function ApplyDate() {
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const [selectedRadio, setSelectedRadio] = useState(null);
-
+function ApplyDate({visitStartDt, setVisitStartDt, visitEndDt, setVisitEndDt, selectedDate, setSelectedDate, visitDepartmentLimitStatus, setVisitDepartmentLimitStatus }) {
 
     const years = _.range(1990, new Date().getFullYear() + 1, 1);
     const months = [
@@ -32,30 +27,30 @@ function ApplyDate() {
     ];
 
     useEffect(() => {
-    setSelectedDate(startDate);
-    }, [startDate, setSelectedDate]); // 1일 2일 라디오 선택 관련
+    setSelectedDate(visitStartDt);
+    }, [visitStartDt, setSelectedDate]); // 1일 2일 라디오 선택 관련
 
     // 1일 또는 2일 라디오 버튼 선택 시 end date 계산
     const checkOneDay = (e) => {
         const value = e.target.value;
         if (value === "1day") {
-          setEndDate(new Date(startDate.getTime() + 1 * 24 * 60 * 60 * 1000)); // 1일 후 날짜 설정
+          setVisitEndDt(new Date(visitStartDt.getTime() + 1 * 24 * 60 * 60 * 1000)); // 1일 후 날짜 설정
         } else if (value === "2day") {
-          setEndDate(new Date(startDate.getTime() + 2 * 24 * 60 * 60 * 1000)); // 2일 후 날짜 설정
+          setVisitEndDt(new Date(visitStartDt.getTime() + 2 * 24 * 60 * 60 * 1000)); // 2일 후 날짜 설정
         }
-        setSelectedRadio(value); // 선택된 라디오 버튼 상태 업데이트
+        setVisitDepartmentLimitStatus(value); // 선택된 라디오 버튼 상태 업데이트
       };
     
       // 시작 날짜 변경 시 종료 날짜 초기화 및 선택된 라디오 버튼 해제
       const handleStartDateChange = (date) => {
-        setStartDate(date);
-        setEndDate(date);
-        setSelectedRadio(null);
+        setVisitStartDt(date);
+        setVisitEndDt(date);
+        setVisitDepartmentLimitStatus(null);
       };
 
       const handleEndDateChange = (date) => {
-        setEndDate(date);
-        setSelectedRadio(null); // 종료 날짜 변경 시 라디오 버튼 해제
+        setVisitEndDt(date);
+        setVisitDepartmentLimitStatus(null); // 종료 날짜 변경 시 라디오 버튼 해제
       };
 
   return (
@@ -74,7 +69,7 @@ function ApplyDate() {
               <button type="button" onClick={increaseMonth} disabled={nextMonthButtonDisabled} className="month_next"></button>
             </div>
           )}
-        selected={startDate}
+        selected={visitStartDt}
         onChange={(date) => handleStartDateChange(date)}
         popperPlacement="bottom-end"
         showTimeSelect
@@ -102,11 +97,11 @@ function ApplyDate() {
             <button type="button" onClick={increaseMonth} disabled={nextMonthButtonDisabled} className="month_next"></button>
           </div>
         )}
-        selected={endDate}
+        selected={visitEndDt}
         onChange={(date) => handleEndDateChange(date)}
         popperPlacement="bottom-end"
         showTimeSelect
-        minDate={startDate}
+        minDate={visitStartDt}
         timeFormat="HH:mm"
         timeIntervals={30}
         timeCaption="time"
@@ -116,9 +111,9 @@ function ApplyDate() {
         className="custom-datepicker"
         />
         <div className='day radio_bl'>
-            <input type="radio" id="oneDay" name="day" value="1day" checked={selectedRadio === "1day"} onChange={(e) => checkOneDay(e)}/>
+            <input type="radio" id="oneDay" name="day" value="1day" checked={visitDepartmentLimitStatus === "1day"} onChange={(e) => checkOneDay(e)}/>
             <label htmlFor="oneDay">1일</label>
-            <input type="radio" id="twoDay" name="day" value="2day" checked={selectedRadio === "2day"} onChange={(e) => checkOneDay(e)}/>
+            <input type="radio" id="twoDay" name="day" value="2day" checked={visitDepartmentLimitStatus === "2day"} onChange={(e) => checkOneDay(e)}/>
             <label htmlFor="twoDay">2일</label>
         </div>
     </div>

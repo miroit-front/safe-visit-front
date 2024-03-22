@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './AgreementStep.css';
 import { Link } from 'react-router-dom';
 
-function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk2,}){
-
+function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk2, personalInfoConsent, setPersonalInfoConsent}){
 
     function handleAllChkChange(){ //약관동의 체크박스
         if(allChk === true && (chk1 === false || chk2 === false)){
@@ -32,6 +31,7 @@ function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk
             setChk2(prev => !prev);
         }
     }
+
     function handleSingleChkChange(e){
             const id = e.target.id;
             if(id === 'chk1'){
@@ -42,7 +42,7 @@ function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk
             if(allChk===true && id === 'chk1'){
                 setAllchk(false);
                 setChk1(false);
-                setChk2(allChk);
+                setChk2(allChk)
             }if(allChk===true && id === 'chk2'){
                 setAllchk(false);
                 setChk1(allChk);
@@ -53,16 +53,23 @@ function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk
                 setChk2(true);
             }
     }
+    
+    useEffect(() => { //아래 함수에 Y를 상태에 저장하고 바로 onNext()를 실행하면 비동기적으로 처리되기 때문에 useEffect를 사용함
+        if(personalInfoConsent === 'Y'){ //Y값이 현재 상태일 때
+            console.log(personalInfoConsent);  //콘솔에 상태가 찍히고
+            onNext(); //다음 단계로 이동
+        }
+    }, [personalInfoConsent]);
+    
     function handleNextBtnChange(){ //동의 상태에 따른 다음 페이지 이동 처리
-        if(allChk===true && chk1===true && chk2===true){
-            onNext();
-        }else if(allChk===false && chk1===true && chk2===true){
-            onNext();
+        if((allChk && chk1 && chk2) || (!allChk && chk1 && chk2)){
+            setPersonalInfoConsent('Y'); //모두 동의 됐을 때 Y값이 상태에 저장됨
         }else{
             setStep(0);
             alert('약관 동의를 확인해주세요. \n서비스를 이용하기 위해서는 동의가 필요합니다.');
         }
     }
+
     return(
         <div>
 
@@ -71,13 +78,13 @@ function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk
                 <p>약관 및 개인정보 수집 이용에 동의 해주세요.</p>
                 <div className="allagree_check checkbox_wrap">
                     <input id="agree" type="checkbox" checked={allChk} onChange={handleAllChkChange}/>
-                    <label for="agree"><span>이용약관 동의(필수) 및 개인정보 수집 이용 동의(필수)에 모두 동의합니다.</span></label>
+                    <label htmlFor="agree"><span>이용약관 동의(필수) 및 개인정보 수집 이용 동의(필수)에 모두 동의합니다.</span></label>
                 </div>
             </section>
             <section className="agree_box">
                 <div className="agree_check checkbox_wrap">
                     <input id="chk1" type="checkbox" checked={chk1} onChange={handleSingleChkChange}/>
-                    <label for="chk1"><span>[필수]</span> 서비스이용약관</label>
+                    <label htmlFor="chk1"><span>[필수]</span> 서비스이용약관</label>
                 </div>
                 <div className="policy_box">
                     <h4>제 1장 총칙</h4>
@@ -105,7 +112,7 @@ function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk
             <section className="agree_box">
                 <div className="agree_check checkbox_wrap">
                     <input id="chk2" type="checkbox" checked={chk2} onChange={handleSingleChkChange}/>
-                    <label for="chk2"><span>[필수]</span> 개인정보처리방침</label>
+                    <label htmlFor="chk2"><span>[필수]</span> 개인정보처리방침</label>
                 </div>
                 <div className="policy_box">
                     <h4>제 1장 총칙</h4>
@@ -129,9 +136,11 @@ function AgreementStep({onNext,setStep,allChk,setAllchk,chk1,setChk1,chk2,setChk
                     <p>서비스를 이용하기 위해서는 동의가 필요합니다.</p>
                 </div>
             </section>
-            <Link to={`/apply?agreed=${allChk && chk1 && chk2}`} className="center_btn">
-                <button  onClick={handleNextBtnChange} className="btn_blue">다음</button>
+            <div className="center_btn">
+                <Link to={`/apply?agreed=${allChk && chk1 && chk2}`} onClick={handleNextBtnChange} className="btn_blue">
+               다음
             </Link>
+            </div>
         </div>
     )
 }
