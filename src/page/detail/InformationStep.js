@@ -44,7 +44,7 @@ function InformationStep({onNext, personalInfoConsent}){
 
     const [visitPurpose, setVisitPurpose] = useState(''); //대표방문자 방문 목적 state
     const [carNumber, setCarNumber] = useState(''); //대표방문자 차량번호 stat
-    const [vehicleShortTermEntry, setVehicleShortTermEntry] = useState(''); //대표방문자 사옥내 진입일 때 Y state
+    const [vehicleShortTermEntry, setVehicleShortTermEntry] = useState('N'); //대표방문자 사옥내 진입일 때 Y state, N은 디폴트로 수정함
     const [address, setAddress] = useState(''); //대표방문자 주소
     const [applicantComment, setApplicantComment] = useState(''); //대표방문자 추가사항 state 
     const [primaryVisitor, setPrimaryVisitor] = useState('Y');//대표방문자일때만 Y state
@@ -171,6 +171,7 @@ function InformationStep({onNext, personalInfoConsent}){
         console.log(email);
         console.log(primaryVisitor);
         console.log(applicantComment);
+        console.log(vehicleShortTermEntry);
 
         const request = { // 전송할 데이터 변수에 담음
                 reservationSite: "VISITOR",
@@ -188,7 +189,7 @@ function InformationStep({onNext, personalInfoConsent}){
                 applicantEmail: "2mail@mail.com",
                 applicantComment: applicantComment,
                 visitPurpose: visitPurpose,
-                visitDepartment: visitDepartment,
+                visitDepartment: "자금전략실",
                 visitDepartmentLimitStatus: visitDepartmentLimitStatus,
                 visitStartDt: formattedVisitStartDt, //변환된 타입의 시작날짜
                 visitEndDt: formattedVisitEndDt, //변환된 타입의 마지막 날짜
@@ -208,7 +209,8 @@ function InformationStep({onNext, personalInfoConsent}){
                         primaryVisitor: "Y",
                         },
                        // ...visitorPlusInfo 
-                    ]
+                    ],
+                    user: "tester",
                 };
 
         // const request = {
