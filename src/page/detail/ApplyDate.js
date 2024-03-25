@@ -33,14 +33,19 @@ function ApplyDate({visitStartDt, setVisitStartDt, visitEndDt, setVisitEndDt, se
 
     // 1일 또는 2일 라디오 버튼 선택 시 end date 계산
     const checkOneDay = (e) => {
-        const value = e.target.value;
-        if (value === "1day") {
-          setVisitEndDt(new Date(visitStartDt.getTime() + 1 * 24 * 60 * 60 * 1000)); // 1일 후 날짜 설정
-        } else if (value === "2day") {
-          setVisitEndDt(new Date(visitStartDt.getTime() + 2 * 24 * 60 * 60 * 1000)); // 2일 후 날짜 설정
-        }
-        setVisitDepartmentLimitStatus(value); // 선택된 라디오 버튼 상태 업데이트
-      };
+      const value = e.target.value;
+      console.log(value);
+      let limitStatus;
+      if (value === "1day") {
+        setVisitEndDt(new Date(visitStartDt.getTime() + 1 * 24 * 60 * 60 * 1000)); // 1일 후 날짜 설정
+        limitStatus = "Y"; // "1day"를 "Y"로 해석
+      } else if (value === "2day") {
+        setVisitEndDt(new Date(visitStartDt.getTime() + 2 * 24 * 60 * 60 * 1000)); // 2일 후 날짜 설정
+        limitStatus = "N"; // "2day"를 "N"으로 해석
+      }
+      setVisitDepartmentLimitStatus(limitStatus); // 변환된 값으로 상태 업데이트
+      console.log(visitDepartmentLimitStatus);
+  };
     
       // 시작 날짜 변경 시 종료 날짜 초기화 및 선택된 라디오 버튼 해제
       const handleStartDateChange = (date) => {
@@ -112,9 +117,9 @@ function ApplyDate({visitStartDt, setVisitStartDt, visitEndDt, setVisitEndDt, se
         className="custom-datepicker"
         />
         <div className='day radio_bl'>
-            <input type="radio" id="oneDay" name="day" value="1day" checked={visitDepartmentLimitStatus === "1day"} onChange={(e) => checkOneDay(e)}/>
+            <input type="radio" id="oneDay" name="day" value="1day" checked={visitDepartmentLimitStatus === "Y"} onChange={(e) => checkOneDay(e)}/>
             <label htmlFor="oneDay">1일</label>
-            <input type="radio" id="twoDay" name="day" value="2day" checked={visitDepartmentLimitStatus === "2day"} onChange={(e) => checkOneDay(e)}/>
+            <input type="radio" id="twoDay" name="day" value="2day" checked={visitDepartmentLimitStatus === "N"} onChange={(e) => checkOneDay(e)}/>
             <label htmlFor="twoDay">2일</label>
         </div>
     </div>

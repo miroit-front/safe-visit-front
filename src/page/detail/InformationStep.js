@@ -28,7 +28,7 @@ function InformationStep({onNext, personalInfoConsent}){
     const [applicantName, setApplicantName] = useState('');
     const [applicantTeam, setApplicantTeam] = useState('');
     const [applicantEmail, setApplicantEmail] = useState(''); 
-    const [visitDepartment, setVisitDepartment] = useState('');
+    
     
     const [companyName, setCompanyName] = useState(''); //대표방문자 회사명 state
     const [visitorName, setVisitorName] = useState(''); //대표방문자 이름 state
@@ -48,6 +48,7 @@ function InformationStep({onNext, personalInfoConsent}){
     const [address, setAddress] = useState(''); //대표방문자 주소
     const [applicantComment, setApplicantComment] = useState(''); //대표방문자 추가사항 state 
     const [primaryVisitor, setPrimaryVisitor] = useState('Y');//대표방문자일때만 Y state
+    const [visitDepartment, setVisitDepartment] = useState(visitPurpose);
 
     /*방문자 신청 정보 핸들러*/
     const handleReservationSiteChange = (e) => {setReservationSite(e.target.value);};
@@ -60,7 +61,7 @@ function InformationStep({onNext, personalInfoConsent}){
     const handleApplicantEmailChange = (e) => {setApplicantEmail(e.target.value);}
 
     const handleVisitPurposeChange = (e) => {setVisitPurpose(e.target.value);}
-    const handleVisitDepartmentChange = (e) => {setVisitDepartment(e.target.value);}
+    const handleVisitDepartmentChange = (e) => {setVisitDepartment(visitPurpose);}
     const handleVisitStartDtChange = (e) => {setVisitStartDt(e.target.value);}
     const handleVisitEndDtChange = (e) => {setVisitEndDt(e.target.value);}
     
@@ -68,7 +69,7 @@ function InformationStep({onNext, personalInfoConsent}){
     /*방문자 정보 시작 */
     const handleCompanyNameChange = (e) => {setCompanyName(e.target.value);} //회사명 저장
     const handleJobTitleChange = (e) => {setJobTitle(e.target.value);} //직책 저장
-    const handleVisitorNameChange = (e) => {setVisitorName(e.target.value);console.log(e.target.value);} //성명 저장
+    const handleVisitorNameChange = (e) => {setVisitorName(e.target.value);} //성명 저장
     const handleResiNumberChange = (e) => {setResiNumber(e.target.value);} //생년월일 저장
     const handlePhoneNumberChange = (e) => {setPhoneNumber(e.target.value);} //폰번호 저장
     const handleCarNumberChange = (e) => {setCarNumber(e.target.value);} //차량번호 저장
@@ -128,7 +129,7 @@ function InformationStep({onNext, personalInfoConsent}){
         if(isValidStaff){
             console.log("Valid staff info:", staffName, staffPhoneNumber, escortEmployeeTeam);
         }
-    }, [isValidStaff, staffName, staffPhoneNumber, escortEmployeeName]); //의존성 배열에 상태 추가
+    }, [isValidStaff, staffName, staffPhoneNumber, escortEmployeeName, escortEmployeeTeam]); //의존성 배열에 상태 추가
 
     /*임직원정보 전송해서 검증하기*/
     const visitApplyBtn=(e)=>{
@@ -149,16 +150,20 @@ function InformationStep({onNext, personalInfoConsent}){
             }
         })
     }
-
+    /*방문목적 변경시 방문구역 업데이트 */
+    useEffect(()=>{
+        setVisitDepartment(visitPurpose); //visitPurpose상태가 변경될 때 마다 visitDepartment도 그 값으로 업데이트
+    }, [visitPurpose]) //visitPurpose 상태를 의존성 배열에 추가하여, 이 상태가 변경될 때 마다 useEffect 실행
     
     /*api로 데이터 보내는 함수*/
     function applyInfor(e){
         e.preventDefault(); // 폼 기본 제출동작 방지
 
        // 서버에 맞는 날짜 포맷으로 변환
-        const foramttedVisitStartDt = format(visitStartDt, "yyyy-MM-dd HH:mm:ss");
+        const formattedVisitStartDt = format(visitStartDt, "yyyy-MM-dd HH:mm:ss");
         const formattedVisitEndDt  = format(visitEndDt, "yyyy-MM-dd HH:mm:ss");
-        console.log(foramttedVisitStartDt);
+
+        console.log(formattedVisitStartDt);
         console.log(formattedVisitEndDt );
         console.log(companyName);
         console.log(foreignerStatus);
@@ -182,13 +187,13 @@ function InformationStep({onNext, personalInfoConsent}){
                 applicantJob: "대리",
                 applicantEmployeeNumber: 'string',
                 applicantName: "이주연",
-                applicantPhoneNumber: "01012341234",
+                applicantPhoneNumber: phoneNumber,
                 applicantEmail: "2mail@mail.com",
                 applicantComment: applicantComment,
                 visitPurpose: visitPurpose,
                 visitDepartment: visitDepartment,
                 visitDepartmentLimitStatus: visitDepartmentLimitStatus,
-                visitStartDt: foramttedVisitStartDt, //변환된 타입의 시작날짜
+                visitStartDt: formattedVisitStartDt, //변환된 타입의 시작날짜
                 visitEndDt: formattedVisitEndDt, //변환된 타입의 마지막 날짜
                 personalInfoConsent: personalInfoConsent,
                 vehicleShortTermEntry: vehicleShortTermEntry,
@@ -248,14 +253,14 @@ function InformationStep({onNext, personalInfoConsent}){
         //   };
 
         request.visitorList.forEach(visitor => {
-            console.log(visitor.name);
+            console.log('visitor.name : ',visitor.name);
           });
 
         const apiUrl_applyInfor = '/reservation/save'; //api 호출 통해 서버로 데이터 전송
-        console.log(apiUrl_applyInfor);
+        console.log('apiUrl_applyInfor : ',apiUrl_applyInfor);
         const data = new FormData();
         data.append('request', new Blob([JSON.stringify(request)], { type: 'application/json' })); // requestObject는 방문 예약 정보를 담은 객체입니다.
-        console.log(data);
+        console.log('data : ',data);
 
         axios.post(apiUrl_applyInfor, data)
         .then(response =>{
@@ -263,8 +268,23 @@ function InformationStep({onNext, personalInfoConsent}){
             onNext();
         })
         .catch(error => {
-            console.log(error);
-        })
+            if (error.response) {
+                // 요청이 이루어졌으며 서버가 상태 코드로 응답했지만
+                // 요청 처리 중 오류가 발생했습니다.
+                console.log('Error data:', error.response.data);
+                console.log('Error status:', error.response.status);
+                console.log('Error headers:', error.response.headers);
+            } else if (error.request) {
+                // 요청이 이루어 졌으나 응답을 받지 못했습니다.
+                // `error.request`는 브라우저의 XMLHttpRequest 인스턴스 또는
+                // Node.js의 http.ClientRequest 인스턴스입니다.
+                console.log('Error request:', error.request);
+            } else {
+                // 오류를 발생시킨 요청을 설정하는 중에 문제가 발생했습니다.
+                console.log('Error', error.message);
+            }
+            console.log(error.config);
+        });
 
     //     const apiUrl_applyInfor = '/reservation/save'; //api 호출 통해 서버로 데이터 전송
     //     console.log(apiUrl_applyInfor);   
@@ -380,7 +400,7 @@ function InformationStep({onNext, personalInfoConsent}){
                         </li>
                     </ul>
                     <ul className='v-info-4'>
-                        <li><label>생년월일</label><input type='text' value={resiNumber} onChange={handleResiNumberChange} placeholder='숫자 8자리 입력해주세요 YYYYMMDD' title='생년월일'/></li>
+                        <li><label>생년월일</label><input type='text' value={resiNumber} onChange={handleResiNumberChange} placeholder='숫자 6자리 입력해주세요 YYMMDD' title='생년월일'/></li>
                         <li><label>이메일</label><input type='text' value={email} onChange={handleEmailChange}  placeholder='이메일을 입력해주세요' title='이메일'/></li>
                     </ul>
                     <ul className='v-info-5'>
