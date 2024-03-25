@@ -150,10 +150,7 @@ function InformationStep({onNext, personalInfoConsent}){
             }
         })
     }
-    /*방문목적 변경시 방문구역 업데이트 */
-    useEffect(()=>{
-        setVisitDepartment(visitPurpose); //visitPurpose상태가 변경될 때 마다 visitDepartment도 그 값으로 업데이트
-    }, [visitPurpose]) //visitPurpose 상태를 의존성 배열에 추가하여, 이 상태가 변경될 때 마다 useEffect 실행
+
     
     /*api로 데이터 보내는 함수*/
     function applyInfor(e){
@@ -406,7 +403,7 @@ function InformationStep({onNext, personalInfoConsent}){
                     <ul className='v-info-5'>
                         <li>
                             <label>방문구역</label>
-                            <input type='text' value={visitPurpose} onChange={handleVisitPurposeChange} title='방문구역' readOnly />
+                            <input type='text' value={visitDepartment} onChange={handleVisitPurposeChange} title='방문구역' readOnly />
                         </li>
                         <li><label>방문목적</label>
                         <div className='selectwrap'>
@@ -457,7 +454,7 @@ function InformationStep({onNext, personalInfoConsent}){
                         <div className='group_tit'>단체 방문 안내</div>
                         <div className='group_con'>
                             <span>방문자 수가 10명 이상일 시</span> 엑셀을 업로드하여 다수의 방문자를 등록할 수 있습니다.<br />
-                            아래 양식을 다운로드하여 입력 후 업로드하시기 바랍니다.(최대 00명)
+                            아래 양식을 다운로드하여 입력 후 업로드하시기 바랍니다.(최대 50명)
                             <ul className='exel_wrap'>
                                 <li>
                                     <a href="public/additional-visitors.xlsx" download="additional-visitors.xlsx" class="download-btn">양식 다운로드</a>
