@@ -27,15 +27,15 @@ function ApplyPage(){
             <section className="agree_progress">
                 <div className="progress_wrap">
                     <div>
-                        <p className={step===0 ? 'progress_circle _colored' : 'progress_circle'}></p>
+                        <p className={step === 0 ? 'progress_circle _colored' : step > 0 ? 'progress_circle _completed' : 'progress_circle'}></p>
                         <p>약관 동의</p>
                     </div>
                     <div>
-                        <p className={step===1 ? 'progress_circle _colored' : 'progress_circle'}></p>
+                        <p className={step === 1 ? 'progress_circle _colored' : step > 1 ? 'progress_circle _completed' : 'progress_circle'}></p>
                         <p>정보 입력</p>
                     </div>
                     <div>
-                        <p className={step===2 ? 'progress_circle _colored' : 'progress_circle'}></p>
+                        <p className={step === 2 ? 'progress_circle _colored' : step > 2 ? 'progress_circle _completed' : 'progress_circle'}></p>
                         <p>신청 완료</p>
                     </div>
                 </div>
@@ -45,7 +45,8 @@ function ApplyPage(){
             setPersonalInfoConsent={setPersonalInfoConsent}/>}
             {step === 1 && <InformationStep onNext={nextStep} personalInfoConsent={personalInfoConsent} />}
             {step === 2 && <CompletionStep />}
-       </div>
+        </div>
+
     ) 
 }
   
