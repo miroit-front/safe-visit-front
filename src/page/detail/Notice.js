@@ -4,14 +4,41 @@ import NoticeListModal from './modal/NoticeListModal';
 import { useNotices } from '../context/NoticeProvider';
 
 function Notice(){
-    const {isOpen, setIsOpen, noticeTitle, noticeCal, noticeWriter, showListModal} = useNotices();
+    const {isOpen, setIsOpen, noticeTitle, noticeCal, noticeWriter, showListModal, noticeBody, setNoticeBody} = useNotices();
     const [isExpand, setIsExpand] = useState(false); //옵션열고 닫는 state
     const [selected, setSelected] = useState("key01"); //옵션 기본값 state
     const [searchTerm, setSearchTerm] = useState(""); //검색할 단어
+    const [filteredNotices, setFilteredNotices] = useState([]);
 
-    function noticeSearchBtn (){
-
+    //검색어 변경 핸들러
+    const handleInputTermChange = (e) => {
+        setSearchTerm(e.target.value);
     }
+
+    //검색어 클릭 핸들러
+    function noticeSearchBtn (e){
+        e.preventDefault(); //폼 제출방지
+
+        if(searchTerm === ""){ //검색어가 비어있는 경우 모든 공지글 출력
+            setFilteredNotices(noticeTitle);
+        }else if(selected === "key01"){ //제목으로 검색시
+            const filteredTitle = noticeTitle.filter(item => 
+                item.toLowerCase().includes(searchTerm.toLowerCase())) ;
+                setFilteredNotices(filteredTitle);
+        }else if(selected === "key02"){ //내용으로 검색시
+            const filteredIndexes = noticeBody.reduce((acc, item, index) => {
+                if (item.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    acc.push(index); // 검색어가 포함된 내용의 인덱스를 저장
+                }
+                return acc;
+            }, []);
+
+        //검색된 인덱스에 해당하는 제목을 필터링
+        const filteredTitles = filteredIndexes.map(index => noticeTitle[index]);
+        setFilteredNotices(filteredTitles);
+        console.log(filteredNotices);
+    }
+    };
     function CustomSelect({isExpand, setIsExpand, selected, setSelected}) {
 
         const optionData = [
@@ -96,14 +123,14 @@ function Notice(){
         <form action="#">
             <section className='notice-search-part'>
                 <div className='selectBox_wrap'>
-                    <CustomSelect isExpand={isExpand} setIsExpand={setIsExpand} selected={selected} setSelected={selected} />
+                    <CustomSelect isExpand={isExpand} setIsExpand={setIsExpand} selected={selected} setSelected={setSelected} />
                     {/*<div className="selectBox">
                         <select className="selectBtn">선택
                             <option value="title">제목</option>
                             <option className="content">내용</option>
                         </select>
                     </div>*/}
-                    <input type='search' placeholder="검색어를 입력해주세요" title='검색어를 입력해주세요'/>
+                    <input type='search' placeholder="검색어를 입력해주세요" title='검색어를 입력해주세요' onChange={handleInputTermChange}/>
                 </div>
                 <button type='submit' value="Submit" onClick={noticeSearchBtn} className='btn_notice_search'>조회</button>
             </section>
@@ -123,7 +150,7 @@ function Notice(){
                                 <div className="table-cell table_name">관리자</div>
                             </div>
                         </div>
-                        {noticeTitle.map((item,i) =>
+                        {filteredNotices.map((item,i) =>
                        <div className='table-body'>
                             <div className="table-row">
                             <div className="table-cell table_num">{i+1}</div>
