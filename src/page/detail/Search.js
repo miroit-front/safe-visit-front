@@ -35,6 +35,12 @@ function Search(){
     
     /*api로 데이터 받아오는 함수 */
     function searchRes() {
+         // 이름과 전화번호가 모두 비어 있을 경우 경고 메시지를 표시하고 함수 실행을 중단합니다.
+         //trim() 사용해서 사용자가 공백만 입력해도 경고메세지 표시
+        if (!name.trim() && !phoneNumber.trim()) {
+            alert('신청자 정보를 입력해주세요.');
+            return; // 함수 실행을 여기서 중단합니다.
+        }
         const apiUrl_search = `reservation/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`; //api주소 객체에 담아
         console.log(apiUrl_search);
 
@@ -56,10 +62,14 @@ function Search(){
             }));
             setDetailData(newData); //setDetailData에 newData를 저장
         }).catch(err => {
-            console.error('API 호출 에러:', err.response.data.info);
-            console.log(err.response.status);
-            alert('데이터를 가져오는 중 오류가 발생했습니다.');
+            if (err.response && err.response.data && err.response.data.info === null) {
+                alert('신청자 정보를 입력해주세요.');
+            } else {
+                console.error('API 호출 에러:', err.response ? err.response.data.info : 'Unknown Error');
+                alert('데이터를 가져오는 중 오류가 발생했습니다.');
+            }
         });
+        
     }
     
     return(
@@ -84,7 +94,7 @@ function Search(){
                         * 방문신청 시 입력한 핸드폰 번호를 입력해주세요.
                     </li>
                 </ul>
-                <div className="center_btn"><button type='submit' onClick={searchRes} className="btn_blue">조회</button></div>
+                <div className="center_btn"><button type='submit' className="btn_blue">조회</button></div>
             </section>
             <section className='search-info'>
                 <h5>조회 결과</h5>
@@ -100,7 +110,7 @@ function Search(){
                                 <div className="table-cell tb_status">방문</div>
                                 <div className="table-cell tb_parking">주차</div>
                             </div>
-                            <div className='table-body'>
+                            {/* <div className='table-body'>
                                 <div className="table-row" onClick={handleShowModal}>
                                     <div className="table-cell tb_num">00</div>
                                     <div className="table-cell tb_date">2024.00.00</div>
@@ -120,14 +130,15 @@ function Search(){
                                     <div className="table-cell tb_name">김미로</div>
                                     <div className="table-cell tb_visitdate">2024.00.00 00:00</div>
                                     <div className="table-cell tb_escort">기획팀 / 김대한</div>
-                                    <div className="table-cell tb_status tag_first">1차승인</div> {/* 2차승인 tag_second / 승인대기 tag_wait / 반려 tag_reject  */}
+                                    <div className="table-cell tb_status tag_first">1차승인</div> 2차승인 tag_second / 승인대기 tag_wait / 반려 tag_reject 
                                     <div className="table-cell tb_parking tag_parkingnum _done"><span>10</span>/10</div>
                                 </div>
-                            </div>
+                            </div> */}
                             {detailData.map((data, i)=>(
                             <div className='table-body' onClick={handleShowModal}>
                                 <div className="table-row" key={i}>
-                                    <div className="table-cell">{data.reservationCode}</div>
+                                    <div className="table-cell" style={{display:'none'}}>{data.reservationCode}</div>
+                                    <div className="table-cell">{i+1}</div>
                                     <div className="table-cell">{data.createDt}</div>
                                     <div className="table-cell">{data.companyName}</div>
                                     <div className="table-cell">{data.visitorName}</div>

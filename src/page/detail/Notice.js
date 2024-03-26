@@ -5,10 +5,14 @@ import { useNotices } from '../context/NoticeProvider';
 
 function Notice(){
     const {isOpen, setIsOpen, noticeTitle, noticeCal, noticeWriter, showListModal} = useNotices();
+    const [isExpand, setIsExpand] = useState(false); //옵션열고 닫는 state
+    const [selected, setSelected] = useState("key01"); //옵션 기본값 state
+    const [searchTerm, setSearchTerm] = useState(""); //검색할 단어
 
-    function CustomSelect() {
-        const [isExpand, setIsExpand] = useState(false);
-        const [selected, setSelected] = useState("key01");
+    function noticeSearchBtn (){
+
+    }
+    function CustomSelect({isExpand, setIsExpand, selected, setSelected}) {
 
         const optionData = [
             { optionKey: "key01", optionName: "제목" },
@@ -92,7 +96,7 @@ function Notice(){
         <form action="#">
             <section className='notice-search-part'>
                 <div className='selectBox_wrap'>
-                    <CustomSelect />
+                    <CustomSelect isExpand={isExpand} setIsExpand={setIsExpand} selected={selected} setSelected={selected} />
                     {/*<div className="selectBox">
                         <select className="selectBtn">선택
                             <option value="title">제목</option>
@@ -101,7 +105,7 @@ function Notice(){
                     </div>*/}
                     <input type='search' placeholder="검색어를 입력해주세요" title='검색어를 입력해주세요'/>
                 </div>
-                <button type='submit' value="Submit" className='btn_notice_search'>조회</button>
+                <button type='submit' value="Submit" onClick={noticeSearchBtn} className='btn_notice_search'>조회</button>
             </section>
             <section className='notice-part'>
                 <div className="basic_table">

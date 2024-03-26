@@ -49,7 +49,7 @@ export const NoticeProvider = ({ children }) => {
     }
 };
     return (
-        <NoticeContext.Provider value={{isOpen, setIsOpen, closeModal, selectedNotice, setSelectedNotice, noticeTitle, 
+        <NoticeContext.Provider value={{isOpen, setIsOpen, closeModal, selectedNotice, setSelectedNotice, noticeTitle, setNoticeTitle, noticeBody, setNoticeBody,
         setNoticeTitle, noticeCal, setNoticeCal, noticeWriter, setNoticeWriter, noticeBody, setNoticeBody, showListModal,
         handlePrevNext, currentNoticeIndex }}>
             {children}
