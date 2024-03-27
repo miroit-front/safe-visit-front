@@ -104,17 +104,10 @@ border-radius: 4px;border: solid 1px #dadada;}
 .applyForm .addvisitor_form .form_delete button:hover{border-bottom: 1px solid #002F87;}
 
 /*단체방문*/
-.applyForm .visit_group_add{display: flex;gap: 3%;align-items: flex-start;background-color: #EAF3FA;border-radius: 8px;margin-top: 40px;padding: 46px 25px;justify-content: space-between;}
-.applyForm .visit_group_add .group_tit{font-weight: 500;color: #131313;font-size: 1.25rem;margin-right: 40px;}
-.applyForm .visit_group_add .group_con{display: flex;}
+.applyForm .visit_group_add{display: flex;gap: 3%;align-items: flex-start;background-color: #EAF3FA;border-radius: 8px;margin-top: 40px;padding: 46px 0 46px 25px;}
+.applyForm .visit_group_add .group_tit{font-weight: 500;color: #131313;font-size: 1.25rem;}
 .applyForm .visit_group_add .group_con span{font-weight: 500;color: #188AD6;}
-.applyForm .visit_group_add .download-btn{display: inline-flex;gap: 3%;align-items: center;padding: 0 40px;background-color: white;border-radius: 8px;
-    border: solid 1px #dadada; color: #002F87;width: 270px;height: 50px;justify-content: center;font-weight: 500;}
-.applyForm .visit_group_add .download-btn::before{content: '';display: inline-block; background: url(../../img/ico_spreadsheets.svg) no-repeat center;width: 20px;height: 20px;}
-
-
-
-/*.applyForm .visit_group_add .group_con .exel_wrap{display: flex;margin-top: 16px;}
+.applyForm .visit_group_add .group_con .exel_wrap{display: flex;margin-top: 16px;}
 .applyForm .visit_group_add .group_con .download-btn{display: inline-flex;gap: 6%;align-items: center;padding: 0 40px;background-color: white;border-radius: 8px;
    border: solid 1px #dadada; color: #002F87;width: 244px;height: 50px;justify-content: center;font-weight: 500;}
 .applyForm .visit_group_add .group_con .download-btn::before{content: '';display: inline-block; background: url(../../img/ico_exel.svg) no-repeat center;width: 20px;height: 20px;}
@@ -125,4 +118,4 @@ justify-content: space-between;padding: 0 6px 0 16px;align-items: center;}
 .applyForm .visit_group_add .group_con .exel_wrap .filename_wrap .btn_delete{background: url(../../img/ico_delete02.svg) no-repeat 0 2px;width: 12px;height: 14px;}
 .applyForm .visit_group_add .group_con .exel_wrap .upload-btn{width: 120px;background-color: #eee;font-weight: 500;border-radius: 10px;padding: 6px 0;
 }
-.applyForm .visit_group_add .group_con .exel_wrap li{flex: none;}*/
+.applyForm .visit_group_add .group_con .exel_wrap li{flex: none;}

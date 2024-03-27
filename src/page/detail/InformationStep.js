@@ -377,8 +377,7 @@ function InformationStep({onNext, personalInfoConsent}){
         setsheetsFile('스프레드시트 수정'); // 버튼 텍스트 변경
     };
 
-    //구글 시트이기때문에 파일 업로드 부분 주석, 확인 후 삭제 바랍니다.
-    /*엑셀파일 관련 함수 부분
+    //엑셀파일 관련 함수 부분
     const fileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -391,7 +390,7 @@ function InformationStep({onNext, personalInfoConsent}){
     const cancelUpload = () => {
         setSelectedFile(null); // 선택한 파일 상태 초기화
         document.getElementById('fileInput').value = ""; // 파일 입력 요소의 값을 초기화
-    };*/
+    };
 
 
 
@@ -532,27 +531,22 @@ function InformationStep({onNext, personalInfoConsent}){
                     ))}
                     </div>
                     <div className='visit_group_add'>
+                        <div className='group_tit'>단체 방문 안내</div>
                         <div className='group_con'>
-                            <div className='group_tit'>단체 방문 안내</div>
-                            <div><span>방문자 수가 10명 이상일 시</span> 스프레드시트를 입력하여 다수의 방문자를 등록할 수 있습니다.<br />
-                            버튼을 클릭하여 입력(자동저장)하시기 바랍니다.(최대 50명)</div>
-                            {/*<ul className='exel_wrap'>
+                            <span>방문자 수가 10명 이상일 시</span> 엑셀을 업로드하여 다수의 방문자를 등록할 수 있습니다.<br />
+                            아래 양식을 다운로드하여 입력 후 업로드하시기 바랍니다.(최대 50명)
+                            <ul className='exel_wrap'>
                                 <li>
                                     <a href="public/additional-visitors.xlsx" download="additional-visitors.xlsx" class="download-btn">양식 다운로드</a>
                                     </li>
                                 <li>
-                                    <div className='filename_wrap'><input type="text" value={selectedFile ? selectedFile.name : "파일을 선택하세요"} readOnly /> {/* 파일 이름 표시 input 
-                                    {selectedFile && <button type='button' className='btn_delete' onClick={cancelUpload}></button>} {/* 파일 선택 취소 버튼 </div>
+                                    <div className='filename_wrap'><input type="text" value={selectedFile ? selectedFile.name : "파일을 선택하세요"} readOnly /> {/* 파일 이름 표시 input */}
+                                    {selectedFile && <button type='button' className='btn_delete' onClick={cancelUpload}></button>} {/* 파일 선택 취소 버튼 */}</div>
                                     <button type='button' className='upload-btn' onClick={() => document.getElementById('fileInput').click()}>엑셀 업로드</button>
                                     <input id="fileInput" type="file" accept=".xlsx, .xls" style={{display:'none'}} onChange={fileChange} />
                                 </li>
-                            </ul>*/}
+                            </ul>
                         </div>
-                        <div><button onClick={handleClick} className='download-btn'>{sheetsFile}</button></div>
-                    </div>
-                    <div className="center_btn">
-                        <button onClick={(e)=>{window.location.href = '/'}} type='button' className="btn_gr">이전</button>
-                        <button button id='submitBtn' type='submit' className="btn_blue" onClick={(e) => applyInfor(e)}>신청</button>
                     </div>
                 </section>
             </form>
