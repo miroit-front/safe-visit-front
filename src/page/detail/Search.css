@@ -27,10 +27,6 @@ form .apply-info input.input_basic{width: 312px;border: solid 1px #dadada;border
 .search-part .basic_table .table-row .tb_partner{width: 15%;}
 .search-part .basic_table .table-row .tb_status{width: 11%;text-align: center;}
 .search-part .basic_table .table-row .tb_parking{width: 11%;text-align: center;}
-/*.search-info .tb_num{max-width: 50px;}
-.search-info .tb_date{width: 10%;}
-.search-info .tb_status{max-width: 110px;margin-right: 30px;}
-.search-info .tb_parking{max-width: 110px;}*/
 
 .table-body .tb_status{border-radius: 3rem;height: 30px;line-height: 0;}
 .table-body .tb_parking{border-radius: 3rem;height: 30px;line-height: 0;}
