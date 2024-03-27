@@ -9,7 +9,6 @@ function InformationStep({onNext, personalInfoConsent}){
     const [selectedFile, setSelectedFile] = useState(null); // 파일선택
     
     const [menu, setMenu] = useState(['목적1', '목적2', '목적3', '목적4']);
-  
     const [showMenu, setShowMenu] = useState(false); // 옵션박스 열고 닫힘 여부를 알려주는 값
     
     const [isValidStaff, setIsValidStaff] = useState(false);//임직원 조회시 
@@ -47,13 +46,13 @@ function InformationStep({onNext, personalInfoConsent}){
     const [resiNumber, setResiNumber] = useState(''); //대표방문자 생년월일
     const [email, setEmail] = useState(''); //대표방문자 생년월일
 
-    const [visitPurpose, setVisitPurpose] = useState(''); //대표방문자 방문 목적 state
+    const [visitPurpose, setVisitPurpose] = useState('방문목적을 선택해주세요'); //대표방문자 방문 목적 state
     const [carNumber, setCarNumber] = useState(''); //대표방문자 차량번호 stat
     const [vehicleShortTermEntry, setVehicleShortTermEntry] = useState('N'); //대표방문자 사옥내 진입일 때 Y state, N은 디폴트로 수정함
     const [address, setAddress] = useState(''); //대표방문자 주소
     const [applicantComment, setApplicantComment] = useState(''); //대표방문자 추가사항 state 
     const [primaryVisitor, setPrimaryVisitor] = useState('Y');//대표방문자일때만 Y state
-    const [visitDepartment, setVisitDepartment] = useState(visitPurpose);
+    const [visitDepartment, setVisitDepartment] = useState('');//이전에 방문목적으로 연결되어있었음-삭제함
 
     /*방문자 신청 정보 핸들러*/
     const handleReservationSiteChange = (e) => {setReservationSite(e.target.value);};
@@ -487,11 +486,10 @@ function InformationStep({onNext, personalInfoConsent}){
                             <input type='text' value={visitDepartment} onChange={handleVisitPurposeChange} title='방문구역' readOnly />
                         </li>
                         <li><label>방문목적</label>
-                        <div className='selectwrap'>
+                            <div className='selectwrap'>
                                 <div className={`select-box ${showMenu ? 'open' : ''}`} onClick={() => setShowMenu(!showMenu)}>
                                     {visitPurpose}
                                 </div>
-
                                 {showMenu && (
                                     <div className="select-options">
                                         {menu.map((item, index) => (
@@ -503,7 +501,7 @@ function InformationStep({onNext, personalInfoConsent}){
                                     </div>
                                 )}
                             </div>
-                            </li>
+                        </li>
                     </ul>
                     <ul className='v-info-6'>
                         <li>

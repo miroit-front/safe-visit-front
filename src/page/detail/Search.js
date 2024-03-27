@@ -101,14 +101,15 @@ function Search(){
                 <section className='search-part'>
                     <div className="basic_table">
                             <div className="table-row table-header">
-                                <div className="table-cell tb_num">No</div>
-                                <div className="table-cell tb_date">신청일자</div>
-                                <div className="table-cell tb_team">회사명</div>
-                                <div className="table-cell tb_name">이름</div>
-                                <div className="table-cell tb_visitdate">방문일자</div>
-                                <div className="table-cell tb_escort">인솔자 정보</div>
-                                <div className="table-cell tb_status">방문</div>
-                                <div className="table-cell tb_parking">주차</div>
+                                <div className="tb_num">No</div>
+                                <div>신청일자</div>
+                                <div className="tb_company">회사명</div>
+                                <div className="tb_name">이름</div>
+                                <div>방문일자</div>
+                                <div className="tb_escort">임직원 정보</div>
+                                <div className="tb_partner">접견자 정보</div>
+                                <div className="tb_status">방문</div>
+                                <div className="tb_parking">주차</div>
                             </div>
                             {/* <div className='table-body'>
                                 <div className="table-row" onClick={handleShowModal}>
@@ -137,15 +138,16 @@ function Search(){
                             {detailData.map((data, i)=>(
                             <div className='table-body' onClick={handleShowModal}>
                                 <div className="table-row" key={i}>
-                                    <div className="table-cell" style={{display:'none'}}>{data.reservationCode}</div>
-                                    <div className="table-cell">{i+1}</div>
-                                    <div className="table-cell">{data.createDt}</div>
-                                    <div className="table-cell">{data.companyName}</div>
-                                    <div className="table-cell">{data.visitorName}</div>
-                                    <div className="table-cell">{data.visitStartDt}</div>
-                                    <div className="table-cell">{data.escortEmployeeTeam} / {data.escortEmployeeName}</div>
-                                    <div className="table-cell">{data.proceedingCode}</div>
-                                    <div className="table-cell">{data.parkingApproval}</div>
+                                    <div style={{display:'none'}}>{data.reservationCode}</div>
+                                    <div className="tb_num">{i+1}</div>
+                                    <div>{data.createDt}</div>
+                                    <div className="tb_company">{data.companyName}</div>
+                                    <div>{data.visitorName}</div>
+                                    <div>{data.visitStartDt}</div>
+                                    <div className="tb_escort">{data.escortEmployeeTeam}<br />{data.escortEmployeeName}</div>
+                                    <div className="tb_partner">대한항공협력사<br />김협력</div>
+                                    <div className="tb_status">{data.proceedingCode}</div>
+                                    <div className="tb_parking">{data.parkingApproval}</div>
                                 </div>
                             </div>
                              ))}
