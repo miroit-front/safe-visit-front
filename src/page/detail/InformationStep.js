@@ -17,6 +17,11 @@ function InformationStep({onNext, personalInfoConsent}){
     const [staffPhoneNumber, setStaffPhoneNumber] = useState(''); //임직원 폰번호
     const [escortEmployeeTeam, setEscortEmployeeTeam] = useState(''); // 에스코드 직원의 팀
 
+    const [showAddStaffModal, setShowAddStaffModal] = useState(false); // 접견자지정 클릭시 조회 모달
+    const [modalPartnerName, setModalPartnerName] = useState('');
+    const [modalPartnerPhoneNumber, setModalPartnerPhoneNumber] = useState('');
+    const [displayPartnerName, setDisplayPartnerName] = useState(''); // 접견자 조회 후 정보 표시
+    const [displayPartnerCompany, setDisplayPartnerCompany] = useState('');
 
     /*방문자 신청 정보 state*/
     const [reservationSite, setReservationSite] = useState('');
@@ -69,7 +74,7 @@ function InformationStep({onNext, personalInfoConsent}){
     /*방문자 정보 시작 */
     const handleCompanyNameChange = (e) => {setCompanyName(e.target.value);} //회사명 저장
     const handleJobTitleChange = (e) => {setJobTitle(e.target.value);} //직책 저장
-    const handleVisitorNameChange = (e) => {setVisitorName(e.target.value);} //성명 저장
+    const handleVisitorNameChange = (e) => {setVisitorName(e.target.value);} //이름 저장
     const handleResiNumberChange = (e) => {setResiNumber(e.target.value);} //생년월일 저장
     const handlePhoneNumberChange = (e) => {setPhoneNumber(e.target.value);} //폰번호 저장
     const handleCarNumberChange = (e) => {setCarNumber(e.target.value);} //차량번호 저장
@@ -150,6 +155,32 @@ function InformationStep({onNext, personalInfoConsent}){
             }
         })
     }
+
+    // 접견자 조회 모달 열기
+    const openAddStaffModal = () => {
+        setShowAddStaffModal(true);
+        document.body.style.overflow = 'hidden';
+    };
+
+    // 접견자 조회 모달 닫기
+    const closeAddStaffModal = () => {
+        setShowAddStaffModal(false);
+        document.body.style.overflow = 'auto';
+    };
+
+    // 접견자 조회 버튼 클릭 시 실행되는 함수
+    const handleConfirm = () => {
+        // 여기서 유효성 체크 및 API 요청 등 로직 추가
+        // 현재는 입력한 파트너명과 전화번호를 그대로 표시
+        // 예시로 파트너 회사명과 파트너 이름을 고정된 값으로 설정
+        const partnerCompany = "회사명";
+        const partnerName = modalPartnerName; // 모달에서 입력한 파트너명 사용
+    
+        setDisplayPartnerName(partnerName);
+        setDisplayPartnerCompany(partnerCompany);
+    
+        closeAddStaffModal(); // 모달 닫기
+    };
 
     
     /*api로 데이터 보내는 함수*/
@@ -337,7 +368,17 @@ function InformationStep({onNext, personalInfoConsent}){
         setVisitorPlusInfo(visitorPlusInfo.filter(form => form.id !== id));
     };
 
-    /*엑셀파일 관련 함수 부분 */
+    const [sheetsFile, setsheetsFile] = useState('스프레드시트 입력'); // 구글 시트 입력
+    const handleClick = (event) => {
+        event.preventDefault();
+        // 사용자가 작성 중인 구글 시트의 URL
+        const googleSheetsURL = '링크_주소'; // 여기에 사용자의 구글 시트 URL을 넣어주세요.
+        window.open(googleSheetsURL, '_blank'); // 새 창에서 구글 시트 열기
+        setsheetsFile('스프레드시트 수정'); // 버튼 텍스트 변경
+    };
+
+    //구글 시트이기때문에 파일 업로드 부분 주석, 확인 후 삭제 바랍니다.
+    /*엑셀파일 관련 함수 부분
     const fileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -350,7 +391,7 @@ function InformationStep({onNext, personalInfoConsent}){
     const cancelUpload = () => {
         setSelectedFile(null); // 선택한 파일 상태 초기화
         document.getElementById('fileInput').value = ""; // 파일 입력 요소의 값을 초기화
-    };
+    };*/
 
 
 
@@ -362,19 +403,58 @@ function InformationStep({onNext, personalInfoConsent}){
                     <p>접견자와 방문자 정보를 입력해주세요.</p>
                 </section>
                 <section className='staff-info'>
-                    <h5>임직원 정보 <span className='tit_info'>&#42; 임직원(접견자) 조회 완료 후 방문신청을 할 수 있습니다.</span></h5>
+                    <h5>임직원 조회 <p className='tit_info'>임직원(접견자) 조회 완료 후 방문신청을 할 수 있습니다.</p></h5>
                     <ul>
                         <li><label>임직원 이름</label><input type='text'value={staffName} onChange={handleStaffNameChange} placeholder='이름을 입력해주세요' title='임직원 이름'/></li>
                         <li><label>전화번호 뒤 4자리</label><input type='number' value={staffPhoneNumber} onChange={handleStaffPhoneNumberChange} placeholder='숫자 4자리 입력해주세요' title='전화번호 뒤 4자리'/></li>
                     </ul>
                     <div className="center_btn"><button type='submit' onClick={visitApplyBtn} className="btn_blue">조회</button></div>
                 </section>
+                <div className='btn_addstaff'><button type='button' onClick={openAddStaffModal}>접견자 지정</button></div>
+                {showAddStaffModal &&
+                    <section className="addstaff_modal">
+                        <div className='modal_bg'></div>
+                        <div className='modal_wrap noticeModal-container'>
+                            <div className='modal_center'>
+                                <div className='modalcon_wrap'>
+                                    <div className='modal_tit'>
+                                        <p>접견자 지정</p>
+                                        <button type='button' onClick={closeAddStaffModal}><img src='./img/ico_close.svg' alt='닫기'/></button>
+                                    </div>
+                                    <form className='modal_con'>
+                                        <h5>지정 접견자 조회 <p className='tit_info'>접견자 지정시, 정보 조회 완료 후 방문신청을 할 수 있습니다.</p></h5>
+                                        <ul>
+                                            <li>
+                                                <label htmlFor="modalPartnerName">접견자 이름</label>
+                                                <input type="text" id="modalPartnerName" name="modalPartnerName" value={modalPartnerName} onChange={(e) => setModalPartnerName(e.target.value)} placeholder='이름을 입력해주세요' title='접견자 이름' required />
+                                            </li>
+                                            <li>
+                                                <label htmlFor="modalPartnerPhoneNumber">전화번호 뒤 4자리</label>
+                                                <input type="number" id="modalPartnerPhoneNumber" name="modalPartnerPhoneNumber" value={modalPartnerPhoneNumber} onChange={(e) => setModalPartnerPhoneNumber(e.target.value)} placeholder='숫자 4자리 입력해주세요' title='전화번호 뒤 4자리' required />
+                                            </li>
+                                        </ul>
+                                        <div className="center_btn"><button type="button" onClick={handleConfirm} className="btn_blue">조회</button></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                }
+                {(displayPartnerName || displayPartnerCompany) &&
+                    <section className="addstaff-info">
+                    <h5>지정 접견자 정보</h5>
+                    <ul>
+                        {displayPartnerCompany && <li><label>회사명</label><span>{displayPartnerCompany}</span></li>}
+                        {displayPartnerName && <li><label>이름</label><span>{displayPartnerName}</span></li>}
+                    </ul>
+                    </section>
+                }
                 <section className='visitor-info'>
                     <h5>방문자 정보</h5>
                     <ul className='v-info-1'> 
                         <li><label>회사명</label><input type='text' value={companyName} onChange={handleCompanyNameChange} placeholder={`회사명을 입력해주세요`} title='회사명'/></li>
-                        <li className='flex'><label>성명</label>
-                            <input className='min-input' type='text' value={visitorName} onChange={handleVisitorNameChange} placeholder={`성명을 입력해주세요`} title='성명'/>
+                        <li className='flex'><label>이름</label>
+                            <input className='min-input' type='text' value={visitorName} onChange={handleVisitorNameChange} placeholder={`이름을 입력해주세요`} title='이름'/>
                             <div className='nationality radio_bl'>
                                 <input type="radio" id="domestic" name="nationality" value="N"
                                 checked={foreignerStatus === "N"} 
@@ -451,24 +531,24 @@ function InformationStep({onNext, personalInfoConsent}){
                         <InformationPlusData handleVisitorPlusInfo={handleVisitorPlusInfo} key={form.id} id={form.id} data={data} onDelete={handleDeleteVisitorClick}/>
                     ))}
                     </div>
-
                     <div className='visit_group_add'>
-                        <div className='group_tit'>단체 방문 안내</div>
                         <div className='group_con'>
-                            <span>방문자 수가 10명 이상일 시</span> 엑셀을 업로드하여 다수의 방문자를 등록할 수 있습니다.<br />
-                            아래 양식을 다운로드하여 입력 후 업로드하시기 바랍니다.(최대 50명)
-                            <ul className='exel_wrap'>
+                            <div className='group_tit'>단체 방문 안내</div>
+                            <div><span>방문자 수가 10명 이상일 시</span> 스프레드시트를 입력하여 다수의 방문자를 등록할 수 있습니다.<br />
+                            버튼을 클릭하여 입력(자동저장)하시기 바랍니다.(최대 50명)</div>
+                            {/*<ul className='exel_wrap'>
                                 <li>
                                     <a href="public/additional-visitors.xlsx" download="additional-visitors.xlsx" class="download-btn">양식 다운로드</a>
                                     </li>
                                 <li>
-                                    <div className='filename_wrap'><input type="text" value={selectedFile ? selectedFile.name : "파일을 선택하세요"} readOnly /> {/* 파일 이름 표시 input */}
-                                    {selectedFile && <button type='button' className='btn_delete' onClick={cancelUpload}></button>} {/* 파일 선택 취소 버튼 */}</div>
+                                    <div className='filename_wrap'><input type="text" value={selectedFile ? selectedFile.name : "파일을 선택하세요"} readOnly /> {/* 파일 이름 표시 input 
+                                    {selectedFile && <button type='button' className='btn_delete' onClick={cancelUpload}></button>} {/* 파일 선택 취소 버튼 </div>
                                     <button type='button' className='upload-btn' onClick={() => document.getElementById('fileInput').click()}>엑셀 업로드</button>
                                     <input id="fileInput" type="file" accept=".xlsx, .xls" style={{display:'none'}} onChange={fileChange} />
                                 </li>
-                            </ul>
+                            </ul>*/}
                         </div>
+                        <div><button onClick={handleClick} className='download-btn'>{sheetsFile}</button></div>
                     </div>
                     <div className="center_btn">
                         <button onClick={(e)=>{window.location.href = '/'}} type='button' className="btn_gr">이전</button>

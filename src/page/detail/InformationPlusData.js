@@ -44,8 +44,8 @@ function InformationPlusData  ({ id, onDelete, handleVisitorPlusInfo }){
             <div className='form_wrap'>
                         <ul>
                             <li><label>회사명</label><input value={companyName} type='text' placeholder='회사명을 입력해주세요' title='회사명'/></li>
-                            <li><label>성명</label>
-                                <input type='text' value={visitorName} onChange={handleVisitorNameChange} placeholder='성명을 입력해주세요' title='성명'/>
+                            <li><label>이름</label>
+                                <input type='text' value={visitorName} onChange={handleVisitorNameChange} placeholder='이름을 입력해주세요' title='이름'/>
                                 <div className='nationality radio_bl'>
                                     <input type="radio" id={'domestic_add_${id}'} name={'domestic_add_${id}'} value="N" checked={foreignerStatus === "N"} 
                                         onChange={checkNationalityPlus}/><label htmlFor="domestic_add">내국인</label>

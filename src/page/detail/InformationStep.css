@@ -7,13 +7,37 @@
     &:focus{border-color: #989898;}}
 
 /*임직원정보*/
-.applyForm .staff-info{margin-top: 45px;}
-.applyForm .staff-info .tit_info{font-size: 1rem;font-weight: 400;color: #DE001B;}
-.applyForm .staff-info ul{border-top: solid 1px #002f87;border-bottom: solid 1px #dadada;}
-.applyForm .staff-info input[type="checkbox"] {width: 10px;margin-right: 4px;}
+.applyForm .staff-info{margin-top: 45px;border:solid 1px #dadada;border-radius: 8px;text-align: center;padding: 50px 0;}
+.applyForm .staff-info h5{margin-bottom: 16px;}
+.applyForm .staff-info .tit_info{font-size: 1rem;font-weight: 400;color: #0064DE;margin-top: 4px;}
+.applyForm .staff-info label{background-color: white;width: auto;padding-left: 0;}
+.applyForm .staff-info ul{justify-content: center;}
+.applyForm .staff-info ul li{flex: none;}
+.applyForm .staff-info ul li:first-child{margin-right: 80px;}
+.applyForm .staff-info .center_btn button{margin-top: 25px;}
+
+/*지정접견자정보*/
+.applyForm .btn_addstaff{display: flex;justify-content: right;margin-top: 30px;}
+.applyForm .btn_addstaff button{width: 150px;height: 36px;color: white;background-color: #002f87;border-radius: 4px;font-size: 15px;font-weight: 500;}
+.applyForm .btn_addstaff button:hover{background-color: #0F3E86;}
+
+.applyForm .addstaff-info{margin-bottom: 50px;}
+.applyForm .addstaff-info ul{border-top: solid 1px #002f87;border-bottom: solid 1px #dadada;}
+.applyForm .addstaff-info span{margin-left: 30px;}
+
+.addstaff_modal .modalcon_wrap{width: 600px;border: 0;}
+.addstaff_modal .modal_tit{display: flex;background-color: #00256C;border-top-left-radius: 20px;border-top-right-radius: 20px;padding: 30px;justify-content: space-between;}
+.addstaff_modal .modal_tit p{color: white;font-size: 1.5rem;font-weight: 500;}
+.addstaff_modal .modal_tit button{filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(298deg) brightness(102%) contrast(101%);}
+.addstaff_modal form.modal_con{padding: 50px 0 60px;}
+.addstaff_modal form.modal_con h5{margin-bottom: 16px;text-align: center;}
+.addstaff_modal form.modal_con .tit_info{font-size: 1rem;font-weight: 400;color: #0064DE;margin-top: 4px;}
+.addstaff_modal form.modal_con ul{flex-direction: column;}
+.addstaff_modal form.modal_con ul li{justify-content: center;margin: 8px 0;}
+.addstaff_modal form.modal_con ul li label{background-color: white;line-height: 0;width: 120px;padding: 0;}
 
 /*방문객정보*/
-.applyForm .visitor-info{margin-top: 60px;}
+.applyForm .visitor-info{margin-top: 20px;}
 .applyForm .visitor-info ul{border-bottom: solid 1px #ebebeb;}
 .applyForm .visitor-info input{width: 376px;}
 .applyForm .visitor-info input[type="radio"]{width: 20px;height: 20px; margin: 0px;}
@@ -58,9 +82,9 @@ border-radius: 4px;border: solid 1px #dadada;}
 
 /*방문객 추가*/
 .applyForm .visitor_add{display: flex;justify-content: space-between;align-items: center;background-color: #F8F9FC;
-    border-radius: 8px;margin-top: 30px;font-weight: 500;padding: 0 45px 0 25px;height: 110px;}
+    border-radius: 8px;margin-top: 30px;font-weight: 500;padding: 0 25px;height: 110px;}
 .applyForm .visitor_add .update-btn{display: inline-flex;gap: 6%;align-items: center;padding: 0 40px;background-color: #188AD6;border-radius: 8px;
-    color: white;width: 234px;height: 50px;justify-content: center;font-weight: 500;}
+    color: white;width: 270px;height: 50px;justify-content: center;font-weight: 500;}
 .applyForm .visitor_add .update-btn::before{content: '';display: inline-block; background: url(../../img/ico_visitoradd.svg) no-repeat center;width: 24px;height: 24px;}
 
 .applyForm .addvisitor_form{margin-top: 30px;}
@@ -80,14 +104,20 @@ border-radius: 4px;border: solid 1px #dadada;}
 .applyForm .addvisitor_form .form_delete button:hover{border-bottom: 1px solid #002F87;}
 
 /*단체방문*/
-.applyForm .visit_group_add{display: flex;gap: 3%;align-items: flex-start;background-color: #EAF3FA;border-radius: 8px;margin-top: 40px;padding: 46px 0 46px 25px;}
-.applyForm .visit_group_add .group_tit{font-weight: 500;color: #131313;font-size: 1.25rem;}
+.applyForm .visit_group_add{display: flex;gap: 3%;align-items: flex-start;background-color: #EAF3FA;border-radius: 8px;margin-top: 40px;padding: 46px 25px;justify-content: space-between;}
+.applyForm .visit_group_add .group_tit{font-weight: 500;color: #131313;font-size: 1.25rem;margin-right: 40px;}
+.applyForm .visit_group_add .group_con{display: flex;}
 .applyForm .visit_group_add .group_con span{font-weight: 500;color: #188AD6;}
-.applyForm .visit_group_add .group_con .exel_wrap{display: flex;margin-top: 16px;}
+.applyForm .visit_group_add .download-btn{display: inline-flex;gap: 3%;align-items: center;padding: 0 40px;background-color: white;border-radius: 8px;
+    border: solid 1px #dadada; color: #002F87;width: 270px;height: 50px;justify-content: center;font-weight: 500;}
+.applyForm .visit_group_add .download-btn::before{content: '';display: inline-block; background: url(../../img/ico_spreadsheets.svg) no-repeat center;width: 20px;height: 20px;}
+
+
+
+/*.applyForm .visit_group_add .group_con .exel_wrap{display: flex;margin-top: 16px;}
 .applyForm .visit_group_add .group_con .download-btn{display: inline-flex;gap: 6%;align-items: center;padding: 0 40px;background-color: white;border-radius: 8px;
    border: solid 1px #dadada; color: #002F87;width: 244px;height: 50px;justify-content: center;font-weight: 500;}
 .applyForm .visit_group_add .group_con .download-btn::before{content: '';display: inline-block; background: url(../../img/ico_exel.svg) no-repeat center;width: 20px;height: 20px;}
-
 .applyForm .visit_group_add .group_con .exel_wrap li:last-child{margin-left: 20px;border: solid 1px #dadada;background-color: #fff;height: 50px;border-radius: 8px;width: 400px;display: flex;
 justify-content: space-between;padding: 0 6px 0 16px;align-items: center;}
 .applyForm .visit_group_add .group_con .exel_wrap .filename_wrap{display: flex;align-items: center;gap: 2%;}
@@ -95,76 +125,4 @@ justify-content: space-between;padding: 0 6px 0 16px;align-items: center;}
 .applyForm .visit_group_add .group_con .exel_wrap .filename_wrap .btn_delete{background: url(../../img/ico_delete02.svg) no-repeat 0 2px;width: 12px;height: 14px;}
 .applyForm .visit_group_add .group_con .exel_wrap .upload-btn{width: 120px;background-color: #eee;font-weight: 500;border-radius: 10px;padding: 6px 0;
 }
-.applyForm .visit_group_add .group_con .exel_wrap li{flex: none;}
-
-/*
-.layout{
-border: 1px solid;
-border-right: none;
-border-left: none;
-}
-.visitor-info-group-list{
-    display: flex;
-    flex-direction: column;
-}
-.group-list:nth-child(2){
-border-right: 1px solid;
-}
-.group-list:nth-child(1){
-    border-bottom: 1px solid;
-}
-.group-list:nth-child(1) label,
-.del-part label{
-    border-bottom: 1px solid;
-}
-.group-list{
-    display: flex;
-    justify-content: space-between;
-}
-.group-list:nth-child(1){
-    flex-grow: 1;
-}
-.group-list div{
-    width: calc(100%/6);
-    border-right: 1px solid;
-}
-.visitor-info-group div p{
-    margin: 0;
-    height: 40px;
-}
-.visitor-info-group label {
-    width: 100%;
-    height: 40px;
-    display: inline-block;
-    text-align: center;
-    background: #d9d9d9;
-    color: #7f7f7f;
-    line-height: 40px;
-    font-size: 13px;
-  }
-  form .visitor-info-group .upBtns{
-    display: flex;
-    justify-content: space-between;
-    border: none;
-    margin-top: 5px;
-
-  }
-form .visitor-info-group .upBtns button{
-    width: 100px;
-    background: transparent;
-    border: 1px solid #afabab;
-    border-radius: 5px;
-    height: 25px;
-    font-size: 13px;
-    color: #7f7f7f;
-    white-space: nowrap;
-}
-.visitor-info-group-list .group-list:nth-child(7) div:nth-child(2) {
-    width: calc(100% - (100% / 7) * 5); /* 두 번째 행에 있는 일곱 번째 열의 너비 설정 */
-/*}
-.visitor-info .del-part{
-    height: 105px;
-}
-.visitor-info .del-part p{
-height: 90px;
-}*/
+.applyForm .visit_group_add .group_con .exel_wrap li{flex: none;}*/
