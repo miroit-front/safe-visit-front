@@ -12,8 +12,8 @@ function Footer(){
         <div id="footer">
             <div className='ft_wrap'>
                 <ul className="footer-ul">
-                    <li><Link to="/termOfService" onClick={()=>handleTabClick(0)}>서비스 이용약관</Link></li>
-                    <li className='ft_privacy'><Link to="/privacyPolicy" onClick={()=>handleTabClick(1)}>개인정보처리방침</Link></li>
+                    <li><Link to="/term-of-service" onClick={()=>handleTabClick(0)}>서비스 이용약관</Link></li>
+                    <li className='ft_privacy'><Link to="/privacy-policy" onClick={()=>handleTabClick(1)}>개인정보처리방침</Link></li>
                     <li><Link to="/faq" onClick={()=>handleTabClick(2)}>FAQ</Link></li>
                 </ul>
                 <p>COPYRIGHT©2024 KOREAN AIR. ALL RIGHTS RESERVED.</p>
