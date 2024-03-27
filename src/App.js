@@ -26,8 +26,8 @@ function App() {
                   <Route path="/apply" element={<ApplyPage />}></Route>
                   <Route path="/search" element={<SearchPage/>}></Route>
                   <Route path="/notice" element={<NoticePage/>}></Route>
-                  <Route path="/termOfService" element={<TermsOfService/>}></Route>
-                  <Route path="/privacyPolicy" element={<PrivacyPolicy/>}></Route>
+                  <Route path="/term-of-service" element={<TermsOfService/>}></Route>
+                  <Route path="/privacy-policy" element={<PrivacyPolicy/>}></Route>
                   <Route path="/faq" element={<Faq/>}></Route>
                   <Route path="/informaion-step" element={<InformationStep/>}></Route>
                   <Route path="/completion-step" element={<CompletionStep/>}></Route>
