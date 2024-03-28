@@ -1,9 +1,9 @@
 import './NoticeListModal.css';
 import { useNotices } from '../../context/NoticeProvider';
-import React, { useState } from 'react';
+import axios from 'axios';
 
 function NoticeListModal(){
-    const { isOpen, closeModal, selectedNotice,  handlePrevNext, currentNoticeIndex, noticeTitle } = useNotices();
+    const { isOpen, closeModal, selectedNotice, setSelectedNotice,  handlePrevNext, currentNoticeIndex, notices, noticeTitle } = useNotices();
 
 
     if(!isOpen || !selectedNotice){ //이게 없어서 닫히지 않았던 것이다. 모달이 열려있지 않거나, 선택된 공지사항이 없으면 아무것도 표시하지 않음
@@ -31,6 +31,36 @@ function NoticeListModal(){
             </div>
         );
     }
+    /*공지사항 상세정보 api */
+    async function searchDetailNotice(){
+        const apiUrl_detailNotice = '/notice/find-by-id/{noticeId}';
+        console.log('apiUrl_detailNotice : ',apiUrl_detailNotice);
+
+        axios.get(apiUrl_detailNotice)
+        .then(res => {
+            console.log(res.data);
+            console.log(res.data.content);
+            
+            const newData = res.data.content.map(data => ({
+                "noticeId": 64,
+                "title": "nnnnn",
+                "content": "conconconcocnon",
+                "attachment": [],
+                "fileId": "notice_04efa683-011a-4852-9662-c6f7a2d7b37f",
+                "topYn": false,
+                "createDt": "2024-03-12 17:00:54",
+                "createUser": "tester",
+                "updateDt": "2024-03-12 17:00:54",
+                "updateUser": "tester"
+            }));
+            setSelectedNotice(newData);
+            console.log('newData : ', newData);
+        }).catch(err=>{
+            console.log('api호출에러 : ', err.response? err.response.data.info : "unknown error");
+            alert('데이터 가져오는 중 오류발생');
+        })
+    }
+
     // 선택된 공지사항의 상세 정보를 표시
     return(
         <div id='modal'>
@@ -46,7 +76,7 @@ function NoticeListModal(){
                             <section className="main-header"> 
                                 <div className='notice-info'>
                                     <div className='noticeview_tag'>공지</div>
-                                    <div className='view_tit'>{selectedNotice.title}</div>
+                                    <div className='view_tit'>{notices.title}</div>
                                     <ul>
                                         <li>{selectedNotice.date}</li>
                                         <li>{selectedNotice.writer}</li>

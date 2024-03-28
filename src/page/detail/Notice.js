@@ -1,14 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Notice.css';
 import NoticeListModal from './modal/NoticeListModal';
 import { useNotices } from '../context/NoticeProvider';
 
 function Notice(){
-    const {isOpen, setIsOpen, noticeTitle, noticeCal, noticeWriter, showListModal, noticeBody, setNoticeBody} = useNotices();
+
+    const {isOpen, setIsOpen, noticeTitle, noticeCal, noticeWriter, showListModal, noticeBody, setNoticeBody,searchNoticeLists, notices, setNotices} = useNotices();
     const [isExpand, setIsExpand] = useState(false); //옵션열고 닫는 state
     const [selected, setSelected] = useState("key01"); //옵션 기본값 state
     const [searchTerm, setSearchTerm] = useState(""); //검색할 단어
-    const [filteredNotices, setFilteredNotices] = useState([]);
+    const [filteredNotices, setFilteredNotices] = useState([]); // 필터링된 공지사항 리스트
+
+    useEffect(()=>{
+        searchNoticeLists(); // 컴포넌트 마운트 시 공지사항 목록 불러오기
+    },[]); //의존성 배열에 빈 배열 넣어서 한 번만 호출
 
     //검색어 변경 핸들러
     const handleInputTermChange = (e) => {
@@ -39,6 +44,8 @@ function Notice(){
         console.log(filteredNotices);
     }
     };
+    
+    //옵션 선택 핸들러
     function CustomSelect({isExpand, setIsExpand, selected, setSelected}) {
 
         const optionData = [
@@ -118,7 +125,6 @@ function Notice(){
         );
     } 
 
-
     return(
         <form action="#">
             <section className='notice-search-part'>
@@ -150,13 +156,13 @@ function Notice(){
                                 <div className="table-cell table_name">관리자</div>
                             </div>
                         </div>
-                        {filteredNotices.map((item,i) =>
-                       <div className='table-body'>
+                        {notices.map((item,i) =>
+                       <div className='table-body' key={i}>
                             <div className="table-row">
                             <div className="table-cell table_num">{i+1}</div>
-                                <div className="table-cell table_tit" onClick={()=>showListModal(i)}>{item}</div>
-                                <div className="table-cell table_date">{noticeCal[i]}</div>
-                                <div className="table-cell table_name">{noticeWriter[i]}</div>
+                                <div className="table-cell table_tit" onClick={()=>showListModal(i)}>{item.title}</div>
+                                <div className="table-cell table_date">{item.createDt}</div>
+                                <div className="table-cell table_name">{item.createUser}</div>
                             </div>
                         </div>
                          )}

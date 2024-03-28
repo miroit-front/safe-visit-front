@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { createContext, useState, useContext } from 'react';
 
 const NoticeContext = createContext();
@@ -10,12 +11,13 @@ export const NoticeProvider = ({ children }) => {
         setIsOpen(false);
         document.body.style.overflow = "auto";
     }
-    const [noticeTitle, setNoticeTitle] = useState(['방문 예약 시스템', '방문 예약 시스템 점검 안내', '단체방문 예약시 주의사항', '단체방문 예약시 주의사항']);
-    const [noticeCal, setNoticeCal] = useState(['2023.10.30', '2024.01.27', '2024.03.27', '2024.04.27']);
-    const [noticeWriter, setNoticeWriter] = useState(['관리자1', '관리자2', '관리자3','관리자4']);
-    const [noticeBody, setNoticeBody] = useState(['방문자 등록 안내 내용입니다.', '내용1','내용2','내용3']);
+    const [notices, setNotices] = useState([]); //기본 notice 리스트 state
+    const [noticeTitle, setNoticeTitle] = useState([]); //글제목 state
+    const [noticeCal, setNoticeCal] = useState([]); // 글작성날짜 state
+    const [noticeWriter, setNoticeWriter] = useState([]); //글작성자 state
+    const [noticeBody, setNoticeBody] = useState([]); //글내용 state
     const [selectedNotice, setSelectedNotice] = useState(''); //공지사항 제목 클릭했을 때 모달에 뜰 상세내용
-    const [currentNoticeIndex, setCurrentNoticeIndex] = useState(0); //현재글 index
+    const [currentNoticeIndex, setCurrentNoticeIndex] = useState([]); 
 
     const showListModal = (index) => { //모달 열고 현재 공지의 인덱스를 수정하는 함수
         const noticeInfo = {
@@ -48,10 +50,61 @@ export const NoticeProvider = ({ children }) => {
         console.log('다음 글이 없습니다');
     }
 };
+
+/*공지사항 목록 불러오는 api*/
+async function searchNoticeLists(){
+    const apiUrl_noticeList = '/notice/list?page=0&size=20&portalType=MEMBER';
+    console.log("apiUrl_noticeList : ",apiUrl_noticeList);
+    
+    axios.get(apiUrl_noticeList)
+    .then(res => {
+        console.log(res);
+        console.log(res.data.content);
+
+        const newData = res.data.content.map(data => ({
+            rowNum: data.rowNum,
+            noticeId: data.noticeId,
+            title: data.title,
+            attachmentYn: data.attachmentYn,
+            topYn: data.topYn,
+            createDt: data.createDt,
+            createUser: data.createUser,
+            updateDt: data.updateDt,
+            updateUser: data.updateUser,
+        }));
+        setNotices(newData);
+        console.log("newData : ",newData);
+    }).catch(err=>{
+        console.log('api호출에러 : ', err.response? err.response.data.info : "unknown error");
+        alert('데이터 가져오는 중 오류발생');
+    })
+    // try{
+    //     const res = await axios.get(apiUrl_noticeList);
+    //     console.log("res.data.content : ",res.data.content);
+
+    //     const newData = res.data.content.map(data => ({
+    //         rowNum: data.rowNum,
+    //         noticeId: data.noticeId,
+    //         title: data.title,
+    //         attachmentYn: data.attachmentYn,
+    //         topYn: data.topYn,
+    //         createDt: data.createDt,
+    //         createUser: data.createUser,
+    //         updateDt: data.updateDt,
+    //         updateUser: data.updateUser,
+    //     }));
+    //     setNotices(newData);
+    //     console.log("newData : ",newData);
+    // } catch (err) {
+    //     console.log("error : ",err.data);
+    //     // 여기에 에러 시 처리할 로직 추가 (예: 상태 업데이트, 사용자에게 알림 등)
+    // }
+};
+
     return (
         <NoticeContext.Provider value={{isOpen, setIsOpen, closeModal, selectedNotice, setSelectedNotice, noticeTitle, setNoticeTitle, noticeBody, setNoticeBody,
-        setNoticeTitle, noticeCal, setNoticeCal, noticeWriter, setNoticeWriter, noticeBody, setNoticeBody, showListModal,
-        handlePrevNext, currentNoticeIndex }}>
+         noticeCal, setNoticeCal, noticeWriter, setNoticeWriter, noticeBody, setNoticeBody, showListModal, notices, setNotices,
+        handlePrevNext, searchNoticeLists }}>
             {children}
         </NoticeContext.Provider>
     );

@@ -3,6 +3,7 @@ import './Search.css';
 import axios from 'axios';
 import SearchDetailModal from './modal/SearchDetailModal';
 
+
 function Search(){
     const [detailData, setDetailData] = useState([]);
     const [checkedNationality , setCheckedNationality] = useState('내국인');
@@ -34,15 +35,16 @@ function Search(){
     }
     
     /*api로 데이터 받아오는 함수 */
-    function searchRes() {
+    async function searchRes() {
          // 이름과 전화번호가 모두 비어 있을 경우 경고 메시지를 표시하고 함수 실행을 중단합니다.
          //trim() 사용해서 사용자가 공백만 입력해도 경고메세지 표시
         if (!name.trim() && !phoneNumber.trim()) {
             alert('신청자 정보를 입력해주세요.');
             return; // 함수 실행을 여기서 중단합니다.
         }
-        const apiUrl_search = `reservation/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`; //api주소 객체에 담아
-        console.log(apiUrl_search);
+
+        const apiUrl_search = `/reservation/get-list?name=${name}&phoneNumber=${phoneNumber}&page=0&size=20`;
+        console.log("apiUrl_search : ",apiUrl_search);
 
         axios.get(apiUrl_search) //get방식으로 보내서
         .then(res=>{ //답변res받음
