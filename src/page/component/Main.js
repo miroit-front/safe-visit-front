@@ -1,15 +1,18 @@
 import './Main.css';
 import { useNotices } from '../context/NoticeProvider';
+import { useEffect } from 'react';
 
 function Main(){
-    const { noticeTitle, noticeCal, noticeBody, setIsOpen, setSelectedNotice, showListModal } = useNotices();
+    const { notices, setIsOpen, setSelectedNotice, showListModal, searchNoticeLists } = useNotices();
 
     const handleNoticeClick = (e, index) => {
         e.preventDefault(); //  a태그 기본동작 방지
         e.stopPropagation(); // 이벤트 전파 방지
         showListModal(index);
     }
-
+    useEffect(() => {
+        console.log("notices : ",notices);
+      }, notices, searchNoticeLists);
     return(
         <div id='main_wrap'>
             <div className='main_bg'>
@@ -35,11 +38,11 @@ function Main(){
                                 <button onClick={(e)=>{window.location.href = './notice'}}><img src='../img/arrow_right.svg' alt='공지사항 바로가기'/></button>
                             </header>
                             <ul>
-                                {noticeTitle.map((item,i) =>
+                                {notices.slice(0, 4).map((item,i) =>
                                 <li key={i} onClick={(e)=>handleNoticeClick(e, i)}>
                                     <a href='#!' className='main-notice_link'>
-                                        <p>{item}</p>
-                                        <p>{noticeCal[i]}</p>
+                                        <p>{item.title}</p>
+                                        <p>{item.createDt}</p>
                                     </a>
                                 </li>
                             )}

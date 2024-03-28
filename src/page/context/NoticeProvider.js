@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const NoticeContext = createContext();
 export const useNotices = () => useContext(NoticeContext);
@@ -100,6 +100,11 @@ async function searchNoticeLists(){
     //     // 여기에 에러 시 처리할 로직 추가 (예: 상태 업데이트, 사용자에게 알림 등)
     // }
 };
+    useEffect(()=>{ 
+        searchNoticeLists();
+        // NoticeProvider컴포넌트가 마운트되는 시점에 한 번만 searchNoticeLists함수 호출하도록 설정하여
+        //NoticeProvider컴포넌트를 사용하는 모든 자식 컴포넌트들이 마운트될 때 공지사항 데이터도 이미 로드됨
+    }, []);
 
     return (
         <NoticeContext.Provider value={{isOpen, setIsOpen, closeModal, selectedNotice, setSelectedNotice, noticeTitle, setNoticeTitle, noticeBody, setNoticeBody,
